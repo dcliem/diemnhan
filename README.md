@@ -11,3 +11,6 @@ This file adds functions to the theme.
 @link    http://www.studiopress.com/
 
 @version 1.5.2
+
+@git clone git@github.com:dcliem/diemnhan.git
+@https clone https://github.com/dcliem/diemnhan
