@@ -1,0 +1,70 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Điểm Nhấn (GS)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-27 09:26+0000\n"
+"PO-Revision-Date: 2017-04-27 09:27+0000\n"
+"Last-Translator: usadmin <admin@nice.vhost.com>\n"
+"Language-Team: Vietnamese\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#: functions.php:66
+msgid "Cập nhật WordPress"
+msgstr ""
+
+#: functions.php:112
+msgid "Hello World!"
+msgstr ""
+
+#: framework/data.php:28
+msgid "General Settings"
+msgstr "Cấu hình giao diện"
+
+#: framework/data.php:29
+msgid "Interface Config"
+msgstr ""
+
+#: framework/data.php:35
+msgid "Images"
+msgstr ""
+
+#: framework/data.php:36
+msgid "Display Image"
+msgstr ""
+
+#: framework/data.php:41
+msgid "Products"
+msgstr ""
+
+#: framework/data.php:42
+msgid "Display Product"
+msgstr ""
+
+#: framework/data.php:47
+msgid "Contacts"
+msgstr ""
+
+#: framework/data.php:48
+msgid "Contact Detail"
+msgstr ""
+
+#. Name of the theme
+msgid "Điểm Nhấn (GS)"
+msgstr ""
+
+#. Description of the theme
+msgid "Bootstrap Diem Nhan theme created for the Genesis Framework."
+msgstr ""
+
+#. Author of the theme
+msgid "Media (GFS)"
+msgstr ""
+
+#. Author URI of the theme
+msgid "http://www.studiopress.com/"
+msgstr ""
