@@ -181,3 +181,64 @@
 [16-May-2017 01:53:20 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
 [16-May-2017 01:53:20 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
 [16-May-2017 01:53:20 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[16-May-2017 02:04:02 UTC] PHP Warning:  mysqli_real_connect(): (HY000/1045): Access denied for user 'diemnhan_us'@'localhost' (using password: YES) in D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php on line 1538
+[16-May-2017 02:04:02 UTC] PHP Stack trace:
+[16-May-2017 02:04:02 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\index.php:0
+[16-May-2017 02:04:02 UTC] PHP   2. require() D:\WorkSpace\public_html\diemnhan\index.php:17
+[16-May-2017 02:04:02 UTC] PHP   3. require_once() D:\WorkSpace\public_html\diemnhan\wp-blog-header.php:13
+[16-May-2017 02:04:02 UTC] PHP   4. require_once() D:\WorkSpace\public_html\diemnhan\wp-load.php:37
+[16-May-2017 02:04:02 UTC] PHP   5. require_once() D:\WorkSpace\public_html\diemnhan\wp-config.php:93
+[16-May-2017 02:04:02 UTC] PHP   6. require_wp_db() D:\WorkSpace\public_html\diemnhan\wp-settings.php:107
+[16-May-2017 02:04:02 UTC] PHP   7. wpdb->__construct() D:\WorkSpace\public_html\diemnhan\wp-includes\load.php:404
+[16-May-2017 02:04:02 UTC] PHP   8. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:658
+[16-May-2017 02:04:02 UTC] PHP   9. mysqli_real_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1538
+[16-May-2017 02:04:02 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php on line 1568
+[16-May-2017 02:04:03 UTC] PHP Stack trace:
+[16-May-2017 02:04:03 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\index.php:0
+[16-May-2017 02:04:03 UTC] PHP   2. require() D:\WorkSpace\public_html\diemnhan\index.php:17
+[16-May-2017 02:04:03 UTC] PHP   3. require_once() D:\WorkSpace\public_html\diemnhan\wp-blog-header.php:13
+[16-May-2017 02:04:03 UTC] PHP   4. require_once() D:\WorkSpace\public_html\diemnhan\wp-load.php:37
+[16-May-2017 02:04:03 UTC] PHP   5. require_once() D:\WorkSpace\public_html\diemnhan\wp-config.php:93
+[16-May-2017 02:04:03 UTC] PHP   6. require_wp_db() D:\WorkSpace\public_html\diemnhan\wp-settings.php:107
+[16-May-2017 02:04:03 UTC] PHP   7. wpdb->__construct() D:\WorkSpace\public_html\diemnhan\wp-includes\load.php:404
+[16-May-2017 02:04:03 UTC] PHP   8. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:658
+[16-May-2017 02:04:03 UTC] PHP   9. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1563
+[16-May-2017 02:04:03 UTC] PHP  10. mysql_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1568
+[16-May-2017 02:04:03 UTC] PHP Warning:  mysql_connect(): Access denied for user 'diemnhan_us'@'localhost' (using password: YES) in D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php on line 1568
+[16-May-2017 02:04:03 UTC] PHP Stack trace:
+[16-May-2017 02:04:03 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\index.php:0
+[16-May-2017 02:04:03 UTC] PHP   2. require() D:\WorkSpace\public_html\diemnhan\index.php:17
+[16-May-2017 02:04:03 UTC] PHP   3. require_once() D:\WorkSpace\public_html\diemnhan\wp-blog-header.php:13
+[16-May-2017 02:04:03 UTC] PHP   4. require_once() D:\WorkSpace\public_html\diemnhan\wp-load.php:37
+[16-May-2017 02:04:03 UTC] PHP   5. require_once() D:\WorkSpace\public_html\diemnhan\wp-config.php:93
+[16-May-2017 02:04:03 UTC] PHP   6. require_wp_db() D:\WorkSpace\public_html\diemnhan\wp-settings.php:107
+[16-May-2017 02:04:03 UTC] PHP   7. wpdb->__construct() D:\WorkSpace\public_html\diemnhan\wp-includes\load.php:404
+[16-May-2017 02:04:03 UTC] PHP   8. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:658
+[16-May-2017 02:04:03 UTC] PHP   9. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1563
+[16-May-2017 02:04:03 UTC] PHP  10. mysql_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1568
+[16-May-2017 02:20:49 UTC] PHP Notice:  Undefined offset: 1 in D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php on line 1227
+[16-May-2017 02:20:49 UTC] PHP Stack trace:
+[16-May-2017 02:20:49 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\wp-admin\admin-ajax.php:0
+[16-May-2017 02:20:49 UTC] PHP   2. do_action() D:\WorkSpace\public_html\diemnhan\wp-admin\admin-ajax.php:91
+[16-May-2017 02:20:49 UTC] PHP   3. WP_Hook->do_action() D:\WorkSpace\public_html\diemnhan\wp-includes\plugin.php:453
+[16-May-2017 02:20:49 UTC] PHP   4. WP_Hook->apply_filters() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:323
+[16-May-2017 02:20:49 UTC] PHP   5. call_user_func_array:{D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298}() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298
+[16-May-2017 02:20:49 UTC] PHP   6. wp_ajax_dashboard_widgets() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298
+[16-May-2017 02:20:49 UTC] PHP   7. wp_dashboard_primary() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\ajax-actions.php:314
+[16-May-2017 02:20:49 UTC] PHP   8. wp_dashboard_cached_rss_widget() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:1169
+[16-May-2017 02:20:49 UTC] PHP   9. call_user_func_array:{D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:999}() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:999
+[16-May-2017 02:20:49 UTC] PHP  10. wp_dashboard_primary_output() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:999
+[16-May-2017 02:20:49 UTC] PHP  11. wp_dashboard_plugins_output() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:1185
+[16-May-2017 02:20:49 UTC] PHP Notice:  Undefined offset: 1 in D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php on line 1227
+[16-May-2017 02:20:49 UTC] PHP Stack trace:
+[16-May-2017 02:20:49 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\wp-admin\admin-ajax.php:0
+[16-May-2017 02:20:49 UTC] PHP   2. do_action() D:\WorkSpace\public_html\diemnhan\wp-admin\admin-ajax.php:91
+[16-May-2017 02:20:49 UTC] PHP   3. WP_Hook->do_action() D:\WorkSpace\public_html\diemnhan\wp-includes\plugin.php:453
+[16-May-2017 02:20:49 UTC] PHP   4. WP_Hook->apply_filters() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:323
+[16-May-2017 02:20:49 UTC] PHP   5. call_user_func_array:{D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298}() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298
+[16-May-2017 02:20:49 UTC] PHP   6. wp_ajax_dashboard_widgets() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298
+[16-May-2017 02:20:49 UTC] PHP   7. wp_dashboard_primary() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\ajax-actions.php:314
+[16-May-2017 02:20:49 UTC] PHP   8. wp_dashboard_cached_rss_widget() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:1169
+[16-May-2017 02:20:49 UTC] PHP   9. call_user_func_array:{D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:999}() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:999
+[16-May-2017 02:20:49 UTC] PHP  10. wp_dashboard_primary_output() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:999
+[16-May-2017 02:20:49 UTC] PHP  11. wp_dashboard_plugins_output() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:1185
