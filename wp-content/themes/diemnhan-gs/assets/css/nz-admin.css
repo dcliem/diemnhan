@@ -1,0 +1,124 @@
+/*
+Author:			Doan Cong Liem
+Author URI:		http://www.nicewebz.com
+Description:	Admin Style WordPress
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+/* BEGIN Add CSS */
+
+body {
+	font-family: Arial;
+	font-size: 14px;
+	line-height: 1.5;
+}
+p, .wp-core-ui p .button, .wp-core-ui .button-primary, #wpfooter p, .update-nag, .metabox-prefs label {
+    font-size: 15px;
+    font-family: 'Roboto Condensed Light';
+}
+#screen-meta-links {
+    margin: 0 20px 32px 0;
+}
+.notice, div.error, div.updated {
+    margin: 5px 20px 2px;
+}
+.metabox-holder .postbox>h3, .metabox-holder .stuffbox>h3, .metabox-holder h2.hndle, .metabox-holder h3.hndle {
+    font-size: 15px;
+    background: #46b450;
+    color: #fff;
+}
+.accordion-section-title:after, .handlediv, .item-edit, .sidebar-name-arrow {
+    color: #fff;
+}
+#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head, #adminmenu .wp-menu-arrow, #adminmenu .wp-menu-arrow div, #adminmenu li.current a.menu-top, #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu, .folded #adminmenu li.current.menu-top, .folded #adminmenu li.wp-has-current-submenu {
+    background: #46b450;
+}
+.wp-core-ui .button-primary {
+    background: #46b450;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+.wp-core-ui .button, .wp-core-ui .button-primary, .wp-core-ui .button-secondary {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+#dashboard_right_now li span:before, .welcome-panel .welcome-icon:before {
+    font: 400 20px/.8 dashicons;
+}
+.wp-core-ui .button.button-primary.button-hero {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.wp-core-ui .button, .wp-core-ui .button-secondary {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+#titlediv #title-prompt-text {
+    font-size: 15px;
+    padding: 9px 10px;
+}
+#titlediv #title {
+    padding: 5px 8px;
+    font-size: 18px;
+    height: 38px;
+}
+.postbox {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap {
+    width: 220px;
+}
+#wpcontent, #wpfooter {
+    margin-left: 220px;
+}
+#adminmenu .wp-submenu {
+    left: 220px;
+}
+.notice, div.error, div.updated {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+#eg-meta-box h2 {
+    font-size: 15px !important;
+    background: #46b450 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 5px 10px !important;
+    margin-bottom: 0 !important;
+    line-height: 28px !important;
+}
+#jetpack_summary_widget .button-jetpack {
+    background: #46b450;
+    border: none;
+    box-shadow: none;
+}
+#wpseo-dashboard-overview .onpage .button.landing-page {
+    border: none;
+    color: #fff;
+    background: #46b450;
+    box-shadow: none;
+}
+#adminmenu div.wp-menu-image {
+    background: #404040;
+    margin-right: 5px;
+}
+#adminmenu li.menu-top {
+    margin: 3px 0;
+}
+#adminmenu li.wp-menu-separator {
+    height: 1px;
+    margin: 0 0 5px;
+    border-bottom: 1px solid #525252;
+}
