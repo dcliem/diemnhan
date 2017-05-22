@@ -642,7 +642,7 @@ th:first-child {
     font-size: 18px;
     font-size: 1.8rem;
     margin-bottom: 40px;
-    padding: 60px;
+    padding: 8px 0;
 }
 
 .archive-description p:last-child,
