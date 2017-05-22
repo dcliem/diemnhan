@@ -333,3 +333,22 @@
 [22-May-2017 08:34:06 UTC] PHP   5. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
 [22-May-2017 08:34:06 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
 [22-May-2017 08:34:06 UTC] PHP   7. nz_dashboard_widgets() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[22-May-2017 09:17:52 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_nf3_forms' doesn't exist với truy vấn SELECT DISTINCT nice_nf3_forms.id FROM nice_nf3_forms   yêu cầu bởi include('wp-admin/edit-form-advanced.php'), wp_editor, _WP_Editors::editor, do_action('media_buttons'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, media_buttons, apply_filters('media_buttons_context'), WP_Hook->apply_filters, call_user_func_array, NF_Admin_AddFormModal->insert_form_tinymce_buttons, NF_Abstracts_ModelFactory->get_forms, NF_Abstracts_Model->find
+[22-May-2017 09:17:52 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_nf3_forms' doesn't exist với truy vấn SELECT DISTINCT nice_nf3_forms.id FROM nice_nf3_forms   yêu cầu bởi include('wp-admin/edit-form-advanced.php'), do_meta_boxes, call_user_func, NF_Admin_Metaboxes_AppendAForm->render_metabox, NF_Abstracts_ModelFactory->get_forms, NF_Abstracts_Model->find
+[22-May-2017 09:17:52 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_nf3_forms' doesn't exist với truy vấn SELECT DISTINCT nice_nf3_forms.id FROM nice_nf3_forms   yêu cầu bởi include('wp-admin/admin-footer.php'), do_action('admin_footer'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, acf_enqueue_uploader, wp_editor, _WP_Editors::editor, do_action('media_buttons'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, media_buttons, apply_filters('media_buttons_context'), WP_Hook->apply_filters, call_user_func_array, NF_Admin_AddFormModal->insert_form_tinymce_buttons, NF_Abstracts_ModelFactory->get_forms, NF_Abstracts_Model->find
+[22-May-2017 09:18:26 UTC] PHP Notice:  Undefined variable: status in /home/ubuntu/workspace/wp-content/plugins/hmenu/classes/file_processor.class.php on line 41
+[22-May-2017 09:18:26 UTC] PHP Stack trace:
+[22-May-2017 09:18:26 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[22-May-2017 09:18:26 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[22-May-2017 09:18:26 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[22-May-2017 09:18:26 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[22-May-2017 09:18:26 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[22-May-2017 09:18:26 UTC] PHP   6. hmenu_class_file_processor->process_file() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[22-May-2017 09:18:32 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-content/plugins/hmenu/classes/core/promo.class.php on line 37
+[22-May-2017 09:18:32 UTC] PHP Stack trace:
+[22-May-2017 09:18:32 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[22-May-2017 09:18:32 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[22-May-2017 09:18:32 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[22-May-2017 09:18:32 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[22-May-2017 09:18:32 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[22-May-2017 09:18:32 UTC] PHP   6. hmenu_promo->get_promotion() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298

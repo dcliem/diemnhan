@@ -76,8 +76,8 @@ function dn_add_markup_class( $attr, $context ) {
     $classes_to_add = apply_filters ('bsg-classes-to-add',
         // default bootstrap markup values
         array(
-            'nav-primary'               => 'navbar navbar-default navbar-static-top',
-            'nav-secondary'             => 'navbar navbar-inverse navbar-static-top',
+            'nav-primary'               => 'container-fluid navbar navbar-default',
+            'nav-secondary'             => 'container-fluid navbar navbar-inverse',
             'site-header'               => 'container-fluid',
             'site-inner'                => 'container-fluid',
             'site-footer'               => 'container-fluid',
