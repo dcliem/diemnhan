@@ -48,7 +48,7 @@ add_filter( 'admin_footer_text', function( $text ) {
 add_filter( 'genesis_pre_load_favicon', function( $favicon_url ) { global $NZ;
     $favicon = $NZ['info']['favicon'];
     return $favicon ? $favicon : NZ_URI . '/favicon.png';
-}, 10 );
+});
 
 // Default post thumbnail
 add_filter( 'post_thumbnail_html', function( $html ) {
@@ -134,4 +134,11 @@ remove_action('wp_head', 'parent_post_rel_link', 10, 0);
 remove_action('wp_head', 'index_rel_link');
 remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head, 10, 0');
+
+//* Remove page from search
+function remove_pages_from_search() {
+    global $wp_post_types;
+    $wp_post_types['page']->exclude_from_search = true;
+}
+add_action('init', 'remove_pages_from_search');
 
