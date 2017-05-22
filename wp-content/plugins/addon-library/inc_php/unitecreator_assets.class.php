@@ -126,7 +126,7 @@ class UniteCreatorAssets{
 	
 	
 	
-	private function ______________VALIDATIONS______________(){}
+	private function a______________VALIDATIONS______________(){}
 	
 	
 	/**
@@ -300,7 +300,7 @@ class UniteCreatorAssets{
 	
 	
 	
-	private function ______________GETTERS______________(){}
+	private function a______________GETTERS______________(){}
 
 	
 	/**
@@ -722,7 +722,7 @@ class UniteCreatorAssets{
 		return($arrExists);
 	}
 	
-	private function ______________SETTERS______________(){}
+	private function a______________SETTERS______________(){}
 	
 	/**
 	 * get real upload path from path
@@ -772,7 +772,7 @@ class UniteCreatorAssets{
 	}
 	
 	
-	private function ______________ACTIONS______________(){}
+	private function a______________ACTIONS______________(){}
 	
 	
 	/**
@@ -970,7 +970,7 @@ class UniteCreatorAssets{
 	}
 	
 	
-	private function ______________OUTPUT______________(){}
+	private function a______________OUTPUT______________(){}
 	
 	
 	/**

@@ -156,7 +156,7 @@ class AddonLibraryAcImporterUC{
 		add_action( $action, array(self::$t, $eventFunction) );
 	}
 	
-	public static function ______________PUT_HTML_____________(){}
+	public static function a______________PUT_HTML_____________(){}
 	
 	/**
 	 * put style
@@ -321,7 +321,7 @@ class AddonLibraryAcImporterUC{
 	}
 	
 	
-	public static function ______________IMPORT_____________(){}
+	public static function a______________IMPORT_____________(){}
 	
 	
 	/**

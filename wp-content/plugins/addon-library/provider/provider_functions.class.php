@@ -69,15 +69,12 @@ class UniteProviderFunctionsUC{
 		
 	}
 	
-	
 	/**
 	 * set assets path
-	 */
+	*/
 	private static function setAssetsPath(){
 		
-		
 		//set assets path
-		
 		$pathBase = WP_CONTENT_DIR.'/';		
 		
 		$pathRelative = "uploads/";
@@ -94,13 +91,15 @@ class UniteProviderFunctionsUC{
 		$uploadsBaseDir = UniteFunctionsUC::getVal($arrUploads, "basedir");
 		$uploadsBaseUrl = UniteFunctionsUC::getVal($arrUploads, "baseurl");
 		
+		$dirAssets = "ac_assets";
+		
+		$urlBase = null;
 		if(is_dir($uploadsBaseDir)){
 			$pathBase = UniteFunctionsUC::addPathEndingSlash($uploadsBaseDir);
 			$urlBase = UniteFunctionsUC::addPathEndingSlash($uploadsBaseUrl);
 		}
 		
-		$dirAssets = "ac_assets";
-		
+		//make base path
 		$pathAssets = $pathBase.$dirAssets."/";
 		if(is_dir($pathAssets) == false)
 			@mkdir($pathAssets);
@@ -108,17 +107,21 @@ class UniteProviderFunctionsUC{
 		if(is_dir($pathAssets) == false)
 			UniteFunctionsUC::throwError("Can't create folder: {$pathAssets}");
 		
-		$pathAssetsRelative = str_replace(WP_CONTENT_DIR,"",$pathAssets);
+		//--- make url assets
 		
-		$urlContent = site_url()."/wp-content";
+		if(!empty($urlBase)){
+			$urlAssets = $urlBase.$dirAssets."/";
+		}else{
+			$pathAssetsRelative = str_replace(WP_CONTENT_DIR,"",$pathAssets);
+			$urlContent = site_url()."/wp-content";
+			$urlAssets = $urlContent.$pathAssetsRelative;
+		}
 		
-		$urlAssets = $urlContent.$pathAssetsRelative;
-		
-		
+			
 		GlobalsUC::$pathAssets = $pathAssets;
 		GlobalsUC::$url_assets = $urlAssets;
-		
 	}
+	
 	
 	
 	/**
@@ -131,7 +134,7 @@ class UniteProviderFunctionsUC{
 		return($isAdmin);
 	}
 	
-	public static function _____________SCRIPTS___________(){}
+	public static function a_____________SCRIPTS___________(){}
 	
 	/**
 	 * add scripts and styles framework
@@ -245,7 +248,7 @@ class UniteProviderFunctionsUC{
 	}
 	
 	
-	public static function _____________SANITIZE___________(){}
+	public static function a_____________SANITIZE___________(){}
 	
 	
 	/**
@@ -274,7 +277,7 @@ class UniteProviderFunctionsUC{
 			case UniteFunctionsUC::SANITIZE_NOTHING:
 			break;
 			default:
-				self::throwError("Wrong sanitize type: " . $type);
+				UniteFunctionsUC::throwError("Wrong sanitize type: " . $type);
 			break;
 		}
 	
@@ -283,7 +286,7 @@ class UniteProviderFunctionsUC{
 	
 	
 	
-	public static function _____________GENERAL___________(){}
+	public static function a_____________GENERAL___________(){}
 		
 	
 	
@@ -504,7 +507,7 @@ class UniteProviderFunctionsUC{
 	}
 	
 	
-	private static function __________UPDATE_PLUGIN_________(){}
+	private static function a__________UPDATE_PLUGIN_________(){}
 	
 	
 	/**
@@ -756,7 +759,7 @@ class UniteProviderFunctionsUC{
 	
 	
 	
-	public static function _________ACTIONS_FILTERS_____________(){}
+	public static function a_________ACTIONS_FILTERS_____________(){}
 	
 	
 	/**

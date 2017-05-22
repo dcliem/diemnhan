@@ -161,7 +161,7 @@
 
 .unite-ui.ui-dialog { 
 	position: absolute; top: 0; left: 0; padding: .2em; width: 300px; overflow: hidden; 
-	z-index:100000 !important;
+	z-index:100102 !important;
 }
 
 .unite-ui.ui-dialog .ui-dialog-titlebar { padding: .4em 1em; position: relative;  }

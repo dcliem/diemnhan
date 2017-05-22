@@ -2,7 +2,7 @@
 function UniteCreatorAddonConfig(){
 	
 	var g_objWrapper, g_addonName, g_addonType; 
-	var g_objSettingsContainer, g_objItemsWrapper;
+	var g_objSettingsContainer, g_objItemsWrapper, g_objFontsPanel;
 	var g_objConfigTable;
 	var g_objTitle, g_objSettings = new UniteSettingsUC();
 	var g_objPreviewWrapper, g_objIframePreview, g_objManager = new UCManagerAdmin();
@@ -77,6 +77,10 @@ function UniteCreatorAddonConfig(){
 		
 		if(g_options.enable_items == true)
 			objData["items"] = g_objManager.getItemsData();
+		
+		objData["fonts"] = null;
+		if(g_objFontsPanel)
+			objData["fonts"] = g_objSettings.getFontsPanelData();
 		
 		return(objData);
 	}
@@ -251,6 +255,7 @@ function UniteCreatorAddonConfig(){
 	function initPreview(){
 		
 		g_objPreviewWrapper = g_objWrapper.find(".uc-addon-config-preview");
+				
 		if(g_objPreviewWrapper.length == 0){
 			g_objPreviewWrapper = null;
 			return(false);
@@ -260,10 +265,10 @@ function UniteCreatorAddonConfig(){
 		
 		
 	}
-	
+		
 	
 	function ______________EVENTS____________(){};
-	
+		
 	/**
 	 * on settings change event. 
 	 * Update field if exists
@@ -332,6 +337,9 @@ function UniteCreatorAddonConfig(){
 		
 		if(!g_objWrapper || g_objWrapper.length == 0)
 			return(false);
+
+		if(g_objFontsPanel)
+			g_objSettings.destroyFontsPanel();
 		
 		g_objSettings.destroy();
 		
@@ -343,6 +351,7 @@ function UniteCreatorAddonConfig(){
 		
 		g_objWrapper.html("");
 		g_objWrapper = null;
+		
 	}
 	
 	
@@ -401,6 +410,8 @@ function UniteCreatorAddonConfig(){
 		g_objTitle = g_objWrapper.find(".uc-addon-config-title");
 		g_objConfigTable = g_objWrapper.find(".uc-addon-config-table");
 		
+		g_ucAdmin.validateDomElement(g_objConfigTable, "config table: .uc-addon-config-table");
+		
 		//get name
 		g_addonName = g_objWrapper.data("name");
 		g_addonType = g_objWrapper.data("addontype");
@@ -414,6 +425,8 @@ function UniteCreatorAddonConfig(){
 				//set settings events
 		g_objSettings.init(g_objSettingsContainer);
 		
+		g_objFontsPanel = g_objSettings.initFontsPanel(g_objWrapper);
+				
 		initEvens();
 		
 		//init manager
@@ -423,6 +436,8 @@ function UniteCreatorAddonConfig(){
 			g_objManager = null;
 		
 		initPreview();
+		
+		g_objFontsPanel = g_objSettings.initFontsPanel(g_objWrapper);
 		
 		var view = g_objWrapper.data("view");
 		if(view == "tabs"){

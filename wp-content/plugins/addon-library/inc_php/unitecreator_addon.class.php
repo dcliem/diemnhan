@@ -26,6 +26,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		private $hasItems, $itemsType,  $arrItems, $pathAssets, $urlAssets; 
 		private $variablesItems = array(), $variablesMain = array(); 
 		private $operations;
+		private $arrFonts;
 		
 		private static $arrCacheRecords = array();
 		private static $arrCacheCats = null;
@@ -63,7 +64,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
-		protected function _____________INIT_VALIDATE______________(){}
+		protected function a_____________INIT_VALIDATE______________(){}
 		
 		
 		/**
@@ -579,7 +580,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
-		protected function _____________GETTERS______________(){}
+		protected function a_____________GETTERS______________(){}
 		
 		/**
 		 * get html template
@@ -993,6 +994,12 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		/**
+		 * get fonts array
+		 */
+		public function getArrFonts(){
+			return($this->arrFonts);
+		}
+		/**
 		 * check if some attribute type exists
 		 */
 		private function isAttributeTypeExists($arrParams, $type){
@@ -1033,7 +1040,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
-		private function _____________GET_HTML______________(){}
+		private function a_____________GET_HTML______________(){}
 		
 		
 		/**
@@ -1131,8 +1138,14 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 
 		
-		private function _____________ADDON_CONTENT______________(){}
+		private function a_____________ADDON_CONTENT______________(){}
 		
+		/**
+		 * add css include
+		 */
+		private function addCssInclude($url){
+			$this->includesCSS[] = array("url"=>$url);
+		}
 		
 		/**
 		 * convert value to url assets
@@ -1368,7 +1381,8 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 				
 				
 			}
-								
+			
+			
 			return($data);
 		}
 
@@ -1407,6 +1421,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			
 			$objParams = $this->getParams();
 			$arrParams = $this->getProcessedParamsValues($objParams);
+			$arrParams = $this->processFonts($arrParams, "main");
 			
 			$arrVars = $this->getMainVariablesProcessed($arrParams);
 			$arrParams = array_merge($arrParams, $arrVars);
@@ -1500,6 +1515,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 				$arrParamsNew = $this->setParamsValuesWork($arrItemValues, $arrItemParams, "items");
 								
 				$item = $this->getProcessedParamsValues($arrParamsNew, $filterType);
+				$item = $this->processFonts($item, "items");
 				
 				//in case of filter it's enought
 				if(!empty($filterType)){
@@ -1545,72 +1561,29 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
-		/**
-		 * set params values work
-		 * type: main,items
-		 */
-		private function setParamsValuesWork($arrValues, $arrParams, $type){
-			
-			$this->validateInited();
-			
-			if(empty($arrValues))
-				return($arrParams);
-			
-			if(!is_array($arrValues))
-				UniteFunctionsUC::throwError("The values shoud be array");
 			
 			
-			foreach($arrParams as $key => $param){
-				$name = UniteFunctionsUC::getVal($param, "name");
-				if(empty($name))
-					continue;
+			
+			
+			
 				
-				$defaultValue = UniteFunctionsUC::getVal($param, "default_value");
-				$arrParams[$key]["value"] = UniteFunctionsUC::getVal($arrValues, $name, $defaultValue);
-			}
 			
 			
-			return($arrParams);
-		}
 		
 		
-		/**
-		 * set params values
-		 */
-		public function setParamsValues($arrValues){			
 			
-			$this->params = $this->setParamsValuesWork($arrValues, $this->params, "main");
 						
-		}
 		
 		
-		/**
-		 * set items array
-		 */
-		public function setArrItems($arrItems){
-			$this->validateInited();
 						
-			if($this->hasItems == false)
-				return(false);
-			
-			if(empty($arrItems))
-				$arrItems = array();
 			
 			
-			//validate that the items is not assoc array
-			if(UniteFunctionsUC::isAssocArray($arrItems) == true){
-				dmp($arrItems);
-				$errorMessage = "the items should not be assoc array";
+			
 				
-				dmp("Error: ".$errorMessage);
-				UniteFunctionsUC::throwError($errorMessage);
-			}
 			
-			$this->arrItems = $arrItems;
 			
-		}
 		
-		private function _____________SETTERS______________(){}
+		private function a_____________SETTERS______________(){}
 		
 		
 		/**
@@ -1621,7 +1594,151 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			$this->type = $type;
 		}
 		
-		private function _____________UPDATERS______________(){}
+		/**
+		 * set params values
+		 */
+		public function setParamsValues($arrValues){
+			$this->params = $this->setParamsValuesWork($arrValues, $this->params, "main");
+		}
+		/**
+		 * set items array
+		 */
+		public function setArrItems($arrItems){
+			$this->validateInited();
+			if($this->hasItems == false)
+				return(false);
+			if(empty($arrItems))
+				$arrItems = array();
+			//validate that the items is not assoc array
+			if(UniteFunctionsUC::isAssocArray($arrItems) == true){
+				dmp($arrItems);
+				$errorMessage = "the items should not be assoc array";
+				dmp("Error: ".$errorMessage);
+				UniteFunctionsUC::throwError($errorMessage);
+			}
+			$this->arrItems = $arrItems;
+		}
+		/**
+		 * set params values work
+		 * type: main,items
+		 */
+		private function setParamsValuesWork($arrValues, $arrParams, $type){
+			$this->validateInited();
+			if(empty($arrValues))
+				return($arrParams);
+			if(!is_array($arrValues))
+				UniteFunctionsUC::throwError("The values shoud be array");
+			foreach($arrParams as $key => $param){
+				$name = UniteFunctionsUC::getVal($param, "name");
+				if(empty($name))
+					continue;
+				$defaultValue = UniteFunctionsUC::getVal($param, "default_value");
+				$arrParams[$key]["value"] = UniteFunctionsUC::getVal($arrValues, $name, $defaultValue);
+			}
+			return($arrParams);
+		}
+		private function _____________FONTS______________(){}
+		/**
+		 * set fonts array
+		 */
+		public function setArrFonts($arrFonts){
+			$this->arrFonts = $arrFonts;
+		}
+		/**
+		 * process the font
+		 */
+		private function processFont($value, $arrFont){
+			if(empty($value) || empty($arrFont))
+				return($value);
+			$arrStyle = array();
+			$spanClass = "";
+			$counter = 0;
+			$addStyles = "";
+			$arrGoogleFonts = null; 
+			foreach($arrFont as $styleName => $styleValue){
+				$styleValue = trim($styleValue);
+				if(empty($styleValue))
+					continue;
+				switch($styleName){
+					case "font-family":
+						if(strpos($styleValue, " ") !== false && strpos($styleValue, ",") === false)
+							$arrStyle[$styleName] = "'$styleValue'";
+						else
+							$arrStyle[$styleName] = "$styleValue";
+						//check google fonts
+						if(empty($arrGoogleFonts)){
+							$arrFontsPanelData = HelperUC::getFontPanelData();
+							$arrGoogleFonts = $arrFontsPanelData["arrGoogleFonts"];
+						}
+						if(isset($arrGoogleFonts[$styleValue])){
+							$urlGoogleFont = "https://fonts.googleapis.com/css?family=".$arrGoogleFonts[$styleValue];
+							$this->addCssInclude($urlGoogleFont);
+						}
+					break;
+					case "font-weight":
+					case "font-size":
+					case "line-height":
+					case "text-decoration":
+					case "color":
+					case "font-style":
+						$arrStyle[$styleName] = $styleValue;
+					break;
+					case "mobile-size":
+						//generate id
+						//generate id
+						if(empty($spanID)){
+							$counter++;
+							$spanClass = "uc-style-".$counter.UniteFunctionsUC::getRandomString(10,true);
+						}
+						$css = "@media (max-width:480px){.{$spanClass}{font-size:{$styleValue}}}";
+						$this->css .= $css;
+					break;
+					case "custom":
+						$addStyles = $styleValue;
+					break;
+					default:
+						UniteFunctionsUC::throwError("Wrong font style: $styleName");
+					break;
+				}
+			}
+			$style = "";
+			if(!empty($arrStyle) || !empty($addStyles))
+				$style = UniteFunctionsUC::arrStyleToStrInlineCss($arrStyle, $addStyles);
+			$htmlAdd = "";
+			if(!empty($spanClass))
+				$htmlAdd .= "class=\"{$spanClass}\"";
+			$value = "<span {$htmlAdd} {$style}>$value</span>";
+			return($value);
+		}
+		/**
+		 * process fonts, type can be main or items
+		 */
+		private function processFonts($arrValues, $type){
+			if(empty($arrValues))
+				return($arrValues);
+			switch($type){
+				case "main":
+					$prefix = "";
+				break;
+				case "items":
+					$prefix = "uc_items_attribute_";
+				break;
+				default:
+					UniteFunctionsUC::throwError("Wrong fonts type: $type");
+				break;
+			}
+			foreach($arrValues as $key=>$value){
+				if(empty($value))
+					continue;
+				$fontsKey = $prefix.$key;
+				$arrFont = UniteFunctionsUC::getVal($this->arrFonts, $fontsKey);
+				if(empty($arrFont))
+					continue;
+				$arrValues[$key] = $this->processFont($value, $arrFont);
+			}
+			return($arrValues);
+		}
+		private function a_____________UPDATERS______________(){}
 		
 		/**
 		 * update addon in db
@@ -2020,7 +2137,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
-		private function _____________TEST_SLOT______________(){}
+		private function a_____________TEST_SLOT______________(){}
 		
 
 		/**

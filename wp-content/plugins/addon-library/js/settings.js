@@ -3,7 +3,7 @@ function UniteSettingsUC(){
 	
 	var arrControls = {};
 	var g_IDPrefix = "#unite_setting_";
-	var g_colorPicker;
+	var g_colorPicker, g_iconsHash={}, g_objFontsPanel;
 	var g_objParent = null, g_objWrapper = null, g_objSapTabs = null;
 	var g_objProvider = new UniteProviderAdminUC();
 	
@@ -47,7 +47,7 @@ function UniteSettingsUC(){
 
 	}
 	
-	
+
 	
 	/**
 	 * close all accordion items
@@ -56,6 +56,109 @@ function UniteSettingsUC(){
 		jQuery("#"+formID+" .unite-postbox .inside").slideUp("fast");
 		jQuery("#"+formID+" .unite-postbox .unite-postbox-title").addClass("box_closed");
 	}
+	
+	this.__________FONTS_PANEL__________ = function(){}
+	
+	
+	/**
+	 * init fonts panel
+	 */
+	this.initFontsPanel = function(objWrapper){
+		
+		g_objFontsPanel = objWrapper.find(".uc-fontspanel");
+		if(g_objFontsPanel.length == 0){
+			g_objFontsPanel = null;
+			return(null);
+		}
+		
+		//checkbox event
+		g_objFontsPanel.find(".uc-fontspanel-toggle").click(function(){
+			
+			var objCheck = jQuery(this);
+			var sectionID = objCheck.data("target");
+			var objSection = jQuery("#" + sectionID);
+			g_ucAdmin.validateDomElement(objSection, "fonts panel section");
+	
+			if(objCheck.is(":checked")){
+				
+				objSection.show();
+				
+			}else{
+				
+				objSection.hide();
+				
+			}
+		});
+		
+		this.initColorPicker(g_objFontsPanel);
+		
+		return(g_objFontsPanel);
+	}
+	
+	
+	/**
+	 * get fonts panel data
+	 */
+	this.getFontsPanelData = function(){
+		
+		if(!g_objFontsPanel)
+			return(null);
+		
+		var objData = {};
+		var objCheckboxes = g_objFontsPanel.find(".uc-fontspanel-toggle");
+		jQuery.each(objCheckboxes, function(index, checkbox){
+			
+			var objCheckbox = jQuery(checkbox);
+			
+			if(objCheckbox.is(":checked") == false)
+				return(true);
+			
+			var sectionID = objCheckbox.data("target");
+			var sectionName = objCheckbox.data("sectionname");
+			
+			var objSection = jQuery("#" + sectionID);
+			g_ucAdmin.validateDomElement(objSection, "fonts panel section "+sectionID);
+			
+			//get fields values
+			var objFields = objSection.find(".uc-fontspanel-field");
+			
+			var fieldsValues = {};
+			jQuery.each(objFields, function(index, field){
+			
+				var objField = jQuery(field);
+				
+				var fieldName = objField.data("fieldname");
+				var value = objField.val();
+								
+				if(jQuery.trim(value) == "")
+					return(true);
+				
+				fieldsValues[fieldName] = value;
+				
+			});
+						
+			if(jQuery.isEmptyObject(fieldsValues) == false)
+				objData[sectionName] = fieldsValues;
+			
+		});
+		
+		return(objData);
+	}
+	
+	
+	/**
+	 * destroy fonts panel
+	 */
+	this.destroyFontsPanel = function(){
+		
+		if(!g_objFontsPanel)
+			return(false);
+		
+		g_objFontsPanel.find(".uc-fontspanel-toggle").off("click");
+	}
+	
+	
+	this.__________OTHER_EXTERNAL__________ = function(){}
 	
 	/**
 	 * init side settings accordion - started from php
@@ -442,13 +545,16 @@ function UniteSettingsUC(){
 	}
 
 	function _______COLOR_PICKER_____(){}
-	
+		
 	
 	/**
 	 * init color picker
 	 */
-	function initColorPicker(){
-				
+	this.initColorPicker = function(objParent){
+		
+		if(!objParent)
+			var objParent = g_objParent;
+		
 		var colorPickerWrapper = jQuery('#divColorPicker');
 		if(colorPickerWrapper.length == 0){
 			jQuery("body").append('<div id="divColorPicker" style="display:none;"></div>');
@@ -457,7 +563,7 @@ function UniteSettingsUC(){
 		
 		//init the wrapper itself
 		var isInited = colorPickerWrapper.data("inited");
-				
+		
 		if(isInited !== true){
 						
 			colorPickerWrapper.click(function(){
@@ -474,7 +580,15 @@ function UniteSettingsUC(){
 		
 		g_colorPicker = jQuery.farbtastic('#divColorPicker');
 		
-		g_objParent.find(".unite-color-picker").focus(function(){
+		
+		//link the color picket to the inputs
+		objParent.find(".unite-color-picker").each(function(index, input){
+
+			g_colorPicker.linkTo(input);
+			
+		});
+		
+		objParent.find(".unite-color-picker").focus(function(){
 			
 			g_colorPicker.linkTo(this);
 			
@@ -817,7 +931,196 @@ function UniteSettingsUC(){
 		
 		
 	}
+	
+	function ______ICON_PICKER____(){}
+	
+	/**
+	 * init the dialog
+	 */
+	function iconPicker_initDialog(){
 		
+		var htmlDialog = '<div id="unite_icon_picker_dialog" class="unite-icon-picker-dialog">';
+		htmlDialog += '<div class="unite-iconpicker-dialog-top">';
+		htmlDialog += '<input class="unite-iconpicker-dialog-input-filter" type="text" placeholder="Type to filter" value="">';
+		htmlDialog += '<span class="unite-iconpicker-dialog-icon-name"></span></div>';
+		htmlDialog += '<div class="unite-iconpicker-dialog-icons-container"></div></div>';
+	
+		jQuery("body").append(htmlDialog);
+		
+		var objDialogWrapper = jQuery('#unite_icon_picker_dialog');
+		
+		var objContainer = objDialogWrapper.find('.unite-iconpicker-dialog-icons-container');
+		var objFilter = objDialogWrapper.find('.unite-iconpicker-dialog-input-filter');
+		var objIconName = objDialogWrapper.find(".unite-iconpicker-dialog-icon-name");
+		
+		jQuery(g_ucFaIcons).each(function(index, className) {
+			
+			var objIcon = jQuery('<span class="unite-iconpicker-icon"><i class="fa fa-' + className + ' fa-lg"></i></span>');
+			
+			//avoid doubles
+			if(g_iconsHash.hasOwnProperty(className) == false){
+				objIcon.data('name', className);
+				objContainer.append(objIcon);
+				g_iconsHash[className] = objIcon;
+			}
+			
+		});
+		
+		//trace(objDialogWrapper);
+		
+		objDialogWrapper.dialog({
+			autoOpen: false,
+			height: 500,
+			width: 800,
+			dialogClass:"unite-ui",
+			title: "Choose Icon",
+			open: function( event, ui ) {
+			  
+			  objContainer.scrollTop(0);
+			  
+			  var objSelectedIcon = objContainer.find('.icon-selected');
+			  if (!objSelectedIcon.length) 
+				  return(false);
+			  
+			  if(objSelectedIcon.is(":hidden") == true)
+				  return(false);
+			  
+			  //scroll to icon
+			  var containerHeight = objContainer.height();
+			  var iconPos = objSelectedIcon.position().top;
+			  
+			  if(iconPos > containerHeight)
+				  objContainer.scrollTop(iconPos - (containerHeight / 2 - 50) );
+			}
+		
+		  });
+		
+		//init events
+		objContainer.on('click', '.unite-iconpicker-icon', function (event) {
+				
+				objContainer.find('.icon-selected').removeClass('icon-selected');
+				var objIcon = jQuery(event.target).closest('.unite-iconpicker-icon');
+				objIcon.addClass('icon-selected');
+				
+				var iconNameStr = objIcon.data('name');
+				var iconClass = 'fa fa-' + iconNameStr;
+				
+				//update picker object
+				var objPicker = objDialogWrapper.data("objpicker");
+				var objPickerInput = objPicker.find(".unite-iconpicker-input");
+				var objPickerButton = objPicker.find(".unite-iconpicker-button");
+				
+				objPickerInput.val(iconClass);
+				objPickerButton.html('<i class="fa fa-' + iconNameStr + ' fa-lg"></i>');
+				
+				//close dialog
+				objDialogWrapper.dialog("close");
+		});
+		
+		//on icon mouseover
+		objContainer.on('mouseenter', '.unite-iconpicker-icon', function (event) {
+			
+			var objIcon = jQuery(event.target).closest('.unite-iconpicker-icon');
+			var iconNameStr = objIcon.data('name');
+			var iconClass = 'fa-' + iconNameStr;
+			objIconName.text(iconClass);
+		});
+		
+		//on icon mouseover
+		objContainer.on('mouseleave', '.unite-iconpicker-icon', function (event) {
+			objIconName.text("");
+		});
+		
+			
+		//filter functionality
+		objFilter.on('keyup', function () {
+						
+			var strFilter = objFilter.val();
+			strFilter = jQuery.trim(strFilter);
+			
+			jQuery(g_ucFaIcons).each(function(index, name){
+			  
+			  var isVisible = false;
+			  if(strFilter == "" || name.indexOf(strFilter) === 0)
+				  isVisible = true;
+			  
+			  if(isVisible == true)
+				  g_iconsHash[name].show();
+			   else 
+				   g_iconsHash[name].hide();
+			  
+			});
+		  })
+		  
+		
+	}
+	
+	
+	/**
+	 * init icon picker raw function
+	 */
+	function initIconPicker(){
+		
+		var objPickers = g_objParent.find(".unite-settings-iconpicker");
+		if(objPickers.length == 0)
+			return(false);
+				
+		//add dialog to the body
+		var objDialogWrapper = jQuery('#unite_icon_picker_dialog');
+		if(objDialogWrapper.length == 0){
+			
+			iconPicker_initDialog();
+			
+			objDialogWrapper = jQuery('#unite_icon_picker_dialog');
+		}
+		
+		//init picker wrappers events
+		objPickers.each(function(){
+			
+			var objPickerWrapper = jQuery(this);
+			var objInput = objPickerWrapper.find('input.unite-iconpicker-input');
+			var objButton = objPickerWrapper.find('.unite-iconpicker-button');
+			
+			//on button click
+			objButton.click(function () {
+				
+					if (objDialogWrapper.dialog('isOpen')) {
+						objDialogWrapper.dialog('close');
+					} else {
+						objDialogWrapper.data("objpicker", objPickerWrapper);
+						objDialogWrapper.dialog('open');
+					}
+			});
+			
+			//on input blur
+			
+			objInput.on('blur', function () {
+				
+				var val = jQuery(this).val().substr(6);
+				val = jQuery.trim(val);
+				
+				if (!g_iconsHash[val]){
+					objButton.html("choose");
+				  return(false);
+				}
+				
+				objButton.html('<i class="fa fa-' + val + ' fa-lg"></i>');
+				
+				//set selected icon in dialog
+				var objContainer = objDialogWrapper.find('.unite-iconpicker-dialog-icons-container');
+				
+				objContainer.find('.icon-selected').removeClass('icon-selected');
+				var objIcon = g_iconsHash[val];
+				objIcon.addClass('icon-selected');
+				
+			});
+			
+			objInput.trigger("blur");
+			
+		});
+		
+	}
+	
 	
 	function _______EVENTS_____(){}
 	
@@ -1158,14 +1461,16 @@ function UniteSettingsUC(){
 		
 		initOptions();
 		
-		initColorPicker();	//put the color picker automatically
+		t.initColorPicker();	//put the color picker automatically
+		
+		initIconPicker();
 		
 		initGlobalEvents();
 		
 		t.updateEvents();
 		
 		initSaps();
-		
+				
 		clearSettingsInit();
 		
 		g_objProvider.initEditors(t);
@@ -1174,5 +1479,4 @@ function UniteSettingsUC(){
 
 
 } // UniteSettings class end
-
 

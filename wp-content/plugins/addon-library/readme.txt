@@ -37,6 +37,13 @@ Download now and start creating.
 
 == Changelog ==
 
+version 1.3.35:
+
+-feature: made shortcode work in the output
+-bug fix: fixed compatability issues for php 7.1
+-change: added styles for protect the jquery ui dialog from third party styles
+-bug fix: fixed some bug in import layouts
+
 version 1.3.32:
 
 -bug fix: fixed throw error on editor destroy
@@ -111,6 +118,13 @@ version 1.3.22:
 * fixed some bugs
 
 == Upgrade Notice ==
+
+version 1.3.35:
+
+-feature: made shortcode work in the output
+-feature: made "overwrite addons" checkbox on layout import
+-feature: added layout widget in wp
+-bug fix: fixed some bugs
 
 version 1.3.26:
 

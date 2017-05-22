@@ -33,6 +33,12 @@
 	color: black !important;
 }
 
+.----------------LAYOUT_PREVIEW_VIEW------------- {}
+
+.uc-layout-preview-toolbar{
+	margin-bottom:25px;
+}
+
 .----------------ADDONS_MANAGER_VIEW------------- {}
 
 .dialog-import-addons-left{
@@ -804,7 +810,7 @@
 .----------------TEST_ADDON_VIEW------------- {}
 
 .uc-testaddon-panel {
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 }
 
 .uc-testaddon-panel a.unite-button-secondary{

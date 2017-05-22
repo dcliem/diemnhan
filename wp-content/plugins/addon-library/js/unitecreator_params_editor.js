@@ -280,6 +280,7 @@ function UniteCreatorParamsEditor(){
 				html += "<div class='colorpicker-bar' style='background-color:"+objParam.default_value+"'></div>";
 			break;
 			case "uc_textarea":
+			case "uc_editor":
 				html += "<textarea readonly>"+objParam.default_value+"</textarea>";
 			break;
 			case "uc_image":

@@ -43,14 +43,26 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		 *
 		 * get select from array
 		 */
-		public static function getHTMLSelect($arr,$default="",$htmlParams="",$assoc = false){
+		public static function getHTMLSelect($arr,$default="",$htmlParams="",$assoc = false, $addData = null, $addDataText = null){
 		
 			$html = "<select $htmlParams>";
+			//add first item
+			if($addData == "not_chosen"){
+				$selected = "";
+				$default = trim($default);
+				if(empty($default))
+					$selected = " selected ";
+				$itemText = $addDataText;
+				if(empty($itemText))
+					$itemText = "[".__("not chosen", ADDONLIBRARY_TEXTDOMAIN)."]";
+				$html .= "<option $selected value=''>{$itemText}</option>";
+			}
 			foreach($arr as $key=>$item){
 				$selected = "";
 		
 				if($assoc == false){
-					if($item == $default) $selected = " selected ";
+					if($item == $default) 
+						$selected = " selected ";
 				}
 				else{
 					if(trim($key) == trim($default))
@@ -138,6 +150,8 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			$js .= self::TAB2.'var g_urlAssetsUC = "'.GlobalsUC::$url_assets.'";'.self::BR;
 			$js .= self::TAB2.'var g_settingsObjUC = {};'.self::BR;
 			$js .= self::TAB2.'var g_ucAdmin;'.self::BR;
+			$jsonFaIcons = UniteFontManagerUC::fa_getJsonIcons();
+			$js .= self::TAB2.'var g_ucFaIcons = '.$jsonFaIcons.';'.self::BR;
 			
 			//get nonce
 			if(method_exists("UniteProviderFunctionsUC", "getNonce"))

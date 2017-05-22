@@ -1,25 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-	<fields>
-			<fieldset name="general" label="General Settings">
-				
-								
-				<field name="js_in_footer" 
-					type="boolean"
-					default="true" 
-					label="Js Always in Footer"
-					description="Put addon javascript always in the footer of the page. If no, it will be put right after the body">	
-				</field>
-				
-				<field name="css_includes_to" 
-					type="list"
-					default="body"
-					label="Include Css Files To"
-					description="Choose where to include css files">  
-						<option value="body" text="Body Before Addon HTML"></option>
-						<option value="footer" text="Footer"></option>
-				</field>
-				
-				
-			</fieldset>
-	</fields>
+<fields>
+		<fieldset name="general" label="General Settings">
+		</fieldset>
+		
+		<fieldset name="google_fonts" label="Google Fonts">
+			
+			<field name="text_fonts" 
+				type="statictext"
+				label="Those fonts will be added to fonts panel list">
+			</field>
+			
+			<field name="google_font1_name" 
+				type="text"
+				default="" 
+				label="Google Font 1 Name"
+				description="">  
+			</field>
+			
+			<field name="google_font1_link" 
+				type="text"
+				default=""
+				label="Google Font 1 Link"
+				description="">  
+			</field>
+			
+			<field type="hr"></field>
+			
+			<field name="google_font2_name" 
+				type="text"
+				default="" 
+				label="Google Font 2 Name"
+				description="">  
+			</field>
+			
+			<field name="google_font2_link" 
+				type="text"
+				default=""
+				label="Google Font 2 Link"
+				description="">  
+			</field>
+			
+			<field type="hr"></field>
+			
+			<field name="google_font3_name" 
+				type="text"
+				default="" 
+				label="Google Font 3 Name"
+				description="">  
+			</field>
+			
+			<field name="google_font3_link" 
+				type="text"
+				default=""
+				label="Google Font 3 Link"
+				description="">  
+			</field>
+			
+			<field type="hr"></field>
+			
+			<field name="google_font4_name" 
+				type="text"
+				default="" 
+				label="Google Font 4 Name"
+				description="">  
+			</field>
+			
+			<field name="google_font4_link" 
+				type="text"
+				default=""
+				label="Google Font 4 Link"
+				description="">  
+			</field>
+			
+			
+		</fieldset>
+		
+</fields>

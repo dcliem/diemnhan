@@ -212,7 +212,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 	    }
 	    
 	    
-	    private function ____________EXTRACT_CUSTOM__________(){}
+	    private function a____________EXTRACT_CUSTOM__________(){}
 	    
 	    
 	    /**

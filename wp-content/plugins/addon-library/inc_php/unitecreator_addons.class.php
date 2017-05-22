@@ -14,7 +14,7 @@ class UniteCreatorAddons extends UniteElementsBaseUC{
 	const STATE_LAST_ADDONS_CATEGORY = "last_addons_cat";
 	
 	
-	protected function ___________STATIC_METHODS__________(){}
+	protected function a___________STATIC_METHODS__________(){}
 	
 	/**
 	 * set filter active state
@@ -63,7 +63,7 @@ class UniteCreatorAddons extends UniteElementsBaseUC{
 	}
 	
 	
-	protected function ___________GETTERS__________(){}
+	protected function a___________GETTERS__________(){}
 	
 	
 	/**
@@ -473,7 +473,7 @@ class UniteCreatorAddons extends UniteElementsBaseUC{
 	}
 	
 	
-	protected function ___________SETTERS__________(){}
+	protected function a___________SETTERS__________(){}
 	
 	/**
 	 *
@@ -826,6 +826,7 @@ class UniteCreatorAddons extends UniteElementsBaseUC{
 		$arrConfig = UniteFunctionsUC::getVal($data, "config");
 		$arrItemsData = UniteFunctionsUC::getVal($data, "items");
 		$addonType = UniteFunctionsUC::getVal($data, "addontype");
+		$arrFonts = UniteFunctionsUC::getVal($data, "fonts");
 		
 		
 		$objAddon = new UniteCreatorAddon();
@@ -846,6 +847,8 @@ class UniteCreatorAddons extends UniteElementsBaseUC{
 		if(is_array($arrItemsData))
 			$objAddon->setArrItems($arrItemsData);
 		
+		if(!empty($arrFonts) && is_array($arrFonts))
+			$objAddon->setArrFonts($arrFonts);
 		return($objAddon);
 	}
 	
@@ -878,11 +881,9 @@ class UniteCreatorAddons extends UniteElementsBaseUC{
 			
 			$objOutput = new UniteCreatorOutput();
 			$objOutput->initByAddon($objAddon);
+			$objOutput->putPreviewHtml();
 			
-			$html = $objOutput->getPreviewHtml();
-			
-			echo $html;
-			
+						
 		}catch(Exception $e){
 			$message = $e->getMessage();
 			$errorMessage = HelperUC::getHtmlErrorMessage($message);

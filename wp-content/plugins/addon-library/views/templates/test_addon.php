@@ -59,13 +59,18 @@ $styleHide = "style='display:none'";
 
 
 <script type="text/javascript">
-	
+
+	jQuery(document).ready(function(){
+
 		var objTestAddonView = new UniteCreatorTestAddon();
 		objTestAddonView.init();
 
 		<?php if($isPreviewMode == true):?>
 		jQuery("#uc_button_preview").trigger("click");
 		<?php endif?>
+		
+	});
+	
 		
 </script>
 

@@ -50,7 +50,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			HelperUC::addStyle("tipsy","tipsy-css");
 			
 			//font awsome
-			HelperUC::addStyle("font-awesome.min","font-awsome","css/font-awsome/css");
+			HelperUC::addStyle("font-awesome.min","font-awesome","css/font-awsome/css");
 			
 			HelperUC::addScript("settings", "unitecreator_settings");
 			HelperUC::addScript("admin","unitecreator_admin");
@@ -153,6 +153,8 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			
 			self::addMustScripts($specialSettings);
 			
+			HelperUC::addStyle("unitecreator_admin_front","unitecreator_admin_front_css");
+			
 			UniteCreatorManager::putScriptsIncludes(UniteCreatorManager::TYPE_ITEMS_INLINE);
 			
 			self::$isScriptsIncluded_settingsBase = true;
@@ -168,7 +170,6 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			
 			HelperUC::addScript("unitecreator_browser", "unitecreator_browser");
 			HelperUC::addScript("unitecreator_addon_config", "unitecreator_addon_config");
-			HelperUC::addStyle("unitecreator_admin_front","unitecreator_admin_front_css");
 			
 		}
 		

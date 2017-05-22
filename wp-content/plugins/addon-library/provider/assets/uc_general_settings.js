@@ -12,7 +12,7 @@ if(typeof trace == "undefined"){
 function UCGeneralSettings(){
 	var t = this;
 	var g_currentManager;
-	var g_objCurrentSettings = null, g_objSettingsWrapper;
+	var g_objCurrentSettings = null, g_objSettingsWrapper, g_objFontsPanel = null;
 	
 	
 	if(!g_ucAdmin)
@@ -23,6 +23,11 @@ function UCGeneralSettings(){
 	 * encode some content
 	 */
 	function encodeContent(value){
+		
+		//turn to string if object
+		if(typeof value == "object")
+			value = JSON.stringify(value);
+		
 		return base64_encode(rawurlencode(value));
 	}
 	
@@ -80,6 +85,7 @@ function UCGeneralSettings(){
 		vc.atts.uc_image = objParse;
 		vc.atts.uc_mp3 = objParse;
 		vc.atts.uc_editor = objParse;
+		vc.atts.uc_icon = objParse;
 		
 		
 		//items
@@ -96,6 +102,23 @@ function UCGeneralSettings(){
 				}
 		};
 		
+		//fonts
+		vc.atts.uc_fonts = {
+				parse:function(param){
+					
+					if(!g_objFontsPanel)
+						return("");
+					
+					var fontsData = g_objCurrentSettings.getFontsPanelData();
+										
+					//encode
+					fontsData = encodeContent(fontsData);
+					
+					return(fontsData);
+				}
+		};
+		
+		
 		
 	}
 	
@@ -110,13 +133,30 @@ function UCGeneralSettings(){
 		
 	}
 	
+	/**
+	 * init fonts panel
+	 */
+	this.initVCFontsPanel = function(wrapperID){
+		
+		var objWrapper = jQuery("#" + wrapperID);
+		
+		if(objWrapper.length == 0)
+			throw new Error("Fonts panel not found");
+		
+		if(!g_objCurrentSettings)
+			g_objCurrentSettings = new UniteSettingsUC();
+		
+		g_objFontsPanel = g_objCurrentSettings.initFontsPanel(objWrapper);
+		
+	}
+	
 	
 	/**
 	 * init visual composer settings
 	 * the div init issome div inside the settings container
 	 */
 	this.initVCSettings = function(objDivInit){
-				
+		
 		var objParent = objDivInit.parents(".vc_edit-form-tab");
 		if(objParent.length == 0)
 			objParent = objDivInit.parents(".wpb_edit_form_elements");
@@ -268,6 +308,11 @@ function UCGeneralSettings(){
 	function checkDestroySettings(){
 				
 		setTimeout(function(){
+			
+			if(g_objFontsPanel){
+				g_objCurrentSettings.destroyFontsPanel();
+				g_objFontsPanel = null;
+			}
 			
 			if(g_objCurrentSettings){
 				g_objCurrentSettings.destroy();

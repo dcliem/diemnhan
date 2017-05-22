@@ -1,3 +1,30 @@
+version 1.3.39
+
+-bug fix: fixed some small bug in test addon and icon field
+
+version 1.3.38
+
+-bug fix: fixed some small bug related to assets path
+
+version 1.3.37
+
+-feature: added icon picker attribute
+-feature: added fonts panel
+
+
+version 1.3.36:
+
+-feature: updated layout css
+
+version 1.3.35:
+
+-feature: made shortcode work in the output
+
+version 1.3.34:
+
+-bug fix: fixed compatability issues for php 7.1
+-change: added styles for protect the jquery ui dialog from third party styles
+
 version 1.3.33:
 
 -bug fix: fixed some bug in import layouts

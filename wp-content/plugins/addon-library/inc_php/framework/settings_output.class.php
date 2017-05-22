@@ -517,7 +517,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		
 		/**
 		 *
-		 * draw imaeg input:
+		 * draw image input:
 		 * @param $setting
 		 */
 		protected function drawMp3Input($setting){
@@ -542,6 +542,23 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 					<input type="text" id="<?php echo $setting["id"]?>" name="<?php echo $setting["name"]?>" <?php echo $class?> value="<?php echo $value?>" <?php echo $addHtml?> />
 					<a href="javascript:void(0)" class="unite-button-secondary unite-button-choose"><?php _e("Choose", ADDONLIBRARY_TEXTDOMAIN)?></a>
 				</div>
+			<?php
+		}
+		/**
+		 *
+		 * draw image input:
+		 * @param $setting
+		 */
+		protected function drawIconPickerInput($setting){
+			$previewStyle = "display:none";
+			$value = UniteFunctionsUC::getVal($setting, "value");
+			$class = $this->getInputClassAttr($setting, "", "unite-iconpicker-input");
+			$addHtml = $this->getDefaultAddHtml($setting);
+			?>
+		      <div class="unite-settings-iconpicker">
+				<input type="text" id="<?php echo $setting["id"]?>" name="<?php echo $setting["name"]?>" <?php echo $class?> value="<?php echo $value?>" <?php echo $addHtml?> />
+		        <span class="unite-iconpicker-button"></span>
+			  </div>
 			<?php
 		}
 		
@@ -616,6 +633,9 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 				break;
 				case UniteSettingsUC::TYPE_MP3:
 					$this->drawMp3Input($setting);
+				break;
+				case UniteSettingsUC::TYPE_ICON:
+					$this->drawIconPickerInput($setting);
 				break;
 				case UniteSettingsUC::TYPE_EDITOR:
 					$this->drawEditorInput($setting);

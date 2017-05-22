@@ -114,6 +114,52 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		
 		
 		/**
+		 * add fonts panel
+		 */
+		public static function addFontsPanel($param, $value){
+			
+			$arrFonts = self::decodeContent($value);
+			
+			if(is_array($arrFonts) == false)
+				$arrFonts = null;
+			
+			$paramName = UniteFunctionsUC::getVal($param, "name");
+			
+			$name = UniteFunctionsUC::getVal($param, "addon_name");
+			
+			$addon = new UniteCreatorAddon();
+			$addon->initByName($name);
+			
+			if(!empty($arrFonts))
+				$addon->setArrFonts($arrFonts);
+			
+			$addonConfig = new UniteCreatorAddonConfig();
+			$addonConfig->setStartAddon($addon);
+			
+			$arrFontsParamNames = $addonConfig->getAllParamsNamesForFonts();
+			$htmlFontsPanel = $addonConfig->getHtmlFontsPanel($arrFontsParamNames);
+			
+			$wrapperID = "uc_vc_fonts_panel_".UniteFunctionsUC::getRandomString(5);
+			
+			$html = "";
+			$html = "<div id='{$wrapperID}'>";
+			$html .= "<input type=\"hidden\" name=\"{$paramName}\" class=\"wpb_vc_param_value\">";
+			$html .= $htmlFontsPanel;
+			$html .= "</div>";
+			
+			$html .= "
+					<script type=\"text/javascript\">
+						
+						g_ucGeneralSettings.initVCFontsPanel(\"{$wrapperID}\");
+						
+					</script>
+			";
+			
+			return($html);
+		}
+		
+		
+		/**
 		 * add init settings param, 
 		 * param that inits the settings that being output by visual composer
 		 */
@@ -185,6 +231,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			
 			//add items params
 			self::addParam("uc_items", "addItemsEditor");
+			self::addParam("uc_fonts", "addFontsPanel");
 			self::addParam("uc_init_settings","addInitSettingsParam");
 		}
 		

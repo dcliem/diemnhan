@@ -42,6 +42,7 @@ GlobalsUC::$arrClientSideText = array(
 		"uc_number"=>__("Number",ADDONLIBRARY_TEXTDOMAIN),
 		"uc_colorpicker"=>__("Color Picker",ADDONLIBRARY_TEXTDOMAIN),
 		"uc_editor"=>__("Editor",ADDONLIBRARY_TEXTDOMAIN),
+		"uc_icon"=>__("Icon Picker",ADDONLIBRARY_TEXTDOMAIN),
 		"uc_image"=>__("Image",ADDONLIBRARY_TEXTDOMAIN),
 		"uc_mp3"=>__("Audio",ADDONLIBRARY_TEXTDOMAIN),
 		"uc_imagebase"=>__("Image Fields",ADDONLIBRARY_TEXTDOMAIN),

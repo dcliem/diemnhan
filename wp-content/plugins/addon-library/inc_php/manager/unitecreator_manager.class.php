@@ -27,7 +27,7 @@ class UniteCreatorManager{
 	protected $textItemsSelected = "";
 	
 	
-	protected function ___________REWRITE_FUNCTIONS________(){}
+	protected function a___________REWRITE_FUNCTIONS________(){}
 	
 	/**
 	 * put items buttons
@@ -86,7 +86,7 @@ class UniteCreatorManager{
 		return($text);
 	}
 	
-	protected function ___________SET_DATA_BEFORE_PUT________(){}
+	protected function a___________SET_DATA_BEFORE_PUT________(){}
 	
 	
 	/**
@@ -96,7 +96,7 @@ class UniteCreatorManager{
 		$this->managerAddHtml = $addHtml;
 	}
 	
-	protected function ___________CATEGORIES_RELATED________(){}
+	protected function a___________CATEGORIES_RELATED________(){}
 	
 	
 	/**
@@ -302,7 +302,7 @@ class UniteCreatorManager{
 	}
 	
 	
-	protected function ___________MAIN_FUNCTIONS________(){}
+	protected function a___________MAIN_FUNCTIONS________(){}
 	
 	
 	/**

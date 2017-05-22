@@ -50,7 +50,7 @@ class UniteCreatorCategories extends UniteElementsBaseUC{
 	}
 	
 	
-	private function ______________GETTERS____________(){}
+	private function a______________GETTERS____________(){}
 	
 	
 	/**
@@ -459,7 +459,7 @@ class UniteCreatorCategories extends UniteElementsBaseUC{
 	}
 	
 	
-	private function ______________SETTERS____________(){}
+	private function a______________SETTERS____________(){}
 	
 	
 	/**

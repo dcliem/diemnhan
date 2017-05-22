@@ -353,7 +353,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			
 		}
 		
-		private static function _________IMPORT_ADDONS________(){}
+		private static function a_________IMPORT_ADDONS________(){}
 		
 		
 		/**
@@ -418,6 +418,8 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			return($imported);
 		}
 		
+		private static function a_________OTHERS________(){}
+		
 		
 		/**
 		 * return if creator plugin exists
@@ -447,6 +449,17 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			
 			if($addonsView == "info")
 				$objManager->setViewType(UniteCreatorManagerAddons::VIEW_TYPE_INFO);
+			
+		}
+		
+		
+		/**
+		 * modify addons manager
+		 */
+		public static function validateGeneralSettings($arrValues){
+			
+			$vcFolder = UniteFunctionsUC::getVal($arrValues, "vc_folder");
+			UniteFunctionsUC::validateNotEmpty($vcFolder, "visual composer folder");
 			
 		}
 		
@@ -550,6 +563,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			
 			//addon library actions
 			self::addAction(UniteCreatorFilters::ACTION_MODIFY_ADDONS_MANAGER, "modifyAddonsManager");
+			self::addAction(UniteCreatorFilters::ACTION_VALIDATE_GENERAL_SETTINGS, "validateGeneralSettings");
 			
 			//run provider action if exists (like after update)
 			if($this->isInsidePlugin())

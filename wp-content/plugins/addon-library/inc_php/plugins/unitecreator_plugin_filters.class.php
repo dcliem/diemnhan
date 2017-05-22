@@ -21,6 +21,7 @@ class UniteCreatorFilters{
 	const FILTER_MODIFY_URL_VIEW = "addon_library_modify_url_view";
 	const FILTER_LAYOUTS_ACTIONS_COL_WIDTH = "addon_library_layouts_actions_colwidth";
 	
+	const ACTION_VALIDATE_GENERAL_SETTINGS = "uc_validate_general_settings";
 	const ACTION_MANAGER_ITEM_BUTTONS1 = "uc_manager_action_item_buttons1";
 	const ACTION_MANAGER_ITEM_BUTTONS2 = "uc_manager_action_item_buttons2";
 	const ACTION_MANAGER_ITEM_BUTTONS3 = "uc_manager_action_item_buttons3";

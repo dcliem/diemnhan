@@ -13,7 +13,10 @@ class UniteCreatorDialogParam{
 	const TYPE_ITEM_VARIABLE = "variable_item";
 	const TYPE_MAIN_VARIABLE = "variable_main";
 	const PARAM_EDITOR = "uc_editor";
+	const PARAM_TEXTFIELD = "uc_textfield";
+	const PARAM_TEXTAREA = "uc_textarea";
 	
+	const PARAM_ICON = "uc_icon";
 	
 	private $addon;
 	private $type;
@@ -57,6 +60,7 @@ class UniteCreatorDialogParam{
 		$this->addParam("uc_colorpicker", __("Color Picker", ADDONLIBRARY_TEXTDOMAIN));
 		$this->addParam("uc_image", __("Image", ADDONLIBRARY_TEXTDOMAIN));
 		$this->addParam("uc_mp3", __("Audio", ADDONLIBRARY_TEXTDOMAIN));
+		$this->addParam(self::PARAM_ICON, __("Icon", ADDONLIBRARY_TEXTDOMAIN));
 		
 		//variables
 		$this->addParam("uc_varitem_simple", __("Simple Variable", ADDONLIBRARY_TEXTDOMAIN));
@@ -75,13 +79,13 @@ class UniteCreatorDialogParam{
 	}
 
 	
-	private function ___________________MAIN_PARAMS________________(){}
+	private function a___________________MAIN_PARAMS________________(){}
 	
 	
 	/**
 	 * put default value param in params dialog
 	 */
-	private function putDefaultValueParam($isTextarea = false, $class=""){
+	private function putDefaultValueParam($isTextarea = false, $class="", $addStyleChekbox = false){
 		$strClass = "";
 		if(!empty($class))
 			$strClass = "class='{$class}'";
@@ -106,6 +110,16 @@ class UniteCreatorDialogParam{
 				
 				<?php endif?>
 		
+				<?php if($addStyleChekbox == true):?>
+				<div class='uc-dialog-param-style-checkbox-wrapper'>
+					<div class="unite-inputs-sap"></div>
+					<label class="unite-inputs-label-inline-free">
+							<?php _e("Allow Font Edit", ADDONLIBRARY_TEXTDOMAIN)?>:
+						 	<input type="checkbox" onfocus="this.blur()" name="font_editable">
+					</label>
+					<div class="unite-dialog-description-left"><?php _e("Allow edit font for this field in font style tab. Must be put with the {{fieldname|raw}} in html", ADDONLIBRARY_TEXTDOMAIN)?></div>
+				</div>
+				<?php endif?>
 		<?php 
 	}
 	
@@ -331,7 +345,7 @@ class UniteCreatorDialogParam{
 	}
 	
 	
-	private function ___________________DROPDOWN_PARAM________________(){}
+	private function a___________________DROPDOWN_PARAM________________(){}
 	
 	
 	/**
@@ -395,7 +409,7 @@ class UniteCreatorDialogParam{
 	}
 	
 	
-	private function ___________________VARIABLE_PARAMS________________(){}
+	private function a___________________VARIABLE_PARAMS________________(){}
 	
 	
 	/**
@@ -495,7 +509,7 @@ class UniteCreatorDialogParam{
 	}
 	
 	
-	private function ___________________OUTPUT________________(){}
+	private function a___________________OUTPUT________________(){}
 	
 	
 	/**
@@ -540,7 +554,7 @@ class UniteCreatorDialogParam{
 		
 		switch($paramType){
 			case "uc_textfield":
-				$this->putDefaultValueParam();
+				$this->putDefaultValueParam(false, "", true);
 			break;
 			case "uc_number":
 				$this->putDefaultValueParam(false, "input-small");
@@ -550,7 +564,7 @@ class UniteCreatorDialogParam{
 				$this->putRadioBooleanParam();
 			break;
 			case "uc_textarea":
-				$this->putDefaultValueParam(true);
+				$this->putDefaultValueParam(true,"",true);
 			break;
 			case self::PARAM_EDITOR:
 				$this->putDefaultValueParam(true);
@@ -569,6 +583,9 @@ class UniteCreatorDialogParam{
 			break;
 			case "uc_mp3":
 				$this->putMp3Param();
+			break;
+			case self::PARAM_ICON:
+				$this->putDefaultValueParam();
 			break;
 			
 			//variable params
@@ -745,7 +762,7 @@ class UniteCreatorDialogParam{
 	}
 	
 	
-	private function ___________________INIT________________(){}
+	private function a___________________INIT________________(){}
 	
 	
 	/**
@@ -763,7 +780,8 @@ class UniteCreatorDialogParam{
 			"uc_colorpicker",
 			self::PARAM_EDITOR,
 			"uc_image",
-			"uc_mp3"
+			"uc_mp3",
+			self::PARAM_ICON
 		);
 		
 	}

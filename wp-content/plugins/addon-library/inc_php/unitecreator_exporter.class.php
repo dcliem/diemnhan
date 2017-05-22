@@ -101,7 +101,7 @@ class UniteCreatorExporter extends UniteCreatorExporterBase{
 	}
 	
 	
-	private function ______________EXPORT_ADDON___________(){}
+	private function a______________EXPORT_ADDON___________(){}
 	
 	
 	
@@ -409,7 +409,7 @@ class UniteCreatorExporter extends UniteCreatorExporterBase{
 	}
 	
 	
-	private function ______________EXPORT_CATEGORY___________(){}
+	private function a______________EXPORT_CATEGORY___________(){}
 	
 	
 	/**
@@ -584,7 +584,7 @@ class UniteCreatorExporter extends UniteCreatorExporterBase{
 		
 	}
 	
-	private function ______________EXPORT_CATS___________(){}
+	private function a______________EXPORT_CATS___________(){}
 	
 	
 	/**
@@ -640,7 +640,7 @@ class UniteCreatorExporter extends UniteCreatorExporterBase{
 		
 	}
 	
-	private function ______________IMPORT_ADDON___________(){}
+	private function a______________IMPORT_ADDON___________(){}
 	
 	/**
 	 * validate that the temp file array
@@ -1006,7 +1006,7 @@ class UniteCreatorExporter extends UniteCreatorExporterBase{
 	}
 	
 	
-	private function ______________BULK_IMPORT___________(){}
+	private function a______________BULK_IMPORT___________(){}
 	
 	/**
 	 * get short log text (only from import addons from folder)

@@ -7,7 +7,7 @@
  * */
 defined('ADDON_LIBRARY_INC') or die('Restricted access');
 
-class UniteCreatorOutput extends HtmlOutputBaseUC{
+class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 	
 	private static $serial = 0;
 	
@@ -47,7 +47,7 @@ class UniteCreatorOutput extends HtmlOutputBaseUC{
 		
 	}
 	
-	private function ___________INCLUDES_________(){}
+	private function a___________INCLUDES_________(){}
 	
 	
 	/**
@@ -314,7 +314,16 @@ class UniteCreatorOutput extends HtmlOutputBaseUC{
 	}
 	
 	
-	private function ___________GENERAL_________(){}
+	private function a___________GENERAL_________(){}
+	
+	
+	/**
+	 * process html before output, function for override
+	 */
+	protected function processHtml($html){
+		
+		return($html);
+	}
 	
 	
 	/**
@@ -327,6 +336,8 @@ class UniteCreatorOutput extends HtmlOutputBaseUC{
 		$title = $this->addon->getTitle(true);
 		
 		$html = $this->objTemplate->getRenderedHtml(self::TEMPLATE_HTML);
+		$html = $this->processHtml($html);
+		
 		$css = $this->objTemplate->getRenderedHtml(self::TEMPLATE_CSS);
 		$js = $this->objTemplate->getRenderedHtml(self::TEMPLATE_JS);
 		
@@ -344,7 +355,7 @@ class UniteCreatorOutput extends HtmlOutputBaseUC{
 			$htmlIncludes = $this->getHtmlIncludes($arrCssIncludes);
 			$output .= "\n".$htmlIncludes;
 		}
-			
+		
 		
 		//add css
 		if(!empty($css)){
@@ -386,6 +397,8 @@ class UniteCreatorOutput extends HtmlOutputBaseUC{
 		
 		$this->validateInited();
 		
+		$outputs = "";
+		
 		$title = $this->addon->getTitle();
 		$title .= " ". __("Preview",ADDONLIBRARY_TEXTDOMAIN);
 		$title = htmlspecialchars($title);
@@ -426,26 +439,77 @@ class UniteCreatorOutput extends HtmlOutputBaseUC{
 		
 		$urlPreviewCss = GlobalsUC::$urlPlugin."css/unitecreator_preview.css";
 		
-		$html = "<!DOCTYPE html>".self::BR;
-		$html .= "<html>".self::BR;
+		$html = "";
+		$htmlHead = "";
+				
+		$htmlHead = "<!DOCTYPE html>".self::BR;
+		$htmlHead .= "<html>".self::BR;
 		
 		//output head
-		$html .= self::TAB."<head>".self::BR;
-		$html .= self::TAB2."<title>{$title}</title>".self::BR;
-		$html .= self::TAB2."<link rel='stylesheet' href='{$urlPreviewCss}' type='text/css'>".self::BR;
-		$html .= $htmlInlcudes;
-		$html .= self::TAB."</head>".self::BR;
-
+		$htmlHead .= self::TAB."<head>".self::BR;
+		$html .= $htmlHead;
+		
+		//get head html
+		$htmlHead .= self::TAB2."<title>{$title}</title>".self::BR;
+		$htmlHead .= self::TAB2."<link rel='stylesheet' href='{$urlPreviewCss}' type='text/css'>".self::BR;
+		$htmlHead .= $htmlInlcudes;
+		$html .= $htmlHead;
+		$output["head"] = $htmlHead;
+		
+		$htmlAfterHead = "";
+		$htmlAfterHead .= self::TAB."</head>".self::BR;
+		
 		//output body
-		$html .= self::TAB."<body>".self::BR;
-		$html .= self::BR.self::TAB2."<div class='uc-preview-wrapper' style='{$style}'>";
-		$html .= self::BR.$htmlBody;
-		$html .= self::BR.self::TAB2."</div>";
-		$html .= self::BR.self::TAB."</body>".self::BR;
+		$htmlAfterHead .= self::TAB."<body>".self::BR;
+		$htmlAfterHead .= self::BR.self::TAB2."<div class='uc-preview-wrapper' style='{$style}'>";
+		$htmlAfterHead .= self::BR.$htmlBody;
+		$htmlAfterHead .= self::BR.self::TAB2."</div>";
 		
-		$html .= "</html>";
+		$html .= $htmlAfterHead;
+		$output["after_head"] = $htmlAfterHead;
 		
-		return($html);
+		$htmlEnd = "";
+		
+		$htmlEnd .= self::BR.self::TAB."</body>".self::BR;
+		$htmlEnd .= "</html>";
+				
+		$html .= $htmlEnd;
+		$output["end"] = $htmlEnd;
+		
+		$output["full_html"] = $html;
+		
+		return($output);
+	}
+	
+	/**
+	 * put header additions in header html, functiob for override
+	 */
+	protected function putPreviewHtml_headerAdd(){
+	}
+	
+	/**
+	 * put footer additions in body html, functiob for override
+	 */
+	protected function putPreviewHtml_footerAdd(){
+	}
+	
+	
+	/**
+	 * put html preview
+	 */
+	public function putPreviewHtml(){
+		
+		$output = $this->getPreviewHtml();
+		
+		echo $output["head"];
+		
+		//$this->putPreviewHtml_headerAdd();
+		
+		echo $output["after_head"];
+		
+		$this->putPreviewHtml_footerAdd();
+		
+		echo $output["end"];
 	}
 	
 	

@@ -297,6 +297,17 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 				$params[] = $paramItems;
 			}
 			
+			//add fonts param
+			$paramFonts = array();
+			$paramFonts["type"] = "uc_fonts";
+			$paramFonts["title"] = "";
+			$paramFonts["name"] = "uc_fonts_data";
+			$paramFonts["group"] = __("Fonts", ADDONLIBRARY_TEXTDOMAIN);
+			$paramFonts["addon_name"] = $addonName;
+			
+			$params[] = $paramFonts;
+			
+			
 			//add assets url to all params
 			$urlAssets = $addon->getUrlAssets();
 			foreach($params as $key=>$param){

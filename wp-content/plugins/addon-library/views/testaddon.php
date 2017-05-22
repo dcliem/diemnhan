@@ -76,6 +76,7 @@ class UniteCreatorTestAddonView{
 		
 		//init addon config
 		$addonConfig = new UniteCreatorAddonConfig();
+		$addonConfig->setViewTabs();
 		$addonConfig->setStartAddon($addon);
 		
 		$isTestData1 = $addon->isTestDataExists(1);

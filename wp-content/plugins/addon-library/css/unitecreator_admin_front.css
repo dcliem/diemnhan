@@ -281,7 +281,7 @@
 .uc-addon-config .uc-addon-config-settings{
 
 	padding:10px;
-
+	padding-left:0px;
 	padding-top:15px;
 
 	background-color:#fff;
@@ -396,15 +396,79 @@
 }
 
 .uc-addon-config .uc-addon-config-tab-content{
-	border:1px solid lightgray;
-	
+	xborder:1px solid lightgray;
+	background-color:#ffffff;
 }
+
 
 .uc-addon-config  #uc_addon_config_tab_items{
 	border:none;
 }
 
+.uc-addon-config  .uc-addon-config-fonts{
+	padding-top:20px;
+	box-style:border-box;
+}
 
+._____________CONFIG_FONTS_PANEL___________________{}
+
+.uc-testaddon-wrapper .uc-addon-config-fonts{
+	padding:10px;
+}
+
+.uc-addon-config-fonts h2{
+	padding-top:0px;
+	margin-top:0px;
+}
+
+.uc-fontspanel{
+	margin-top:20px;
+	float:none !important;
+	margin-left:0px !important;
+}
+
+.uc-fontspanel-message,
+.uc-fontspanel div,
+.uc-fontspanel .uc-fontspanel-line,
+.uc-fontspanel .uc-fontspanel-details,
+.uc-fontspanel .uc-fontspanel-section,
+.uc-fontspanel .uc-fontspanel-toggle,
+.uc-fontspanel label{
+	margin:0px !important;
+	float:none !important;
+}
+.uc-fontspanel-message{
+	padding:20px;
+}
+.uc-fontspanel .uc-fontspanel-field{
+	width: auto !important;
+}
+.uc-fontspanel .uc-fontspanel-line{
+}
+.uc-fontspanel label.uc-fontspanel-title{
+	display:inline-block;
+	width:auto;
+}
+.uc-fontspanel .uc-fontspanel-content{
+	padding: 10px 5px;
+}
+.uc-fontspanel .uc-fontspanel-details{
+	display: table-cell !important;
+	width: auto !important;
+	padding: 5px;
+	margin:0px !important;
+}
+.uc-fontspanel .uc-fontspanel-sap{
+	border-top:1px dashed black;
+	margin-top:9px !important;
+	margin-bottom:7px !important;
+	min-height:0px !important;
+	height:0px !important;
+}
+.uc-fontspanel .uc-fontspanel-toggle{
+	display:inline !important;
+	width:auto !important;
+}
 ._________________GRID_BUILDER___________________{}
 
 

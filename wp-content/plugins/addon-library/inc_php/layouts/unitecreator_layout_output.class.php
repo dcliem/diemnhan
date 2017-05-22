@@ -163,6 +163,9 @@ class UniteCreatorLayoutOutputWork extends HtmlOutputBaseUC{
 		if(!empty($arrItems))
 			$objAddon->setArrItems($arrItems);
 		
+		$arrFonts = UniteFunctionsUC::getVal($addonData, "fonts");
+		if(!empty($arrFonts))
+			$objAddon->setArrFonts($arrFonts);
 		//process includes and get html
 		
 		$objOutput = new UniteCreatorOutput();

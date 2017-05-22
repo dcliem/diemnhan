@@ -82,6 +82,7 @@ class UniteCreatorSettings extends UniteSettingsAdvancedUC{
 			"uc_colorpicker",
 			"uc_image",
 			"uc_mp3",
+			"uc_icon",
 			"uc_statictext"
 		);
 		
@@ -205,6 +206,9 @@ class UniteCreatorSettings extends UniteSettingsAdvancedUC{
 			break;
 			case "uc_statictext":
 				$this->addStaticText($title, $name, $extra);
+			break;
+			case "uc_icon":
+				$this->addIconPicker($name,$value,$title,$extra);
 			break;
 			default:
 				UniteFunctionsUC::throwError("initByCreatorParams error: Wrong setting type: $type");

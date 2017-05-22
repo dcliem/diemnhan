@@ -119,8 +119,11 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 				}
 				
 			}catch (Exception $e){
-				echo "<div id='uc_view_error_message'> <br><br>View ($view) Error: <b>".$e->getMessage()."</b></div>";
+				echo "<div id='uc_view_error_message'> <br><br>View ($view) Error: <b>".$e->getMessage()."</b>";
 				
+				if(GlobalsUC::SHOW_TRACE == true)
+					dmp($e->getTraceAsString());
+				echo "</div>";
 				?>
 				<script>
 					jQuery(document).ready(function(){
@@ -130,8 +133,6 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 				</script>
 				<?php 
 				
-				if(GlobalsUC::SHOW_TRACE == true)
-					dmp($e->getTraceAsString());
 			}
 		}
 		

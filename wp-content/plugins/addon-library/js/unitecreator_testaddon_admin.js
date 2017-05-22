@@ -96,7 +96,7 @@ function UniteCreatorTestAddon(){
 		jQuery("#uc_button_preview").click(g_objConfig.showPreview);
 		jQuery("#uc_button_preview_tab").click(g_objConfig.showPreviewNewTab);
 		jQuery("#uc_button_close_preview").click(g_objConfig.hidePreview);
-
+		
 		g_objConfig.onShowPreview(onShowPreview);
 		g_objConfig.onHidePreview(onHidePreview);
 		

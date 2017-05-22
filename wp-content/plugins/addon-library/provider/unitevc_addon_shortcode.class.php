@@ -26,6 +26,9 @@ class UCVCAddonBase extends WPBakeryShortCode {
 		if(isset($arrValues["uc_items_data"]))
 			unset($arrValues["uc_items_data"]);
 		
+		if(isset($arrValues["uc_fonts_data"]))
+			unset($arrValues["uc_fonts_data"]);
+		
 		return($arrValues);
 	}
 	
@@ -47,6 +50,23 @@ class UCVCAddonBase extends WPBakeryShortCode {
 		return($arrItems);
 	}
 	
+	/**
+	 * get items data
+	 */
+	private function getFontsData($atts){
+	
+		if(!isset($atts["uc_fonts_data"]))
+			return(array());
+	
+		$fontsData = $atts["uc_fonts_data"];
+		if(empty($fontsData))
+			return(null);
+		
+		$arrFonts = UniteVCCustomParams::decodeContent($fontsData);
+		
+		return($arrFonts);
+	}
+	
 	
 	/**
 	 * addon shortcode with all the addon related methods
@@ -63,7 +83,7 @@ class UCVCAddonBase extends WPBakeryShortCode {
 			}
 			
 			$arrItemsData = $this->getItemsData($atts);
-			
+			$arrFontsData = $this->getFontsData($atts);
 			
 			//------- init addon
 			
@@ -75,6 +95,10 @@ class UCVCAddonBase extends WPBakeryShortCode {
 			
 			if(!empty($arrItemsData))
 				$objAddon->setArrItems($arrItemsData);
+			
+			if(!empty($arrFontsData))
+				$objAddon->setArrFonts($arrFontsData);
+			
 			
 			//------- init output
 			

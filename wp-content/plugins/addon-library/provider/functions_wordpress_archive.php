@@ -52,7 +52,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
-		public static function _____________POSTS_TYPES___________(){}
+		public static function a_____________POSTS_TYPES___________(){}
 		
 		/**
 		 * 
@@ -180,7 +180,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			 return($arrPostTypes);
 		}
 		
-		public static function _____________TAXANOMIES___________(){}
+		public static function a_____________TAXANOMIES___________(){}
 		
 		/**
 		 *
@@ -218,7 +218,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
-		public static function __________CATEGORIES_AND_TAGS__________(){}
+		public static function a__________CATEGORIES_AND_TAGS__________(){}
 		
 		
 		/**
@@ -449,7 +449,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
-		public static function _____________POSTS____________(){}
+		public static function a_____________POSTS____________(){}
 		
 		
 		
@@ -670,7 +670,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
-		public static function _____________ATTACHMENTS____________(){}
+		public static function a_____________ATTACHMENTS____________(){}
 		
 		
 		/**
@@ -868,7 +868,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		
 		
 		
-		public static function _______________SETTERS____________(){}
+		public static function a_______________SETTERS____________(){}
 		
 		
 		/**
@@ -914,7 +914,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
-		public static function _______________GENERAL_GETTERS____________(){}
+		public static function a_______________GENERAL_GETTERS____________(){}
 		
 		/**
 		 * tells if the page is posts of pages page
@@ -1180,7 +1180,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
-		public static function _______________OTHER_FUNCTIONS____________(){}
+		public static function a_______________OTHER_FUNCTIONS____________(){}
 		
 		
 		/**

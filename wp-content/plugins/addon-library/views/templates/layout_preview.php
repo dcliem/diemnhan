@@ -14,10 +14,10 @@ if($this->showHeader == true){
 <div class="unite-content-wrapper unite-inputs">
 	
 		<?php if($this->showToolbar == true):?>
-		
+		<div class="uc-layout-preview-toolbar">
 			<a href="<?php echo $urlLayoutsList?>" class="unite-button-secondary"><?php _e("Back to layouts list",ADDONLIBRARY_TEXTDOMAIN)?></a>
 			<a href="<?php echo $urlEdit?>" class="mleft_10 unite-button-secondary"><?php _e("Edit Layout",ADDONLIBRARY_TEXTDOMAIN)?></a>
-		
+		</div>
 		<?php endif?>
 		
 		

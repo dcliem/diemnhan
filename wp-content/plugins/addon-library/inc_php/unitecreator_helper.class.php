@@ -16,8 +16,9 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 	class HelperUC extends UniteHelperBaseUC{
 
 		public static $operations;
+		private static $arrFontPanelData;
 		
-		public static function ________________GENERAL______________(){}
+		public static function a________________GENERAL______________(){}
 		
 		
 		/**
@@ -48,7 +49,17 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
-		public static function ________________STATE______________(){}
+		/**
+		 * get font panel fields
+		 */
+		public static function getFontPanelData(){
+			if(!empty(self::$arrFontPanelData))
+				return(self::$arrFontPanelData);
+			require GlobalsUC::$pathSettings."font_panel_data.php";
+			self::$arrFontPanelData = $arrData;
+			return(self::$arrFontPanelData);
+		}
+		public static function a________________STATE______________(){}
 		
 		
 		/**
@@ -106,7 +117,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
-		public static function ________________URL_AND_PATH______________(){}
+		public static function a________________URL_AND_PATH______________(){}
 		
 		
 		/**
@@ -436,7 +447,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
-		public static function ________________VIEW_TEMPLATE______________(){}
+		public static function a________________VIEW_TEMPLATE______________(){}
 		
 		
 		/**
@@ -651,7 +662,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		
 		
 		
-		public static function ________________SCRIPTS______________(){}
+		public static function a________________SCRIPTS______________(){}
 		
 		
 		/**
@@ -754,7 +765,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			return($html);
 		}
 		
-		public static function ________________ASSETS_PATH______________(){}
+		public static function a________________ASSETS_PATH______________(){}
 		
 		
 		/**
@@ -834,7 +845,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 
 		
-		public static function ________________OUTPUT_LAYOUT______________(){}
+		public static function a________________OUTPUT_LAYOUT______________(){}
 		
 		
 		/**

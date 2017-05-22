@@ -38,6 +38,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		const TYPE_BOOLEAN = "boolean";
 		const TYPE_EDITOR = "editor";
 		const TYPE_MP3 = "mp3";
+		const TYPE_ICON = "icon";
 		
 		//------------------------------------------------------------
 		//set data types  
@@ -163,7 +164,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			$this->arrIndex[$name] = count($this->arrSettings)-1;
 		}
 		
-		private function ________________GETTERS________________(){}
+		private function a________________GETTERS________________(){}
 		
 		//-----------------------------------------------------------------------------------------------
 		//get types array from all the settings:
@@ -330,6 +331,21 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			return($setting);
 		}
 		
+		/**
+		 * get arr settings by saps
+		 */
+		public function getArrSettingsBySap($sapName){
+			$sapKey = $this->getSapKeyByName($sapName);
+			if($sapKey === null)
+				UniteFunctionsUC::throwError("sap: $sapName not found");
+			$arrSapSettings = array();
+			foreach($this->arrSettings as $setting){
+				$sap = UniteFunctionsUC::getVal($setting, "sap");
+				if($sap === $sapKey)
+					$arrSapSettings[] = $setting;
+			}
+			return($arrSapSettings);
+		}
 		
 		/**
 		 * get setting values. replace from stored ones if given
@@ -443,7 +459,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
-		private function ______________________ADD________________(){}
+		private function a______________________ADD________________(){}
 		
 		//private function 
 		//-----------------------------------------------------------------------------------------------
@@ -507,6 +523,12 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		 */
 		public function addMp3($name,$defaultValue = "",$text = "",$arrParams = array()){
 			$this->add($name,$defaultValue,$text,self::TYPE_MP3,$arrParams);
+		}
+		/**
+		 * add icon picker
+		 */
+		public function addIconPicker($name,$defaultValue = "",$text = "",$arrParams = array()){
+			$this->add($name,$defaultValue,$text,self::TYPE_ICON,$arrParams);
 		}
 		
 		
@@ -703,7 +725,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 						
 		
-		private function ______________________CONTROLS________________(){}
+		private function a______________________CONTROLS________________(){}
 		
 		
 		/**
@@ -837,7 +859,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
-		private function ________________OTHERS____________(){}
+		private function a________________OTHERS____________(){}
 		
 		
 		/**
@@ -1284,7 +1306,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		
 		
 		
-		private function ______________UPDATE_________(){}
+		private function a______________UPDATE_________(){}
 		
 		/**
 		 * set addtext to the setting

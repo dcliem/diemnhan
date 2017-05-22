@@ -1059,6 +1059,22 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
+		/**
+		 * get filename extention
+		 */
+		public static function getFilenameNoExtension($filepath){
+			$info = self::getPathInfo($filepath);
+			$filename = self::getVal($info, "filename");
+			return($filename);
+		}
+		/**
+		 * get filename extention
+		 */
+		public static function getFilenameExtension($filepath){
+			$info = self::getPathInfo($filepath);
+			$ext = self::getVal($info, "extension");
+			return($ext);
+		}
 		
 		//------------------------------------------------------------
 		//save some file to the filesystem with some text
@@ -1106,6 +1122,9 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 				$filepath = $path.$file;
 				
 				if(is_dir($filepath)){
+					//add dirs
+					if(is_array($filetype) && array_search("dir", $filetype) !== false || !is_array($filetype) && $filetype == "dir")
+						$arrFiles[] = $filepath;
 					$arrFiles = self::getFileListTree($filepath, $filetype, $arrFiles);
 				}
 
@@ -1114,7 +1133,10 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 				$ext = self::getVal($info, "extension");
 				$ext = strtolower($ext);
 				
-				if(!empty($filetype) && $filetype != $ext)
+				if(!empty($filetype) && is_array($filetype) && array_search($ext, $filetype) === false){
+					continue;
+				}
+				if(!empty($filetype) && is_array($filetype) == false && $filetype != $ext)
 					continue;
 				
 				$arrFiles[] = $filepath;

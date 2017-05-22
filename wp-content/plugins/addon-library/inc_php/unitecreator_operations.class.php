@@ -16,7 +16,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		const GENERAL_SETTINGS_OPTION = "unitecreator_general_settings";
 				
 		
-		private function ______________GENERAL_SETTINGS_____________(){}
+		private function a______________GENERAL_SETTINGS_____________(){}
 		
 		/**
 		 * get general settings
@@ -63,14 +63,37 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		
 			//validations:
 			
-			$vcFolder = UniteFunctionsUC::getVal($arrValues, "vc_folder");
-			UniteFunctionsUC::validateNotEmpty($vcFolder);
+			UniteProviderFunctionsUC::doAction(UniteCreatorFilters::ACTION_VALIDATE_GENERAL_SETTINGS, $arrValues);
 			
 			UniteProviderFunctionsUC::updateOption(self::GENERAL_SETTINGS_OPTION, $arrValues);
 		}
 		
 		
-		private function ______________OTHER_FUNCTIONS_____________(){}
+		/**
+		 * get google fonts from general settings
+		 */
+		public function getGeneralSettingsGoogleFonts(){
+			$arrSettings = $this->getGeneralSettings();
+			$arrFonts = array();
+			$numFonts = 4;
+			for($i=0;$i<$numFonts;$i++){
+				$fontName = UniteFunctionsUC::getVal($arrSettings, "google_font{$i}_name");
+				$fontName = trim($fontName);
+				if(empty($fontName))
+					continue;
+				$fontLink = UniteFunctionsUC::getVal($arrSettings, "google_font{$i}_link");
+				if(empty($fontLink))
+					continue;
+				$fontLink = trim($fontLink);
+				$fontLink = str_replace("https://fonts.googleapis.com/css?family=", "", $fontLink);
+				$fontLink = str_replace("http://fonts.googleapis.com/css?family=", "", $fontLink);
+				if(empty($fontLink))
+					continue;
+				$arrFonts[$fontName] = $fontLink;
+			}
+			return($arrFonts);
+		}
+		private function a______________OTHER_FUNCTIONS_____________(){}
 		
 		
 		/**
@@ -254,10 +277,6 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			
 			return($params);
 		}
-
-		private function  ____________PAGINATION____________(){}
-		
-		
 		
 		
 	}

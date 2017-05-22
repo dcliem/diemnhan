@@ -19,7 +19,7 @@ class UniteProviderDBUC{
 	 * get error number
 	 */
 	public function getErrorNum(){
-		return mysql_errno();
+		return -1;
 	}
 	
 	
