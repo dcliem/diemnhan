@@ -90,6 +90,11 @@ add_action( 'wp_enqueue_scripts', function() {
     wp_enqueue_style( 'owl-carousel-theme', get_theme_file_uri( '/assets/owl-carousel/dist/assets/owl.theme.default.min.css' ), array(), '2.2.1' );
     wp_enqueue_script( 'owl-carousel', get_theme_file_uri( '/assets/owl-carousel/dist/owl.carousel.js' ), array( 'jquery' ), '2.2.1', true );
 
+    // Slick
+    wp_enqueue_style( 'slick', get_theme_file_uri( '/assets/slick/slick/slick.css' ), array(), '1.6.0' );
+    wp_enqueue_style( 'slick-theme', get_theme_file_uri( '/assets/slick/slick/slick-theme.css' ), array(), '1.6.0' );
+    wp_enqueue_script( 'slick', get_theme_file_uri( '/assets/slick/slick/slick.min.js' ), array( 'jquery' ), '1.6.0', true );
+
     // MatchHeight
     wp_enqueue_script( 'matchHeight', get_theme_file_uri( '/assets/match-height/dist/jquery.matchHeight-min.js' ), array( 'jquery' ), '0.7.2', true );
 
@@ -100,6 +105,7 @@ add_action( 'wp_enqueue_scripts', function() {
     // Diem nhan
     wp_enqueue_style( 'style', get_stylesheet_uri() );
     wp_enqueue_style( 'diemnhan', get_theme_file_uri( '/assets/css/diemnhan.css' ), array(), CHILD_THEME_VERSION );
+    wp_enqueue_style( 'nice', get_theme_file_uri( '/assets/css/nice.css' ), array(), CHILD_THEME_VERSION );
     wp_enqueue_script( 'diemnhan', get_theme_file_uri( '/assets/js/diemnhan.js' ), array( 'jquery' ), CHILD_THEME_VERSION, true );
     wp_enqueue_script( 'nice', get_theme_file_uri( '/assets/js/nice.js' ), array( 'jquery' ), CHILD_THEME_VERSION, false );
 
