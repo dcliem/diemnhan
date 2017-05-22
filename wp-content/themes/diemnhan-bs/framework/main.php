@@ -112,7 +112,7 @@ function remove_text( $output ) {
 // Add admin style
 add_action('admin_enqueue_scripts', function() {
     if ( is_admin() )
-        wp_enqueue_style('nz-admin-styles', get_theme_file_uri( '/assets/css/nz-admin.css' ) );
+        wp_enqueue_style( 'nz-admin-styles', get_theme_file_uri( '/assets/css/nz-admin.css' ) );
         wp_enqueue_style( 'font-face', get_theme_file_uri( '/assets/css/nz-fonts.css' ) );
 }, 10);
 

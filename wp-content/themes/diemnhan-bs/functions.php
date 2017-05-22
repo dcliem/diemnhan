@@ -21,6 +21,9 @@ define ( 'NZ_JS'  , get_theme_file_uri( '/assets/js' ) );
 define ( 'NZ_CSS' , get_theme_file_uri( '/assets/css' ) );
 define ( 'NZ_IMG' , get_theme_file_uri( '/assets/images' ) );
 
+//* Set Localization
+load_child_theme_textdomain( 'diemnhan', apply_filters( 'child_theme_textdomain', get_theme_file_path( '/languages' ), 'diemnhan' ) );
+
 //* Start the engine
 include_once( get_parent_theme_file_path('/lib/init.php') );
 
@@ -31,9 +34,6 @@ foreach ( glob( dirname( __FILE__ ) . '/bootstrap/*.php' ) as $file ) { include_
 
 //* Custom Image Sizes
 add_image_size( 'preview-image', 150, 120, false );
-
-//* Set Localization
-load_child_theme_textdomain( 'diemnhan', apply_filters( 'child_theme_textdomain', get_theme_file_path( '/languages' ), 'diemnhan' ) );
 
 //* Add HTML5 markup structure
 add_theme_support( 'html5', array( 'caption', 'comment-form', 'comment-list', 'gallery', 'search-form' ) );
@@ -53,7 +53,7 @@ function register_additional_menu() {
 //* Snippet Name: Add custom RSS Feed to dashboard
 add_action( 'wp_dashboard_setup', 'nz_dashboard_widgets' );
 function nz_dashboard_widgets() {
-    add_meta_box( 'nz_dashboard_widget', __( 'Cập nhật WordPress', 'diemnhan' ), 'nz_dashboard_feed_output', 'dashboard', 'side', 'high' );
+    add_meta_box( 'nz_dashboard_widget', __( 'Update WordPress', 'diemnhan' ), 'nz_dashboard_feed_output', 'dashboard', 'side', 'high' );
 }
 function nz_dashboard_feed_output() {
     echo '<div class="rss-widget">';

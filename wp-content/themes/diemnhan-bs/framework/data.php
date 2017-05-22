@@ -37,8 +37,8 @@ $NZ = array(
 //* Begin theme option
 if( function_exists('acf_add_options_page') ) {
     acf_add_options_page(array(
-        'page_title'    => __('General Settings','diemnhan'),
-        'menu_title'    => __('Interface Config','diemnhan'),
+        'page_title'    => __( 'General Settings', 'diemnhan' ),
+        'menu_title'    => __( 'Interface Config', 'diemnhan' ),
         'menu_slug'     => 'nz-interface',
         'capability'    => 'edit_posts',
         'redirect'      => false

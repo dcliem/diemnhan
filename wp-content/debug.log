@@ -277,3 +277,59 @@
 [22-May-2017 06:27:51 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter WHERE date > '2017-05-14' AND date < '2017-05-22' GROUP BY ip, date) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserPerDay, CountPerDayCore->mysqlQuery
 [22-May-2017 06:32:53 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter GROUP BY date, ip) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserAll, CountPerDayCore->mysqlQuery
 [22-May-2017 06:32:53 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter WHERE date > '2017-05-14' AND date < '2017-05-22' GROUP BY ip, date) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserPerDay, CountPerDayCore->mysqlQuery
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 40
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 43
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 46
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 46
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 56
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 93
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 94
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 103
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 109
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 07:07:14 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter GROUP BY date, ip) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserAll, CountPerDayCore->mysqlQuery
+[22-May-2017 07:07:14 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter WHERE date > '2017-05-14' AND date < '2017-05-22' GROUP BY ip, date) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserPerDay, CountPerDayCore->mysqlQuery
+[22-May-2017 08:34:06 UTC] PHP Fatal error:  Call to undefined function ecs_html__() in /home/ubuntu/workspace/wp-content/themes/diemnhan-bs/functions.php on line 58
+[22-May-2017 08:34:06 UTC] PHP Stack trace:
+[22-May-2017 08:34:06 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/index.php:0
+[22-May-2017 08:34:06 UTC] PHP   2. wp_dashboard_setup() /home/ubuntu/workspace/wp-admin/index.php:15
+[22-May-2017 08:34:06 UTC] PHP   3. do_action() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:99
+[22-May-2017 08:34:06 UTC] PHP   4. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[22-May-2017 08:34:06 UTC] PHP   5. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[22-May-2017 08:34:06 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[22-May-2017 08:34:06 UTC] PHP   7. nz_dashboard_widgets() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
