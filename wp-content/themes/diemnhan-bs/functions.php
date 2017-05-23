@@ -100,6 +100,9 @@ add_action( 'wp_enqueue_scripts', function() {
 
     // MatchHeight
     wp_enqueue_script( 'matchHeight', get_theme_file_uri( '/assets/match-height/dist/jquery.matchHeight-min.js' ), array( 'jquery' ), '0.7.2', true );
+    
+    // Responsive-menu
+    wp_enqueue_script( 'responsive-menu', get_theme_file_uri( '/assets/js/responsive-menu.js' ), array( 'jquery' ), '1.0.0', true );
 
     // Site scripts
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Điểm Nhấn (GS)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-22 09:06+0000\n"
-"PO-Revision-Date: 2017-05-22 09:08+0000\n"
+"POT-Creation-Date: 2017-05-23 08:29+0000\n"
+"PO-Revision-Date: 2017-05-23 08:29+0000\n"
 "Last-Translator: Đoàn Công Liêm <info@nicewebz.com>\n"
 "Language-Team: Vietnamese\n"
 "Language: vi\n"
@@ -13,67 +13,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco - https://localise.biz/"
 
-#: framework/data.php:40
-msgid "General Settings"
-msgstr "Cấu hình chung"
-
-#: framework/data.php:91
+#: framework/data.php:95
 msgid "Logo"
 msgstr ""
 
-#: framework/data.php:115
+#: framework/data.php:119
 msgid "Favicon"
 msgstr ""
 
-#: framework/data.php:139
-msgid "Hotline"
-msgstr ""
-
-#: framework/data.php:158
+#: framework/data.php:143
 msgid "Google Maps"
 msgstr ""
 
-#: framework/data.php:177
-msgid "Slider Home"
-msgstr "Slider Trang chủ"
+#: framework/data.php:221
+msgid "Link"
+msgstr ""
 
-#: framework/data.php:238
-msgid "Contact"
-msgstr "Liên hệ"
+#: framework/data.php:296
+msgid "Hotline"
+msgstr ""
 
-#: framework/data.php:311
+#: framework/data.php:334
+msgid "Landline"
+msgstr "Điện thoại bàn"
+
+#: framework/data.php:353
 msgid "Fax"
 msgstr ""
 
-#: framework/data.php:330
+#: framework/data.php:372
 msgid "Email"
 msgstr ""
 
-#: framework/data.php:349
+#: framework/data.php:391
 msgid "Website"
 msgstr ""
 
-#: framework/data.php:368
-msgid "Social"
-msgstr "Mạng xã hội"
-
-#: framework/data.php:384
+#: framework/data.php:426
 msgid "Facebook"
 msgstr ""
 
-#: framework/data.php:403
+#: framework/data.php:445
 msgid "Google Plus"
 msgstr ""
 
-#: framework/data.php:422
+#: framework/data.php:464
 msgid "Twitter"
 msgstr ""
 
-#: framework/data.php:441
+#: framework/data.php:483
 msgid "Youtube"
 msgstr ""
 
-#: framework/data.php:460
+#: framework/data.php:502
 msgid "Pinterest"
 msgstr ""
 
@@ -93,58 +85,74 @@ msgstr ""
 msgid "http://www.studiopress.com/"
 msgstr ""
 
-#: functions.php:56
+#: functions.php:59
 msgid "Update WordPress"
 msgstr "Cập nhật WordPress"
 
-#: framework/data.php:41
+#: framework/data.php:44
+msgid "General Settings"
+msgstr "Cấu hình chung"
+
+#: framework/data.php:45
 msgid "Interface Config"
 msgstr "Cấu hình giao diện"
 
-#: framework/data.php:47
+#: framework/data.php:51
 msgid "Images"
 msgstr "Hình ảnh"
 
-#: framework/data.php:48
+#: framework/data.php:52
 msgid "Display Image"
 msgstr "Hiển thị hình ảnh"
 
-#: framework/data.php:53
+#: framework/data.php:57
 msgid "Products"
 msgstr "Sản phẩm"
 
-#: framework/data.php:54
+#: framework/data.php:58
 msgid "Display Product"
 msgstr "Hiển thị sản phầm"
 
-#: framework/data.php:59
+#: framework/data.php:63
 msgid "Contacts"
 msgstr "Liên hệ"
 
-#: framework/data.php:60
+#: framework/data.php:64
 msgid "Contact Detail"
 msgstr "Chi tiết liên hệ"
 
-#: framework/data.php:71 framework/data.php:75
+#: framework/data.php:75 framework/data.php:79
 msgid "General Setting"
 msgstr "Cấu hình chung"
 
-#: framework/data.php:193
+#: framework/data.php:162
+msgid "Slider Home"
+msgstr "Slider Trang chủ"
+
+#: framework/data.php:178
 msgid "List Images"
 msgstr "Danh sách hình ảnh"
 
-#: framework/data.php:212
+#: framework/data.php:197
 msgid "Image"
 msgstr "Hình ảnh"
 
-#: framework/data.php:254
+#: framework/data.php:242
+msgid "Contact"
+msgstr "Liên hệ"
+
+#: framework/data.php:258
 msgid "Company"
 msgstr "Công ty"
 
-#: framework/data.php:273
+#: framework/data.php:277
 msgid "Address"
 msgstr "Địa chỉ"
 
-#: framework/data.php:292
+#: framework/data.php:315
 msgid "Phone"
-msgstr "Điện thoại"
+msgstr "Di động"
+
+#: framework/data.php:410
+msgid "Social"
+msgstr "Mạng xã hội"
