@@ -352,3 +352,16 @@
 [22-May-2017 09:18:32 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
 [22-May-2017 09:18:32 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
 [22-May-2017 09:18:32 UTC] PHP   6. hmenu_promo->get_promotion() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[23-May-2017 04:09:30 UTC] PHP Notice:  Undefined offset: 1 in /home/ubuntu/workspace/wp-admin/includes/dashboard.php on line 1227
+[23-May-2017 04:09:30 UTC] PHP Stack trace:
+[23-May-2017 04:09:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[23-May-2017 04:09:30 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[23-May-2017 04:09:30 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[23-May-2017 04:09:30 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[23-May-2017 04:09:30 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[23-May-2017 04:09:30 UTC] PHP   6. wp_ajax_dashboard_widgets() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[23-May-2017 04:09:30 UTC] PHP   7. wp_dashboard_primary() /home/ubuntu/workspace/wp-admin/includes/ajax-actions.php:314
+[23-May-2017 04:09:30 UTC] PHP   8. wp_dashboard_cached_rss_widget() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1169
+[23-May-2017 04:09:30 UTC] PHP   9. call_user_func_array:{/home/ubuntu/workspace/wp-admin/includes/dashboard.php:999}() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
+[23-May-2017 04:09:30 UTC] PHP  10. wp_dashboard_primary_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
+[23-May-2017 04:09:30 UTC] PHP  11. wp_dashboard_plugins_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1185
