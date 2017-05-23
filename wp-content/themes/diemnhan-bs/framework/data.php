@@ -8,19 +8,23 @@
  * @license GPL-2.0+
  * @link    http://www.studiopress.com/
  */
+if( ! class_exists('acf') ) {
+    return;
+}
 
 //* Begin theme data
 $NZ = array(
     'info'                      => array(
         'logo'                  => get_field('info_logo','option'),
         'favicon'               => get_field('info_favicon','option'),
-        'hotline'               => get_field('info_hotline','option'),
         'google_maps'           => get_field('info_google_maps','option')
     ),
     'contact'                   => array(
         'name'                  => get_field('contact_name','option'),
         'address'               => get_field('contact_address','option'),
+        'hotline'               => get_field('contact_hotline','option'),
         'phone'                 => get_field('contact_phone','option'),
+        'landline'              => get_field('contact_landline','option'),
         'fax'                   => get_field('contact_fax','option'),
         'email'                 => get_field('contact_email','option'),
         'weblink'               => get_field('contact_weblink','option')
@@ -133,25 +137,6 @@ acf_add_local_field_group(array (
             'max_height' => '',
             'max_size' => '',
             'mime_types' => '',
-        ),
-        array (
-            'key' => 'field_5902a6bdd135f',
-            'label' => __('Hotline','diemnhan'),
-            'name' => 'info_hotline',
-            'type' => 'text',
-            'instructions' => '',
-            'required' => 0,
-            'conditional_logic' => 0,
-            'wrapper' => array (
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ),
-            'default_value' => '',
-            'placeholder' => '',
-            'prepend' => '',
-            'append' => '',
-            'maxlength' => '',
         ),
         array (
             'key' => 'field_5902a6bdd175b',
@@ -307,9 +292,47 @@ acf_add_local_field_group(array (
             'maxlength' => '',
         ),
         array (
+            'key' => 'field_5902a6bdd135f',
+            'label' => __('Hotline','diemnhan'),
+            'name' => 'contact_hotline',
+            'type' => 'text',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array (
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'default_value' => '',
+            'placeholder' => '',
+            'prepend' => '',
+            'append' => '',
+            'maxlength' => '',
+        ),
+        array (
             'key' => 'field_5902a6bdd2f37',
             'label' => __('Phone','diemnhan'),
             'name' => 'contact_phone',
+            'type' => 'text',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array (
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'default_value' => '',
+            'placeholder' => '',
+            'prepend' => '',
+            'append' => '',
+            'maxlength' => '',
+        ),
+        array (
+            'key' => 'field_5902a6bdd237f',
+            'label' => __('Landline','diemnhan'),
+            'name' => 'contact_landline',
             'type' => 'text',
             'instructions' => '',
             'required' => 0,
