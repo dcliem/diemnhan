@@ -365,3 +365,93 @@
 [23-May-2017 04:09:30 UTC] PHP   9. call_user_func_array:{/home/ubuntu/workspace/wp-admin/includes/dashboard.php:999}() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
 [23-May-2017 04:09:30 UTC] PHP  10. wp_dashboard_primary_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
 [23-May-2017 04:09:30 UTC] PHP  11. wp_dashboard_plugins_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1185
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 40
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 43
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 46
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 46
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 56
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 93
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 94
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 103
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 109
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 40
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 43
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 46
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 46
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 56
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 93
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 94
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 103
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 109
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
