@@ -47,7 +47,7 @@ add_filter( 'admin_footer_text', function( $text ) {
 // Display site favicon
 add_filter( 'genesis_pre_load_favicon', function( $favicon_url ) { global $NZ;
     $favicon = $NZ['info']['favicon'];
-    return $favicon ? $favicon : NZ_URI . '/favicon.png';
+    return $favicon ? wp_get_attachment_url( $favicon ) : NZ_URI . '/favicon.png';
 });
 
 // Default post thumbnail
