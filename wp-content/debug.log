@@ -1,0 +1,470 @@
+[07-May-2017 02:11:56 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in D:\WorkSpace\public_html\docs\wp-content\themes\diemnhan-bs\front-page.php on line 7
+[07-May-2017 02:11:56 UTC] PHP Stack trace:
+[07-May-2017 02:11:56 UTC] PHP   1. {main}() D:\WorkSpace\public_html\docs\index.php:0
+[07-May-2017 02:11:56 UTC] PHP   2. require() D:\WorkSpace\public_html\docs\index.php:17
+[07-May-2017 02:11:56 UTC] PHP   3. require_once() D:\WorkSpace\public_html\docs\wp-blog-header.php:19
+[11-May-2017 06:18:46 UTC] PHP Notice:  Undefined offset: 1 in D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php on line 1227
+[11-May-2017 06:18:46 UTC] PHP Stack trace:
+[11-May-2017 06:18:46 UTC] PHP   1. {main}() D:\WorkSpace\public_html\docs\wp-admin\admin-ajax.php:0
+[11-May-2017 06:18:46 UTC] PHP   2. do_action() D:\WorkSpace\public_html\docs\wp-admin\admin-ajax.php:91
+[11-May-2017 06:18:46 UTC] PHP   3. WP_Hook->do_action() D:\WorkSpace\public_html\docs\wp-includes\plugin.php:453
+[11-May-2017 06:18:46 UTC] PHP   4. WP_Hook->apply_filters() D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:323
+[11-May-2017 06:18:46 UTC] PHP   5. call_user_func_array:{D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:298}() D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:298
+[11-May-2017 06:18:46 UTC] PHP   6. wp_ajax_dashboard_widgets() D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:298
+[11-May-2017 06:18:46 UTC] PHP   7. wp_dashboard_primary() D:\WorkSpace\public_html\docs\wp-admin\includes\ajax-actions.php:314
+[11-May-2017 06:18:46 UTC] PHP   8. wp_dashboard_cached_rss_widget() D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php:1169
+[11-May-2017 06:18:46 UTC] PHP   9. call_user_func_array:{D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php:999}() D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php:999
+[11-May-2017 06:18:46 UTC] PHP  10. wp_dashboard_primary_output() D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php:999
+[11-May-2017 06:18:46 UTC] PHP  11. wp_dashboard_plugins_output() D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php:1185
+[13-May-2017 03:05:02 UTC] PHP Notice:  Undefined offset: 1 in D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php on line 1227
+[13-May-2017 03:05:02 UTC] PHP Stack trace:
+[13-May-2017 03:05:02 UTC] PHP   1. {main}() D:\WorkSpace\public_html\docs\wp-admin\admin-ajax.php:0
+[13-May-2017 03:05:02 UTC] PHP   2. do_action() D:\WorkSpace\public_html\docs\wp-admin\admin-ajax.php:91
+[13-May-2017 03:05:02 UTC] PHP   3. WP_Hook->do_action() D:\WorkSpace\public_html\docs\wp-includes\plugin.php:453
+[13-May-2017 03:05:02 UTC] PHP   4. WP_Hook->apply_filters() D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:323
+[13-May-2017 03:05:02 UTC] PHP   5. call_user_func_array:{D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:298}() D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:298
+[13-May-2017 03:05:02 UTC] PHP   6. wp_ajax_dashboard_widgets() D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:298
+[13-May-2017 03:05:02 UTC] PHP   7. wp_dashboard_primary() D:\WorkSpace\public_html\docs\wp-admin\includes\ajax-actions.php:314
+[13-May-2017 03:05:02 UTC] PHP   8. wp_dashboard_cached_rss_widget() D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php:1169
+[13-May-2017 03:05:02 UTC] PHP   9. call_user_func_array:{D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php:999}() D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php:999
+[13-May-2017 03:05:02 UTC] PHP  10. wp_dashboard_primary_output() D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php:999
+[13-May-2017 03:05:02 UTC] PHP  11. wp_dashboard_plugins_output() D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php:1185
+[13-May-2017 03:07:43 UTC] PHP Notice:  Undefined variable: status in D:\WorkSpace\public_html\docs\wp-content\plugins\hmenu\classes\file_processor.class.php on line 41
+[13-May-2017 03:07:43 UTC] PHP Stack trace:
+[13-May-2017 03:07:43 UTC] PHP   1. {main}() D:\WorkSpace\public_html\docs\wp-admin\admin-ajax.php:0
+[13-May-2017 03:07:43 UTC] PHP   2. do_action() D:\WorkSpace\public_html\docs\wp-admin\admin-ajax.php:91
+[13-May-2017 03:07:43 UTC] PHP   3. WP_Hook->do_action() D:\WorkSpace\public_html\docs\wp-includes\plugin.php:453
+[13-May-2017 03:07:43 UTC] PHP   4. WP_Hook->apply_filters() D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:323
+[13-May-2017 03:07:43 UTC] PHP   5. call_user_func_array:{D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:298}() D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:298
+[13-May-2017 03:07:43 UTC] PHP   6. hmenu_class_file_processor->process_file() D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:298
+[13-May-2017 03:07:49 UTC] PHP Notice:  Trying to get property of non-object in D:\WorkSpace\public_html\docs\wp-content\plugins\hmenu\classes\core\promo.class.php on line 37
+[13-May-2017 03:07:49 UTC] PHP Stack trace:
+[13-May-2017 03:07:50 UTC] PHP   1. {main}() D:\WorkSpace\public_html\docs\wp-admin\admin-ajax.php:0
+[13-May-2017 03:07:50 UTC] PHP   2. do_action() D:\WorkSpace\public_html\docs\wp-admin\admin-ajax.php:91
+[13-May-2017 03:07:50 UTC] PHP   3. WP_Hook->do_action() D:\WorkSpace\public_html\docs\wp-includes\plugin.php:453
+[13-May-2017 03:07:50 UTC] PHP   4. WP_Hook->apply_filters() D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:323
+[13-May-2017 03:07:50 UTC] PHP   5. call_user_func_array:{D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:298}() D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:298
+[13-May-2017 03:07:50 UTC] PHP   6. hmenu_promo->get_promotion() D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:298
+[15-May-2017 04:35:56 UTC] PHP Notice:  Undefined offset: 1 in D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php on line 1227
+[15-May-2017 04:35:56 UTC] PHP Stack trace:
+[15-May-2017 04:35:56 UTC] PHP   1. {main}() D:\WorkSpace\public_html\docs\wp-admin\admin-ajax.php:0
+[15-May-2017 04:35:56 UTC] PHP   2. do_action() D:\WorkSpace\public_html\docs\wp-admin\admin-ajax.php:91
+[15-May-2017 04:35:56 UTC] PHP   3. WP_Hook->do_action() D:\WorkSpace\public_html\docs\wp-includes\plugin.php:453
+[15-May-2017 04:35:56 UTC] PHP   4. WP_Hook->apply_filters() D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:323
+[15-May-2017 04:35:56 UTC] PHP   5. call_user_func_array:{D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:298}() D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:298
+[15-May-2017 04:35:56 UTC] PHP   6. wp_ajax_dashboard_widgets() D:\WorkSpace\public_html\docs\wp-includes\class-wp-hook.php:298
+[15-May-2017 04:35:56 UTC] PHP   7. wp_dashboard_primary() D:\WorkSpace\public_html\docs\wp-admin\includes\ajax-actions.php:314
+[15-May-2017 04:35:56 UTC] PHP   8. wp_dashboard_cached_rss_widget() D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php:1169
+[15-May-2017 04:35:56 UTC] PHP   9. call_user_func_array:{D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php:999}() D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php:999
+[15-May-2017 04:35:56 UTC] PHP  10. wp_dashboard_primary_output() D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php:999
+[15-May-2017 04:35:56 UTC] PHP  11. wp_dashboard_plugins_output() D:\WorkSpace\public_html\docs\wp-admin\includes\dashboard.php:1185
+[15-May-2017 07:24:34 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_addonlibrary_addons' doesn't exist với truy vấn select * from nice_addonlibrary_addons where is_active=1 and addontype='vc' order by catid, ordering yêu cầu bởi require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('after_setup_theme'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, UniteProviderFrontUC->onThemeSetup, UniteProviderFunctionsUC::integrateVisualComposer, UniteVcIntegrateUC->initVCIntegration, UniteVcIntegrateUC->mapAllAddons, UniteCreatorAddons->getCatAddons, UniteCreatorDB->fetch, UniteCreatorDB->fetchSql, UniteProviderDBUC->fetchSql
+[15-May-2017 07:24:35 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM nice_cpd_counter WHERE ip=INET_ATON('27.74.243.219') AND date='2017-05-15' AND page=0 yêu cầu bởi require('wp-blog-header.php'), wp, WP->main, do_action_ref_array, WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, CountPerDay->count, CountPerDayCore->mysqlQuery
+[15-May-2017 07:24:35 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn INSERT INTO nice_cpd_counter (page, ip, client, date, referer)
+				VALUES (0, INET_ATON('27.74.243.219'), 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36', '2017-05-15', 'https://diemnhan-nicewebz.c9users.io/installer.php') yêu cầu bởi require('wp-blog-header.php'), wp, WP->main, do_action_ref_array, WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, CountPerDay->count, CountPerDayCore->mysqlQuery
+[15-May-2017 07:24:36 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_addonlibrary_addons' doesn't exist với truy vấn select * from nice_addonlibrary_addons where is_active=1 and addontype='vc' order by catid, ordering yêu cầu bởi require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('after_setup_theme'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, UniteProviderFrontUC->onThemeSetup, UniteProviderFunctionsUC::integrateVisualComposer, UniteVcIntegrateUC->initVCIntegration, UniteVcIntegrateUC->mapAllAddons, UniteCreatorAddons->getCatAddons, UniteCreatorDB->fetch, UniteCreatorDB->fetchSql, UniteProviderDBUC->fetchSql
+[15-May-2017 07:25:16 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_addonlibrary_addons' doesn't exist với truy vấn select * from nice_addonlibrary_addons where is_active=1 and addontype='vc' order by catid, ordering yêu cầu bởi require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('after_setup_theme'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, UniteProviderFrontUC->onThemeSetup, UniteProviderFunctionsUC::integrateVisualComposer, UniteVcIntegrateUC->initVCIntegration, UniteVcIntegrateUC->mapAllAddons, UniteCreatorAddons->getCatAddons, UniteCreatorDB->fetch, UniteCreatorDB->fetchSql, UniteProviderDBUC->fetchSql
+[15-May-2017 07:25:17 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM nice_cpd_counter WHERE ip=INET_ATON('27.74.243.219') AND date='2017-05-15' AND page=0 yêu cầu bởi require('wp-blog-header.php'), wp, WP->main, do_action_ref_array, WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, CountPerDay->count, CountPerDayCore->mysqlQuery
+[15-May-2017 07:25:17 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn INSERT INTO nice_cpd_counter (page, ip, client, date, referer)
+				VALUES (0, INET_ATON('27.74.243.219'), 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36', '2017-05-15', 'https://diemnhan-nicewebz.c9users.io/installer.php') yêu cầu bởi require('wp-blog-header.php'), wp, WP->main, do_action_ref_array, WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, CountPerDay->count, CountPerDayCore->mysqlQuery
+[15-May-2017 07:25:21 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_addonlibrary_addons' doesn't exist với truy vấn select * from nice_addonlibrary_addons where is_active=1 and addontype='vc' order by catid, ordering yêu cầu bởi require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('after_setup_theme'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, UniteProviderFrontUC->onThemeSetup, UniteProviderFunctionsUC::integrateVisualComposer, UniteVcIntegrateUC->initVCIntegration, UniteVcIntegrateUC->mapAllAddons, UniteCreatorAddons->getCatAddons, UniteCreatorDB->fetch, UniteCreatorDB->fetchSql, UniteProviderDBUC->fetchSql
+[15-May-2017 07:25:21 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM nice_cpd_counter WHERE ip=INET_ATON('27.74.243.219') AND date='2017-05-15' AND page=0 yêu cầu bởi require('wp-blog-header.php'), wp, WP->main, do_action_ref_array, WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, CountPerDay->count, CountPerDayCore->mysqlQuery
+[15-May-2017 07:25:21 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn INSERT INTO nice_cpd_counter (page, ip, client, date, referer)
+				VALUES (0, INET_ATON('27.74.243.219'), 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36', '2017-05-15', '') yêu cầu bởi require('wp-blog-header.php'), wp, WP->main, do_action_ref_array, WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, CountPerDay->count, CountPerDayCore->mysqlQuery
+[15-May-2017 07:27:00 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM nice_cpd_counter WHERE ip=INET_ATON('27.74.243.219') AND date='2017-05-15' AND page=0 yêu cầu bởi require('wp-blog-header.php'), wp, WP->main, do_action_ref_array, WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, CountPerDay->count, CountPerDayCore->mysqlQuery
+[15-May-2017 07:27:00 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn INSERT INTO nice_cpd_counter (page, ip, client, date, referer)
+				VALUES (0, INET_ATON('27.74.243.219'), 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36', '2017-05-15', '') yêu cầu bởi require('wp-blog-header.php'), wp, WP->main, do_action_ref_array, WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, CountPerDay->count, CountPerDayCore->mysqlQuery
+[15-May-2017 07:27:28 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_addonlibrary_addons' doesn't exist với truy vấn select * from nice_addonlibrary_addons where is_active=1 and addontype='vc' order by catid, ordering yêu cầu bởi require('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('after_setup_theme'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, UniteProviderFrontUC->onThemeSetup, UniteProviderFunctionsUC::integrateVisualComposer, UniteVcIntegrateUC->initVCIntegration, UniteVcIntegrateUC->mapAllAddons, UniteCreatorAddons->getCatAddons, UniteCreatorDB->fetch, UniteCreatorDB->fetchSql, UniteProviderDBUC->fetchSql
+[15-May-2017 07:27:29 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_addonlibrary_addons' doesn't exist với truy vấn select * from nice_addonlibrary_addons where is_active=1 and addontype='vc' order by catid, ordering yêu cầu bởi require_once('wp-admin/admin.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('after_setup_theme'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, UniteProviderAdminUC->onThemeSetup, UniteProviderFunctionsUC::integrateVisualComposer, UniteVcIntegrateUC->initVCIntegration, UniteVcIntegrateUC->mapAllAddons, UniteCreatorAddons->getCatAddons, UniteCreatorDB->fetch, UniteCreatorDB->fetchSql, UniteProviderDBUC->fetchSql
+[15-May-2017 07:27:31 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_ewwwio_images' doesn't exist với truy vấn SELECT COUNT(*) FROM nice_ewwwio_images WHERE updates > 10 AND path NOT LIKE '%wp-content/themes%' AND path NOT LIKE '%wp-content/plugins%'  LIMIT 10 yêu cầu bởi include('wp-admin/admin-header.php'), do_action('admin_notices'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, ewww_image_optimizer_notice_reoptimization
+[15-May-2017 07:27:31 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter GROUP BY date, ip) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserAll, CountPerDayCore->mysqlQuery
+[15-May-2017 07:27:31 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter WHERE date > '2017-05-07' AND date < '2017-05-15' GROUP BY ip, date) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserPerDay, CountPerDayCore->mysqlQuery
+[15-May-2017 07:27:38 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_addonlibrary_addons' doesn't exist với truy vấn select * from nice_addonlibrary_addons where is_active=1 and addontype='vc' order by catid, ordering yêu cầu bởi require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('after_setup_theme'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, UniteProviderAdminUC->onThemeSetup, UniteProviderFunctionsUC::integrateVisualComposer, UniteVcIntegrateUC->initVCIntegration, UniteVcIntegrateUC->mapAllAddons, UniteCreatorAddons->getCatAddons, UniteCreatorDB->fetch, UniteCreatorDB->fetchSql, UniteProviderDBUC->fetchSql
+[15-May-2017 07:27:43 UTC] PHP Notice:  Undefined offset: 1 in /home/ubuntu/workspace/wp-admin/includes/dashboard.php on line 1227
+[15-May-2017 07:27:43 UTC] PHP Stack trace:
+[15-May-2017 07:27:43 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[15-May-2017 07:27:43 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[15-May-2017 07:27:43 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[15-May-2017 07:27:43 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[15-May-2017 07:27:43 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[15-May-2017 07:27:43 UTC] PHP   6. wp_ajax_dashboard_widgets() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[15-May-2017 07:27:43 UTC] PHP   7. wp_dashboard_primary() /home/ubuntu/workspace/wp-admin/includes/ajax-actions.php:314
+[15-May-2017 07:27:43 UTC] PHP   8. wp_dashboard_cached_rss_widget() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1169
+[15-May-2017 07:27:43 UTC] PHP   9. call_user_func_array:{/home/ubuntu/workspace/wp-admin/includes/dashboard.php:999}() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
+[15-May-2017 07:27:43 UTC] PHP  10. wp_dashboard_primary_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
+[15-May-2017 07:27:43 UTC] PHP  11. wp_dashboard_plugins_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1185
+[15-May-2017 07:27:44 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_addonlibrary_addons' doesn't exist với truy vấn select * from nice_addonlibrary_addons where is_active=1 and addontype='vc' order by catid, ordering yêu cầu bởi require_once('wp-admin/admin.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('after_setup_theme'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, UniteProviderAdminUC->onThemeSetup, UniteProviderFunctionsUC::integrateVisualComposer, UniteVcIntegrateUC->initVCIntegration, UniteVcIntegrateUC->mapAllAddons, UniteCreatorAddons->getCatAddons, UniteCreatorDB->fetch, UniteCreatorDB->fetchSql, UniteProviderDBUC->fetchSql
+[15-May-2017 07:28:05 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_addonlibrary_addons' doesn't exist với truy vấn select * from nice_addonlibrary_addons where is_active=1 and addontype='vc' order by catid, ordering yêu cầu bởi require_once('wp-admin/admin.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('after_setup_theme'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, UniteProviderAdminUC->onThemeSetup, UniteProviderFunctionsUC::integrateVisualComposer, UniteVcIntegrateUC->initVCIntegration, UniteVcIntegrateUC->mapAllAddons, UniteCreatorAddons->getCatAddons, UniteCreatorDB->fetch, UniteCreatorDB->fetchSql, UniteProviderDBUC->fetchSql
+[16-May-2017 01:08:44 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM nice_cpd_counter WHERE ip=INET_ATON('27.74.243.219') AND date='2017-05-16' AND page=0 yêu cầu bởi require('wp-blog-header.php'), wp, WP->main, do_action_ref_array, WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, CountPerDay->count, CountPerDayCore->mysqlQuery
+[16-May-2017 01:08:44 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn INSERT INTO nice_cpd_counter (page, ip, client, date, referer)
+				VALUES (0, INET_ATON('27.74.243.219'), 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36', '2017-05-16', '') yêu cầu bởi require('wp-blog-header.php'), wp, WP->main, do_action_ref_array, WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, CountPerDay->count, CountPerDayCore->mysqlQuery
+[16-May-2017 01:52:13 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM nice_cpd_counter WHERE ip=INET_ATON('27.74.243.219') AND date='2017-05-16' AND page=0 yêu cầu bởi require('wp-blog-header.php'), wp, WP->main, do_action_ref_array, WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, CountPerDay->count, CountPerDayCore->mysqlQuery
+[16-May-2017 01:52:13 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn INSERT INTO nice_cpd_counter (page, ip, client, date, referer)
+				VALUES (0, INET_ATON('27.74.243.219'), 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36', '2017-05-16', '') yêu cầu bởi require('wp-blog-header.php'), wp, WP->main, do_action_ref_array, WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, CountPerDay->count, CountPerDayCore->mysqlQuery
+[16-May-2017 01:52:36 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_ewwwio_images' doesn't exist với truy vấn SELECT COUNT(*) FROM nice_ewwwio_images WHERE updates > 10 AND path NOT LIKE '%wp-content/themes%' AND path NOT LIKE '%wp-content/plugins%'  LIMIT 10 yêu cầu bởi include('wp-admin/admin-header.php'), do_action('admin_notices'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, ewww_image_optimizer_notice_reoptimization
+[16-May-2017 01:52:36 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter GROUP BY date, ip) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserAll, CountPerDayCore->mysqlQuery
+[16-May-2017 01:52:36 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter WHERE date > '2017-05-08' AND date < '2017-05-16' GROUP BY ip, date) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserPerDay, CountPerDayCore->mysqlQuery
+[16-May-2017 01:52:46 UTC] PHP Notice:  Undefined offset: 1 in /home/ubuntu/workspace/wp-admin/includes/dashboard.php on line 1227
+[16-May-2017 01:52:46 UTC] PHP Stack trace:
+[16-May-2017 01:52:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[16-May-2017 01:52:46 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[16-May-2017 01:52:46 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[16-May-2017 01:52:46 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[16-May-2017 01:52:46 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[16-May-2017 01:52:46 UTC] PHP   6. wp_ajax_dashboard_widgets() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[16-May-2017 01:52:46 UTC] PHP   7. wp_dashboard_primary() /home/ubuntu/workspace/wp-admin/includes/ajax-actions.php:314
+[16-May-2017 01:52:46 UTC] PHP   8. wp_dashboard_cached_rss_widget() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1169
+[16-May-2017 01:52:46 UTC] PHP   9. call_user_func_array:{/home/ubuntu/workspace/wp-admin/includes/dashboard.php:999}() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
+[16-May-2017 01:52:46 UTC] PHP  10. wp_dashboard_primary_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
+[16-May-2017 01:52:46 UTC] PHP  11. wp_dashboard_plugins_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1185
+[16-May-2017 01:52:46 UTC] PHP Notice:  Undefined offset: 1 in /home/ubuntu/workspace/wp-admin/includes/dashboard.php on line 1227
+[16-May-2017 01:52:46 UTC] PHP Stack trace:
+[16-May-2017 01:52:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[16-May-2017 01:52:46 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[16-May-2017 01:52:46 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[16-May-2017 01:52:46 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[16-May-2017 01:52:46 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[16-May-2017 01:52:46 UTC] PHP   6. wp_ajax_dashboard_widgets() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[16-May-2017 01:52:46 UTC] PHP   7. wp_dashboard_primary() /home/ubuntu/workspace/wp-admin/includes/ajax-actions.php:314
+[16-May-2017 01:52:46 UTC] PHP   8. wp_dashboard_cached_rss_widget() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1169
+[16-May-2017 01:52:46 UTC] PHP   9. call_user_func_array:{/home/ubuntu/workspace/wp-admin/includes/dashboard.php:999}() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
+[16-May-2017 01:52:46 UTC] PHP  10. wp_dashboard_primary_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
+[16-May-2017 01:52:46 UTC] PHP  11. wp_dashboard_plugins_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1185
+[16-May-2017 01:53:01 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_nf3_forms' doesn't exist với truy vấn SELECT DISTINCT nice_nf3_forms.id FROM nice_nf3_forms   yêu cầu bởi do_action('customize_controls_enqueue_scripts'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, WP_Customize_Widgets->enqueue_scripts, WP_Customize_Widgets->get_available_widgets, WP_Customize_Widgets->get_widget_control, call_user_func_array, wp_widget_control, call_user_func_array, WP_Widget->form_callback, NF_Widget->form, NF_Abstracts_ModelFactory->get_forms, NF_Abstracts_Model->find
+[16-May-2017 01:53:20 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 40
+[16-May-2017 01:53:20 UTC] PHP Stack trace:
+[16-May-2017 01:53:20 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[16-May-2017 01:53:20 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[16-May-2017 01:53:20 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[16-May-2017 01:53:20 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 43
+[16-May-2017 01:53:20 UTC] PHP Stack trace:
+[16-May-2017 01:53:20 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[16-May-2017 01:53:20 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[16-May-2017 01:53:20 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[16-May-2017 01:53:20 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 46
+[16-May-2017 01:53:20 UTC] PHP Stack trace:
+[16-May-2017 01:53:20 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[16-May-2017 01:53:20 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[16-May-2017 01:53:20 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[16-May-2017 01:53:20 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 46
+[16-May-2017 01:53:20 UTC] PHP Stack trace:
+[16-May-2017 01:53:20 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[16-May-2017 01:53:20 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[16-May-2017 01:53:20 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[16-May-2017 01:53:20 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 56
+[16-May-2017 01:53:20 UTC] PHP Stack trace:
+[16-May-2017 01:53:20 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[16-May-2017 01:53:20 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[16-May-2017 01:53:20 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[16-May-2017 01:53:20 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 93
+[16-May-2017 01:53:20 UTC] PHP Stack trace:
+[16-May-2017 01:53:20 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[16-May-2017 01:53:20 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[16-May-2017 01:53:20 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[16-May-2017 01:53:20 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 94
+[16-May-2017 01:53:20 UTC] PHP Stack trace:
+[16-May-2017 01:53:20 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[16-May-2017 01:53:20 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[16-May-2017 01:53:20 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[16-May-2017 01:53:20 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 103
+[16-May-2017 01:53:20 UTC] PHP Stack trace:
+[16-May-2017 01:53:20 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[16-May-2017 01:53:20 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[16-May-2017 01:53:20 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[16-May-2017 01:53:20 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 109
+[16-May-2017 01:53:20 UTC] PHP Stack trace:
+[16-May-2017 01:53:20 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[16-May-2017 01:53:20 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[16-May-2017 01:53:20 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[16-May-2017 01:53:20 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 109
+[16-May-2017 01:53:20 UTC] PHP Stack trace:
+[16-May-2017 01:53:20 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[16-May-2017 01:53:20 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[16-May-2017 01:53:20 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[16-May-2017 02:04:02 UTC] PHP Warning:  mysqli_real_connect(): (HY000/1045): Access denied for user 'diemnhan_us'@'localhost' (using password: YES) in D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php on line 1538
+[16-May-2017 02:04:02 UTC] PHP Stack trace:
+[16-May-2017 02:04:02 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\index.php:0
+[16-May-2017 02:04:02 UTC] PHP   2. require() D:\WorkSpace\public_html\diemnhan\index.php:17
+[16-May-2017 02:04:02 UTC] PHP   3. require_once() D:\WorkSpace\public_html\diemnhan\wp-blog-header.php:13
+[16-May-2017 02:04:02 UTC] PHP   4. require_once() D:\WorkSpace\public_html\diemnhan\wp-load.php:37
+[16-May-2017 02:04:02 UTC] PHP   5. require_once() D:\WorkSpace\public_html\diemnhan\wp-config.php:93
+[16-May-2017 02:04:02 UTC] PHP   6. require_wp_db() D:\WorkSpace\public_html\diemnhan\wp-settings.php:107
+[16-May-2017 02:04:02 UTC] PHP   7. wpdb->__construct() D:\WorkSpace\public_html\diemnhan\wp-includes\load.php:404
+[16-May-2017 02:04:02 UTC] PHP   8. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:658
+[16-May-2017 02:04:02 UTC] PHP   9. mysqli_real_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1538
+[16-May-2017 02:04:02 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php on line 1568
+[16-May-2017 02:04:03 UTC] PHP Stack trace:
+[16-May-2017 02:04:03 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\index.php:0
+[16-May-2017 02:04:03 UTC] PHP   2. require() D:\WorkSpace\public_html\diemnhan\index.php:17
+[16-May-2017 02:04:03 UTC] PHP   3. require_once() D:\WorkSpace\public_html\diemnhan\wp-blog-header.php:13
+[16-May-2017 02:04:03 UTC] PHP   4. require_once() D:\WorkSpace\public_html\diemnhan\wp-load.php:37
+[16-May-2017 02:04:03 UTC] PHP   5. require_once() D:\WorkSpace\public_html\diemnhan\wp-config.php:93
+[16-May-2017 02:04:03 UTC] PHP   6. require_wp_db() D:\WorkSpace\public_html\diemnhan\wp-settings.php:107
+[16-May-2017 02:04:03 UTC] PHP   7. wpdb->__construct() D:\WorkSpace\public_html\diemnhan\wp-includes\load.php:404
+[16-May-2017 02:04:03 UTC] PHP   8. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:658
+[16-May-2017 02:04:03 UTC] PHP   9. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1563
+[16-May-2017 02:04:03 UTC] PHP  10. mysql_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1568
+[16-May-2017 02:04:03 UTC] PHP Warning:  mysql_connect(): Access denied for user 'diemnhan_us'@'localhost' (using password: YES) in D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php on line 1568
+[16-May-2017 02:04:03 UTC] PHP Stack trace:
+[16-May-2017 02:04:03 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\index.php:0
+[16-May-2017 02:04:03 UTC] PHP   2. require() D:\WorkSpace\public_html\diemnhan\index.php:17
+[16-May-2017 02:04:03 UTC] PHP   3. require_once() D:\WorkSpace\public_html\diemnhan\wp-blog-header.php:13
+[16-May-2017 02:04:03 UTC] PHP   4. require_once() D:\WorkSpace\public_html\diemnhan\wp-load.php:37
+[16-May-2017 02:04:03 UTC] PHP   5. require_once() D:\WorkSpace\public_html\diemnhan\wp-config.php:93
+[16-May-2017 02:04:03 UTC] PHP   6. require_wp_db() D:\WorkSpace\public_html\diemnhan\wp-settings.php:107
+[16-May-2017 02:04:03 UTC] PHP   7. wpdb->__construct() D:\WorkSpace\public_html\diemnhan\wp-includes\load.php:404
+[16-May-2017 02:04:03 UTC] PHP   8. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:658
+[16-May-2017 02:04:03 UTC] PHP   9. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1563
+[16-May-2017 02:04:03 UTC] PHP  10. mysql_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1568
+[16-May-2017 02:20:49 UTC] PHP Notice:  Undefined offset: 1 in D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php on line 1227
+[16-May-2017 02:20:49 UTC] PHP Stack trace:
+[16-May-2017 02:20:49 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\wp-admin\admin-ajax.php:0
+[16-May-2017 02:20:49 UTC] PHP   2. do_action() D:\WorkSpace\public_html\diemnhan\wp-admin\admin-ajax.php:91
+[16-May-2017 02:20:49 UTC] PHP   3. WP_Hook->do_action() D:\WorkSpace\public_html\diemnhan\wp-includes\plugin.php:453
+[16-May-2017 02:20:49 UTC] PHP   4. WP_Hook->apply_filters() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:323
+[16-May-2017 02:20:49 UTC] PHP   5. call_user_func_array:{D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298}() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298
+[16-May-2017 02:20:49 UTC] PHP   6. wp_ajax_dashboard_widgets() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298
+[16-May-2017 02:20:49 UTC] PHP   7. wp_dashboard_primary() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\ajax-actions.php:314
+[16-May-2017 02:20:49 UTC] PHP   8. wp_dashboard_cached_rss_widget() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:1169
+[16-May-2017 02:20:49 UTC] PHP   9. call_user_func_array:{D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:999}() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:999
+[16-May-2017 02:20:49 UTC] PHP  10. wp_dashboard_primary_output() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:999
+[16-May-2017 02:20:49 UTC] PHP  11. wp_dashboard_plugins_output() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:1185
+[16-May-2017 02:20:49 UTC] PHP Notice:  Undefined offset: 1 in D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php on line 1227
+[16-May-2017 02:20:49 UTC] PHP Stack trace:
+[16-May-2017 02:20:49 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\wp-admin\admin-ajax.php:0
+[16-May-2017 02:20:49 UTC] PHP   2. do_action() D:\WorkSpace\public_html\diemnhan\wp-admin\admin-ajax.php:91
+[16-May-2017 02:20:49 UTC] PHP   3. WP_Hook->do_action() D:\WorkSpace\public_html\diemnhan\wp-includes\plugin.php:453
+[16-May-2017 02:20:49 UTC] PHP   4. WP_Hook->apply_filters() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:323
+[16-May-2017 02:20:49 UTC] PHP   5. call_user_func_array:{D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298}() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298
+[16-May-2017 02:20:49 UTC] PHP   6. wp_ajax_dashboard_widgets() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298
+[16-May-2017 02:20:49 UTC] PHP   7. wp_dashboard_primary() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\ajax-actions.php:314
+[16-May-2017 02:20:49 UTC] PHP   8. wp_dashboard_cached_rss_widget() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:1169
+[16-May-2017 02:20:49 UTC] PHP   9. call_user_func_array:{D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:999}() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:999
+[16-May-2017 02:20:49 UTC] PHP  10. wp_dashboard_primary_output() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:999
+[16-May-2017 02:20:49 UTC] PHP  11. wp_dashboard_plugins_output() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:1185
+[16-May-2017 02:31:51 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter GROUP BY date, ip) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserAll, CountPerDayCore->mysqlQuery
+[16-May-2017 02:31:51 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter WHERE date > '2017-05-08' AND date < '2017-05-16' GROUP BY ip, date) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserPerDay, CountPerDayCore->mysqlQuery
+[16-May-2017 06:34:44 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_ewwwio_images' doesn't exist với truy vấn SELECT COUNT(*) FROM nice_ewwwio_images WHERE updates > 10 AND path NOT LIKE '%wp-content/themes%' AND path NOT LIKE '%wp-content/plugins%'  LIMIT 10 yêu cầu bởi include('wp-admin/admin-header.php'), do_action('admin_notices'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, ewww_image_optimizer_notice_reoptimization
+[16-May-2017 06:34:44 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter GROUP BY date, ip) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserAll, CountPerDayCore->mysqlQuery
+[16-May-2017 06:34:44 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter WHERE date > '2017-05-08' AND date < '2017-05-16' GROUP BY ip, date) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserPerDay, CountPerDayCore->mysqlQuery
+[16-May-2017 06:35:42 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_ewwwio_images' doesn't exist với truy vấn SELECT path,converted FROM nice_ewwwio_images WHERE attachment_id = 585 AND gallery = 'media' yêu cầu bởi File_Upload_Upgrader->cleanup, wp_delete_attachment, do_action('delete_attachment'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, ewww_image_optimizer_delete
+[16-May-2017 06:35:42 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_ewwwio_images' doesn't exist với truy vấn SHOW FULL COLUMNS FROM `nice_ewwwio_images` yêu cầu bởi File_Upload_Upgrader->cleanup, wp_delete_attachment, do_action('delete_attachment'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, ewww_image_optimizer_delete
+[16-May-2017 06:37:55 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_nf3_forms' doesn't exist với truy vấn SELECT DISTINCT nice_nf3_forms.id FROM nice_nf3_forms   yêu cầu bởi do_action('customize_controls_enqueue_scripts'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, WP_Customize_Widgets->enqueue_scripts, WP_Customize_Widgets->get_available_widgets, WP_Customize_Widgets->get_widget_control, call_user_func_array, wp_widget_control, call_user_func_array, WP_Widget->form_callback, NF_Widget->form, NF_Abstracts_ModelFactory->get_forms, NF_Abstracts_Model->find
+[16-May-2017 09:20:33 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_ewwwio_images' doesn't exist với truy vấn SELECT COUNT(*) FROM nice_ewwwio_images WHERE updates > 10 AND path NOT LIKE '%wp-content/themes%' AND path NOT LIKE '%wp-content/plugins%'  LIMIT 10 yêu cầu bởi include('wp-admin/admin-header.php'), do_action('admin_notices'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, ewww_image_optimizer_notice_reoptimization
+[16-May-2017 09:20:33 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter GROUP BY date, ip) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserAll, CountPerDayCore->mysqlQuery
+[16-May-2017 09:20:33 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter WHERE date > '2017-05-08' AND date < '2017-05-16' GROUP BY ip, date) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserPerDay, CountPerDayCore->mysqlQuery
+[16-May-2017 09:30:19 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter GROUP BY date, ip) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserAll, CountPerDayCore->mysqlQuery
+[16-May-2017 09:30:19 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter WHERE date > '2017-05-08' AND date < '2017-05-16' GROUP BY ip, date) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserPerDay, CountPerDayCore->mysqlQuery
+[22-May-2017 06:27:07 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM nice_cpd_counter WHERE ip=INET_ATON('27.74.243.219') AND date='2017-05-22' AND page=0 yêu cầu bởi require('wp-blog-header.php'), wp, WP->main, do_action_ref_array, WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, CountPerDay->count, CountPerDayCore->mysqlQuery
+[22-May-2017 06:27:07 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn INSERT INTO nice_cpd_counter (page, ip, client, date, referer)
+				VALUES (0, INET_ATON('27.74.243.219'), 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '2017-05-22', '') yêu cầu bởi require('wp-blog-header.php'), wp, WP->main, do_action_ref_array, WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, CountPerDay->count, CountPerDayCore->mysqlQuery
+[22-May-2017 06:27:22 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter GROUP BY date, ip) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserAll, CountPerDayCore->mysqlQuery
+[22-May-2017 06:27:22 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter WHERE date > '2017-05-14' AND date < '2017-05-22' GROUP BY ip, date) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserPerDay, CountPerDayCore->mysqlQuery
+[22-May-2017 06:27:33 UTC] PHP Notice:  Undefined offset: 1 in /home/ubuntu/workspace/wp-admin/includes/dashboard.php on line 1227
+[22-May-2017 06:27:33 UTC] PHP Stack trace:
+[22-May-2017 06:27:33 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[22-May-2017 06:27:33 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[22-May-2017 06:27:33 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[22-May-2017 06:27:33 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[22-May-2017 06:27:33 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[22-May-2017 06:27:33 UTC] PHP   6. wp_ajax_dashboard_widgets() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[22-May-2017 06:27:33 UTC] PHP   7. wp_dashboard_primary() /home/ubuntu/workspace/wp-admin/includes/ajax-actions.php:314
+[22-May-2017 06:27:33 UTC] PHP   8. wp_dashboard_cached_rss_widget() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1169
+[22-May-2017 06:27:33 UTC] PHP   9. call_user_func_array:{/home/ubuntu/workspace/wp-admin/includes/dashboard.php:999}() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
+[22-May-2017 06:27:33 UTC] PHP  10. wp_dashboard_primary_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
+[22-May-2017 06:27:33 UTC] PHP  11. wp_dashboard_plugins_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1185
+[22-May-2017 06:27:51 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter GROUP BY date, ip) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserAll, CountPerDayCore->mysqlQuery
+[22-May-2017 06:27:51 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter WHERE date > '2017-05-14' AND date < '2017-05-22' GROUP BY ip, date) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserPerDay, CountPerDayCore->mysqlQuery
+[22-May-2017 06:32:53 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter GROUP BY date, ip) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserAll, CountPerDayCore->mysqlQuery
+[22-May-2017 06:32:53 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter WHERE date > '2017-05-14' AND date < '2017-05-22' GROUP BY ip, date) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserPerDay, CountPerDayCore->mysqlQuery
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 40
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 43
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 46
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 46
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 56
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 93
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 94
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 103
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 06:43:29 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 109
+[22-May-2017 06:43:29 UTC] PHP Stack trace:
+[22-May-2017 06:43:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[22-May-2017 06:43:29 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[22-May-2017 06:43:29 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[22-May-2017 07:07:14 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter GROUP BY date, ip) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserAll, CountPerDayCore->mysqlQuery
+[22-May-2017 07:07:14 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_cpd_counter' doesn't exist với truy vấn SELECT COUNT(*) FROM (SELECT 1 FROM nice_cpd_counter WHERE date > '2017-05-14' AND date < '2017-05-22' GROUP BY ip, date) t yêu cầu bởi wp_dashboard, do_meta_boxes, call_user_func, CountPerDay->dashboardWidget, CountPerDay->getUserPerDay, CountPerDayCore->mysqlQuery
+[22-May-2017 08:34:06 UTC] PHP Fatal error:  Call to undefined function ecs_html__() in /home/ubuntu/workspace/wp-content/themes/diemnhan-bs/functions.php on line 58
+[22-May-2017 08:34:06 UTC] PHP Stack trace:
+[22-May-2017 08:34:06 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/index.php:0
+[22-May-2017 08:34:06 UTC] PHP   2. wp_dashboard_setup() /home/ubuntu/workspace/wp-admin/index.php:15
+[22-May-2017 08:34:06 UTC] PHP   3. do_action() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:99
+[22-May-2017 08:34:06 UTC] PHP   4. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[22-May-2017 08:34:06 UTC] PHP   5. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[22-May-2017 08:34:06 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[22-May-2017 08:34:06 UTC] PHP   7. nz_dashboard_widgets() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[22-May-2017 09:17:52 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_nf3_forms' doesn't exist với truy vấn SELECT DISTINCT nice_nf3_forms.id FROM nice_nf3_forms   yêu cầu bởi include('wp-admin/edit-form-advanced.php'), wp_editor, _WP_Editors::editor, do_action('media_buttons'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, media_buttons, apply_filters('media_buttons_context'), WP_Hook->apply_filters, call_user_func_array, NF_Admin_AddFormModal->insert_form_tinymce_buttons, NF_Abstracts_ModelFactory->get_forms, NF_Abstracts_Model->find
+[22-May-2017 09:17:52 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_nf3_forms' doesn't exist với truy vấn SELECT DISTINCT nice_nf3_forms.id FROM nice_nf3_forms   yêu cầu bởi include('wp-admin/edit-form-advanced.php'), do_meta_boxes, call_user_func, NF_Admin_Metaboxes_AppendAForm->render_metabox, NF_Abstracts_ModelFactory->get_forms, NF_Abstracts_Model->find
+[22-May-2017 09:17:52 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'diemnhan_db.nice_nf3_forms' doesn't exist với truy vấn SELECT DISTINCT nice_nf3_forms.id FROM nice_nf3_forms   yêu cầu bởi include('wp-admin/admin-footer.php'), do_action('admin_footer'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, acf_enqueue_uploader, wp_editor, _WP_Editors::editor, do_action('media_buttons'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, media_buttons, apply_filters('media_buttons_context'), WP_Hook->apply_filters, call_user_func_array, NF_Admin_AddFormModal->insert_form_tinymce_buttons, NF_Abstracts_ModelFactory->get_forms, NF_Abstracts_Model->find
+[22-May-2017 09:18:26 UTC] PHP Notice:  Undefined variable: status in /home/ubuntu/workspace/wp-content/plugins/hmenu/classes/file_processor.class.php on line 41
+[22-May-2017 09:18:26 UTC] PHP Stack trace:
+[22-May-2017 09:18:26 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[22-May-2017 09:18:26 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[22-May-2017 09:18:26 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[22-May-2017 09:18:26 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[22-May-2017 09:18:26 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[22-May-2017 09:18:26 UTC] PHP   6. hmenu_class_file_processor->process_file() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[22-May-2017 09:18:32 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-content/plugins/hmenu/classes/core/promo.class.php on line 37
+[22-May-2017 09:18:32 UTC] PHP Stack trace:
+[22-May-2017 09:18:32 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[22-May-2017 09:18:32 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[22-May-2017 09:18:32 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[22-May-2017 09:18:32 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[22-May-2017 09:18:32 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[22-May-2017 09:18:32 UTC] PHP   6. hmenu_promo->get_promotion() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[23-May-2017 04:09:30 UTC] PHP Notice:  Undefined offset: 1 in /home/ubuntu/workspace/wp-admin/includes/dashboard.php on line 1227
+[23-May-2017 04:09:30 UTC] PHP Stack trace:
+[23-May-2017 04:09:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[23-May-2017 04:09:30 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[23-May-2017 04:09:30 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[23-May-2017 04:09:30 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[23-May-2017 04:09:30 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[23-May-2017 04:09:30 UTC] PHP   6. wp_ajax_dashboard_widgets() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[23-May-2017 04:09:30 UTC] PHP   7. wp_dashboard_primary() /home/ubuntu/workspace/wp-admin/includes/ajax-actions.php:314
+[23-May-2017 04:09:30 UTC] PHP   8. wp_dashboard_cached_rss_widget() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1169
+[23-May-2017 04:09:30 UTC] PHP   9. call_user_func_array:{/home/ubuntu/workspace/wp-admin/includes/dashboard.php:999}() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
+[23-May-2017 04:09:30 UTC] PHP  10. wp_dashboard_primary_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
+[23-May-2017 04:09:30 UTC] PHP  11. wp_dashboard_plugins_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1185
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 40
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 43
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 46
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 46
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 56
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 93
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 94
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 103
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:33:25 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 109
+[23-May-2017 06:33:25 UTC] PHP Stack trace:
+[23-May-2017 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:33:25 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:33:25 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 40
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 43
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 46
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 46
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 56
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 93
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 94
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 103
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[23-May-2017 06:44:56 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 109
+[23-May-2017 06:44:56 UTC] PHP Stack trace:
+[23-May-2017 06:44:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[23-May-2017 06:44:56 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[23-May-2017 06:44:56 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[25-May-2017 08:41:04 UTC] PHP Notice:  Undefined offset: 1 in /home/ubuntu/workspace/wp-admin/includes/dashboard.php on line 1227
+[25-May-2017 08:41:04 UTC] PHP Stack trace:
+[25-May-2017 08:41:04 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[25-May-2017 08:41:04 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[25-May-2017 08:41:04 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[25-May-2017 08:41:04 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[25-May-2017 08:41:04 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[25-May-2017 08:41:04 UTC] PHP   6. wp_ajax_dashboard_widgets() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[25-May-2017 08:41:04 UTC] PHP   7. wp_dashboard_primary() /home/ubuntu/workspace/wp-admin/includes/ajax-actions.php:314
+[25-May-2017 08:41:04 UTC] PHP   8. wp_dashboard_cached_rss_widget() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1169
+[25-May-2017 08:41:04 UTC] PHP   9. call_user_func_array:{/home/ubuntu/workspace/wp-admin/includes/dashboard.php:999}() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
+[25-May-2017 08:41:04 UTC] PHP  10. wp_dashboard_primary_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
+[25-May-2017 08:41:04 UTC] PHP  11. wp_dashboard_plugins_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1185
