@@ -24,20 +24,20 @@ add_filter( 'post_thumbnail_html', 'remove_image_size_attributes', 10 );
 // Remove image size attributes from images added to a WordPress post
 add_filter( 'image_send_to_editor', 'remove_image_size_attributes', 10 );
 
-// // Remove notification update
-// function remove_core_updates(){ global $wp_version;
-//     $checked = array(
-//         'last_checked'=> time(),
-//         'version_checked'=> $wp_version
-//     );
-//     return (object)$checked;
-// }
-// // Remove notification update core
-// add_filter('pre_site_transient_update_core','remove_core_updates');
-// // Remove notification update plugins
-// add_filter('pre_site_transient_update_plugins','remove_core_updates');
-// // Remove notification update themes
-// add_filter('pre_site_transient_update_themes','remove_core_updates');
+// Remove notification update
+function remove_core_updates(){ global $wp_version;
+    $checked = array(
+        'last_checked'=> time(),
+        'version_checked'=> $wp_version
+    );
+    return (object)$checked;
+}
+// Remove notification update core
+add_filter('pre_site_transient_update_core','remove_core_updates');
+// Remove notification update plugins
+add_filter('pre_site_transient_update_plugins','remove_core_updates');
+// Remove notification update themes
+add_filter('pre_site_transient_update_themes','remove_core_updates');
 
 // Display footer text
 add_filter( 'admin_footer_text', function( $text ) {
