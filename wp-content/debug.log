@@ -11,3 +11,218 @@
 [01-Jun-2017 08:45:22 UTC] PHP   9. call_user_func_array:{/home/ubuntu/workspace/wp-admin/includes/dashboard.php:999}() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
 [01-Jun-2017 08:45:22 UTC] PHP  10. wp_dashboard_primary_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
 [01-Jun-2017 08:45:22 UTC] PHP  11. wp_dashboard_plugins_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1185
+[02-Jun-2017 01:45:27 UTC] PHP Warning:  mysqli_real_connect(): (HY000/1045): Access denied for user 'diemnhan_us'@'localhost' (using password: YES) in D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php on line 1538
+[02-Jun-2017 01:45:27 UTC] PHP Stack trace:
+[02-Jun-2017 01:45:27 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\index.php:0
+[02-Jun-2017 01:45:27 UTC] PHP   2. require() D:\WorkSpace\public_html\diemnhan\index.php:17
+[02-Jun-2017 01:45:27 UTC] PHP   3. require_once() D:\WorkSpace\public_html\diemnhan\wp-blog-header.php:13
+[02-Jun-2017 01:45:27 UTC] PHP   4. require_once() D:\WorkSpace\public_html\diemnhan\wp-load.php:37
+[02-Jun-2017 01:45:27 UTC] PHP   5. require_once() D:\WorkSpace\public_html\diemnhan\wp-config.php:93
+[02-Jun-2017 01:45:27 UTC] PHP   6. require_wp_db() D:\WorkSpace\public_html\diemnhan\wp-settings.php:107
+[02-Jun-2017 01:45:27 UTC] PHP   7. wpdb->__construct() D:\WorkSpace\public_html\diemnhan\wp-includes\load.php:404
+[02-Jun-2017 01:45:27 UTC] PHP   8. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:658
+[02-Jun-2017 01:45:27 UTC] PHP   9. mysqli_real_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1538
+[02-Jun-2017 01:45:27 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php on line 1568
+[02-Jun-2017 01:45:27 UTC] PHP Stack trace:
+[02-Jun-2017 01:45:27 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\index.php:0
+[02-Jun-2017 01:45:27 UTC] PHP   2. require() D:\WorkSpace\public_html\diemnhan\index.php:17
+[02-Jun-2017 01:45:27 UTC] PHP   3. require_once() D:\WorkSpace\public_html\diemnhan\wp-blog-header.php:13
+[02-Jun-2017 01:45:27 UTC] PHP   4. require_once() D:\WorkSpace\public_html\diemnhan\wp-load.php:37
+[02-Jun-2017 01:45:27 UTC] PHP   5. require_once() D:\WorkSpace\public_html\diemnhan\wp-config.php:93
+[02-Jun-2017 01:45:27 UTC] PHP   6. require_wp_db() D:\WorkSpace\public_html\diemnhan\wp-settings.php:107
+[02-Jun-2017 01:45:27 UTC] PHP   7. wpdb->__construct() D:\WorkSpace\public_html\diemnhan\wp-includes\load.php:404
+[02-Jun-2017 01:45:27 UTC] PHP   8. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:658
+[02-Jun-2017 01:45:27 UTC] PHP   9. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1563
+[02-Jun-2017 01:45:27 UTC] PHP  10. mysql_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1568
+[02-Jun-2017 01:45:27 UTC] PHP Warning:  mysql_connect(): Access denied for user 'diemnhan_us'@'localhost' (using password: YES) in D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php on line 1568
+[02-Jun-2017 01:45:27 UTC] PHP Stack trace:
+[02-Jun-2017 01:45:27 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\index.php:0
+[02-Jun-2017 01:45:27 UTC] PHP   2. require() D:\WorkSpace\public_html\diemnhan\index.php:17
+[02-Jun-2017 01:45:27 UTC] PHP   3. require_once() D:\WorkSpace\public_html\diemnhan\wp-blog-header.php:13
+[02-Jun-2017 01:45:27 UTC] PHP   4. require_once() D:\WorkSpace\public_html\diemnhan\wp-load.php:37
+[02-Jun-2017 01:45:27 UTC] PHP   5. require_once() D:\WorkSpace\public_html\diemnhan\wp-config.php:93
+[02-Jun-2017 01:45:27 UTC] PHP   6. require_wp_db() D:\WorkSpace\public_html\diemnhan\wp-settings.php:107
+[02-Jun-2017 01:45:27 UTC] PHP   7. wpdb->__construct() D:\WorkSpace\public_html\diemnhan\wp-includes\load.php:404
+[02-Jun-2017 01:45:27 UTC] PHP   8. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:658
+[02-Jun-2017 01:45:27 UTC] PHP   9. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1563
+[02-Jun-2017 01:45:27 UTC] PHP  10. mysql_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1568
+[02-Jun-2017 01:45:30 UTC] PHP Warning:  mysqli_real_connect(): (HY000/1045): Access denied for user 'diemnhan_us'@'localhost' (using password: YES) in D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php on line 1538
+[02-Jun-2017 01:45:30 UTC] PHP Stack trace:
+[02-Jun-2017 01:45:30 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\index.php:0
+[02-Jun-2017 01:45:30 UTC] PHP   2. require() D:\WorkSpace\public_html\diemnhan\index.php:17
+[02-Jun-2017 01:45:30 UTC] PHP   3. require_once() D:\WorkSpace\public_html\diemnhan\wp-blog-header.php:13
+[02-Jun-2017 01:45:30 UTC] PHP   4. require_once() D:\WorkSpace\public_html\diemnhan\wp-load.php:37
+[02-Jun-2017 01:45:30 UTC] PHP   5. require_once() D:\WorkSpace\public_html\diemnhan\wp-config.php:93
+[02-Jun-2017 01:45:30 UTC] PHP   6. require_wp_db() D:\WorkSpace\public_html\diemnhan\wp-settings.php:107
+[02-Jun-2017 01:45:30 UTC] PHP   7. wpdb->__construct() D:\WorkSpace\public_html\diemnhan\wp-includes\load.php:404
+[02-Jun-2017 01:45:30 UTC] PHP   8. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:658
+[02-Jun-2017 01:45:30 UTC] PHP   9. mysqli_real_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1538
+[02-Jun-2017 01:45:30 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php on line 1568
+[02-Jun-2017 01:45:30 UTC] PHP Stack trace:
+[02-Jun-2017 01:45:30 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\index.php:0
+[02-Jun-2017 01:45:30 UTC] PHP   2. require() D:\WorkSpace\public_html\diemnhan\index.php:17
+[02-Jun-2017 01:45:30 UTC] PHP   3. require_once() D:\WorkSpace\public_html\diemnhan\wp-blog-header.php:13
+[02-Jun-2017 01:45:30 UTC] PHP   4. require_once() D:\WorkSpace\public_html\diemnhan\wp-load.php:37
+[02-Jun-2017 01:45:30 UTC] PHP   5. require_once() D:\WorkSpace\public_html\diemnhan\wp-config.php:93
+[02-Jun-2017 01:45:30 UTC] PHP   6. require_wp_db() D:\WorkSpace\public_html\diemnhan\wp-settings.php:107
+[02-Jun-2017 01:45:30 UTC] PHP   7. wpdb->__construct() D:\WorkSpace\public_html\diemnhan\wp-includes\load.php:404
+[02-Jun-2017 01:45:30 UTC] PHP   8. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:658
+[02-Jun-2017 01:45:30 UTC] PHP   9. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1563
+[02-Jun-2017 01:45:30 UTC] PHP  10. mysql_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1568
+[02-Jun-2017 01:45:30 UTC] PHP Warning:  mysql_connect(): Access denied for user 'diemnhan_us'@'localhost' (using password: YES) in D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php on line 1568
+[02-Jun-2017 01:45:30 UTC] PHP Stack trace:
+[02-Jun-2017 01:45:30 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\index.php:0
+[02-Jun-2017 01:45:30 UTC] PHP   2. require() D:\WorkSpace\public_html\diemnhan\index.php:17
+[02-Jun-2017 01:45:30 UTC] PHP   3. require_once() D:\WorkSpace\public_html\diemnhan\wp-blog-header.php:13
+[02-Jun-2017 01:45:30 UTC] PHP   4. require_once() D:\WorkSpace\public_html\diemnhan\wp-load.php:37
+[02-Jun-2017 01:45:30 UTC] PHP   5. require_once() D:\WorkSpace\public_html\diemnhan\wp-config.php:93
+[02-Jun-2017 01:45:30 UTC] PHP   6. require_wp_db() D:\WorkSpace\public_html\diemnhan\wp-settings.php:107
+[02-Jun-2017 01:45:30 UTC] PHP   7. wpdb->__construct() D:\WorkSpace\public_html\diemnhan\wp-includes\load.php:404
+[02-Jun-2017 01:45:30 UTC] PHP   8. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:658
+[02-Jun-2017 01:45:30 UTC] PHP   9. wpdb->db_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1563
+[02-Jun-2017 01:45:30 UTC] PHP  10. mysql_connect() D:\WorkSpace\public_html\diemnhan\wp-includes\wp-db.php:1568
+[02-Jun-2017 01:47:37 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\WorkSpace\public_html\diemnhan\wp-content\themes\genesis\lib\widgets\featured-page-widget.php on line 21
+[02-Jun-2017 01:47:37 UTC] PHP Stack trace:
+[02-Jun-2017 01:47:37 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\index.php:0
+[02-Jun-2017 01:47:37 UTC] PHP   2. require() D:\WorkSpace\public_html\diemnhan\index.php:17
+[02-Jun-2017 01:47:37 UTC] PHP   3. require_once() D:\WorkSpace\public_html\diemnhan\wp-blog-header.php:13
+[02-Jun-2017 01:47:37 UTC] PHP   4. require_once() D:\WorkSpace\public_html\diemnhan\wp-load.php:37
+[02-Jun-2017 01:47:37 UTC] PHP   5. require_once() D:\WorkSpace\public_html\diemnhan\wp-config.php:93
+[02-Jun-2017 01:47:37 UTC] PHP   6. include() D:\WorkSpace\public_html\diemnhan\wp-settings.php:423
+[02-Jun-2017 01:47:37 UTC] PHP   7. include_once() D:\WorkSpace\public_html\diemnhan\wp-content\themes\diemnhan-bs\functions.php:28
+[02-Jun-2017 01:47:37 UTC] PHP   8. do_action() D:\WorkSpace\public_html\diemnhan\wp-content\themes\genesis\lib\init.php:342
+[02-Jun-2017 01:47:37 UTC] PHP   9. WP_Hook->do_action() D:\WorkSpace\public_html\diemnhan\wp-includes\plugin.php:453
+[02-Jun-2017 01:47:37 UTC] PHP  10. WP_Hook->apply_filters() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:323
+[02-Jun-2017 01:47:37 UTC] PHP  11. call_user_func_array:{D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298}() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298
+[02-Jun-2017 01:47:37 UTC] PHP  12. genesis_load_framework() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298
+[02-Jun-2017 01:47:37 UTC] PHP  13. require() D:\WorkSpace\public_html\diemnhan\wp-content\themes\genesis\lib\init.php:328
+[02-Jun-2017 01:50:39 UTC] PHP Notice:  Undefined offset: 1 in D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php on line 1227
+[02-Jun-2017 01:50:39 UTC] PHP Stack trace:
+[02-Jun-2017 01:50:39 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\wp-admin\admin-ajax.php:0
+[02-Jun-2017 01:50:39 UTC] PHP   2. do_action() D:\WorkSpace\public_html\diemnhan\wp-admin\admin-ajax.php:91
+[02-Jun-2017 01:50:39 UTC] PHP   3. WP_Hook->do_action() D:\WorkSpace\public_html\diemnhan\wp-includes\plugin.php:453
+[02-Jun-2017 01:50:39 UTC] PHP   4. WP_Hook->apply_filters() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:323
+[02-Jun-2017 01:50:39 UTC] PHP   5. call_user_func_array:{D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298}() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298
+[02-Jun-2017 01:50:39 UTC] PHP   6. wp_ajax_dashboard_widgets() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298
+[02-Jun-2017 01:50:39 UTC] PHP   7. wp_dashboard_primary() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\ajax-actions.php:314
+[02-Jun-2017 01:50:39 UTC] PHP   8. wp_dashboard_cached_rss_widget() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:1169
+[02-Jun-2017 01:50:39 UTC] PHP   9. call_user_func_array:{D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:999}() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:999
+[02-Jun-2017 01:50:39 UTC] PHP  10. wp_dashboard_primary_output() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:999
+[02-Jun-2017 01:50:39 UTC] PHP  11. wp_dashboard_plugins_output() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\dashboard.php:1185
+[02-Jun-2017 01:54:20 UTC] Array
+(
+    [akismet_debug] => Array
+        (
+            [akismet_url] => https://e0d74ea53f9a.rest.akismet.com/1.1/deactivate
+            [http_args] => Array
+                (
+                    [body] => key=e0d74ea53f9a&blog=http%3A%2F%2Fdiemnhan.vhost.com
+                    [headers] => Array
+                        (
+                            [Content-Type] => application/x-www-form-urlencoded; charset=UTF-8
+                            [Host] => e0d74ea53f9a.rest.akismet.com
+                            [User-Agent] => WordPress/4.7.5 | Akismet/3.3.2
+                        )
+
+                    [httpversion] => 1.0
+                    [timeout] => 15
+                )
+
+            [response] => Array
+                (
+                    [headers] => Requests_Utility_CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [server] => nginx
+                                    [date] => Fri, 02 Jun 2017 01:54:45 GMT
+                                    [content-type] => text/plain; charset=utf-8
+                                    [content-length] => 11
+                                )
+
+                        )
+
+                    [body] => deactivated
+                    [response] => Array
+                        (
+                            [code] => 200
+                            [message] => OK
+                        )
+
+                    [cookies] => Array
+                        (
+                        )
+
+                    [filename] => 
+                    [http_response] => WP_HTTP_Requests_Response Object
+                        (
+                            [response:protected] => Requests_Response Object
+                                (
+                                    [body] => deactivated
+                                    [raw] => HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 02 Jun 2017 01:54:45 GMT
+Content-Type: text/plain; charset=utf-8
+Content-Length: 11
+Connection: close
+
+deactivated
+                                    [headers] => Requests_Response_Headers Object
+                                        (
+                                            [data:protected] => Array
+                                                (
+                                                    [server] => Array
+                                                        (
+                                                            [0] => nginx
+                                                        )
+
+                                                    [date] => Array
+                                                        (
+                                                            [0] => Fri, 02 Jun 2017 01:54:45 GMT
+                                                        )
+
+                                                    [content-type] => Array
+                                                        (
+                                                            [0] => text/plain; charset=utf-8
+                                                        )
+
+                                                    [content-length] => Array
+                                                        (
+                                                            [0] => 11
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [status_code] => 200
+                                    [protocol_version] => 1.1
+                                    [success] => 1
+                                    [redirects] => 0
+                                    [url] => https://e0d74ea53f9a.rest.akismet.com/1.1/deactivate
+                                    [history] => Array
+                                        (
+                                        )
+
+                                    [cookies] => Requests_Cookie_Jar Object
+                                        (
+                                            [cookies:protected] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [filename:protected] => 
+                            [data] => 
+                            [headers] => 
+                            [status] => 
+                        )
+
+                )
+
+        )
+
+)
+
