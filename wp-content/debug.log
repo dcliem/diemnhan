@@ -226,3 +226,51 @@ deactivated
 
 )
 
+[02-Jun-2017 03:44:17 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\WorkSpace\public_html\diemnhan\wp-admin\includes\class-wp-filesystem-direct.php on line 79
+[02-Jun-2017 03:44:17 UTC] PHP Stack trace:
+[02-Jun-2017 03:44:17 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\wp-admin\admin-ajax.php:0
+[02-Jun-2017 03:44:17 UTC] PHP   2. do_action() D:\WorkSpace\public_html\diemnhan\wp-admin\admin-ajax.php:91
+[02-Jun-2017 03:44:17 UTC] PHP   3. WP_Hook->do_action() D:\WorkSpace\public_html\diemnhan\wp-includes\plugin.php:453
+[02-Jun-2017 03:44:17 UTC] PHP   4. WP_Hook->apply_filters() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:323
+[02-Jun-2017 03:44:17 UTC] PHP   5. call_user_func_array:{D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298}() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298
+[02-Jun-2017 03:44:17 UTC] PHP   6. wp_ajax_install_plugin() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298
+[02-Jun-2017 03:44:17 UTC] PHP   7. Plugin_Upgrader->install() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\ajax-actions.php:3593
+[02-Jun-2017 03:44:17 UTC] PHP   8. WP_Upgrader->run() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\class-plugin-upgrader.php:118
+[02-Jun-2017 03:44:17 UTC] PHP   9. WP_Upgrader->unpack_package() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\class-wp-upgrader.php:728
+[02-Jun-2017 03:44:17 UTC] PHP  10. unzip_file() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\class-wp-upgrader.php:320
+[02-Jun-2017 03:44:17 UTC] PHP  11. _unzip_file_ziparchive() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\file.php:605
+[02-Jun-2017 03:44:17 UTC] PHP  12. WP_Filesystem_Direct->put_contents() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\file.php:711
+[02-Jun-2017 03:45:06 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\WorkSpace\public_html\diemnhan\wp-admin\includes\class-wp-filesystem-direct.php on line 79
+[02-Jun-2017 03:45:06 UTC] PHP Stack trace:
+[02-Jun-2017 03:45:06 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\wp-admin\update.php:0
+[02-Jun-2017 03:45:06 UTC] PHP   2. Plugin_Upgrader->install() D:\WorkSpace\public_html\diemnhan\wp-admin\update.php:137
+[02-Jun-2017 03:45:06 UTC] PHP   3. WP_Upgrader->run() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\class-plugin-upgrader.php:118
+[02-Jun-2017 03:45:06 UTC] PHP   4. WP_Upgrader->unpack_package() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\class-wp-upgrader.php:728
+[02-Jun-2017 03:45:06 UTC] PHP   5. unzip_file() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\class-wp-upgrader.php:320
+[02-Jun-2017 03:45:06 UTC] PHP   6. _unzip_file_ziparchive() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\file.php:605
+[02-Jun-2017 03:45:06 UTC] PHP   7. WP_Filesystem_Direct->put_contents() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\file.php:711
+[02-Jun-2017 03:47:00 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\WorkSpace\public_html\diemnhan\wp-admin\includes\class-wp-filesystem-direct.php on line 79
+[02-Jun-2017 03:47:00 UTC] PHP Stack trace:
+[02-Jun-2017 03:47:00 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\wp-admin\update.php:0
+[02-Jun-2017 03:47:00 UTC] PHP   2. Plugin_Upgrader->install() D:\WorkSpace\public_html\diemnhan\wp-admin\update.php:137
+[02-Jun-2017 03:47:00 UTC] PHP   3. WP_Upgrader->run() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\class-plugin-upgrader.php:118
+[02-Jun-2017 03:47:00 UTC] PHP   4. WP_Upgrader->unpack_package() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\class-wp-upgrader.php:728
+[02-Jun-2017 03:47:00 UTC] PHP   5. unzip_file() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\class-wp-upgrader.php:320
+[02-Jun-2017 03:47:00 UTC] PHP   6. _unzip_file_ziparchive() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\file.php:605
+[02-Jun-2017 03:47:00 UTC] PHP   7. WP_Filesystem_Direct->put_contents() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\file.php:711
+[02-Jun-2017 03:49:03 UTC] PHP Warning:  Đã sẩy ra một lỗi bất ngờ. Có vấn đề với WordPress.org hoặc cấu hình máy chủ này. Nếu bạn tiếp tục gặp lỗi, hãy vào <a href="http://wordpress.org/support/">diễn đàn hỗ trợ</a>. (WordPress không thể thiết lập kết nối an toàn tới WordPress.org. Vui lòng liên hệ quản trị máy chủ của bạn.) in D:\WorkSpace\public_html\diemnhan\wp-includes\update.php on line 500
+[02-Jun-2017 03:49:03 UTC] PHP Stack trace:
+[02-Jun-2017 03:49:03 UTC] PHP   1. {main}() D:\WorkSpace\public_html\diemnhan\wp-admin\admin-ajax.php:0
+[02-Jun-2017 03:49:03 UTC] PHP   2. do_action() D:\WorkSpace\public_html\diemnhan\wp-admin\admin-ajax.php:91
+[02-Jun-2017 03:49:03 UTC] PHP   3. WP_Hook->do_action() D:\WorkSpace\public_html\diemnhan\wp-includes\plugin.php:453
+[02-Jun-2017 03:49:03 UTC] PHP   4. WP_Hook->apply_filters() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:323
+[02-Jun-2017 03:49:03 UTC] PHP   5. call_user_func_array:{D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298}() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298
+[02-Jun-2017 03:49:03 UTC] PHP   6. wp_ajax_install_plugin() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:298
+[02-Jun-2017 03:49:03 UTC] PHP   7. Plugin_Upgrader->install() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\ajax-actions.php:3593
+[02-Jun-2017 03:49:03 UTC] PHP   8. WP_Upgrader->run() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\class-plugin-upgrader.php:118
+[02-Jun-2017 03:49:03 UTC] PHP   9. do_action() D:\WorkSpace\public_html\diemnhan\wp-admin\includes\class-wp-upgrader.php:791
+[02-Jun-2017 03:49:03 UTC] PHP  10. WP_Hook->do_action() D:\WorkSpace\public_html\diemnhan\wp-includes\plugin.php:453
+[02-Jun-2017 03:49:03 UTC] PHP  11. WP_Hook->apply_filters() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:323
+[02-Jun-2017 03:49:03 UTC] PHP  12. call_user_func_array:{D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:296}() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:296
+[02-Jun-2017 03:49:03 UTC] PHP  13. wp_update_themes() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:296
+[02-Jun-2017 03:49:03 UTC] PHP  14. trigger_error() D:\WorkSpace\public_html\diemnhan\wp-includes\update.php:500
