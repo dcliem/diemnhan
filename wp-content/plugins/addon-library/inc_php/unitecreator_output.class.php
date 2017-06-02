@@ -245,6 +245,8 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 			$url = $include["url"];
 			$handle = UniteFunctionsUC::getVal($include, "handle");
 			
+			$url = HelperUC::urlToSSLCheck($url);
+			
 			if(empty($handle))
 				$handle = HelperUC::getUrlHandle($url, $addonName);
 			
@@ -288,6 +290,8 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 			$type = $include["type"];
 			$url = $include["url"];
 			$handle = UniteFunctionsUC::getVal($include, "handle");
+			
+			$url = HelperUC::urlToSSLCheck($url);
 			
 			if(empty($handle))
 				$handle = HelperUC::getUrlHandle($url, $addonName);

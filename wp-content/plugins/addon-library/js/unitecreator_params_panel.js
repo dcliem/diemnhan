@@ -1,6 +1,6 @@
 function UniteCreatorParamsPanel(){
 	var g_objWrapper, g_prefix = "", g_type, g_arrConstants = {};
-	var g_objFiltersWrapper, g_activeFilter = null;
+	var g_objFiltersWrapper, g_activeFilter = null, g_objThumbSizes = null;
 	
 	var t = this;
 	var g_temp = {
@@ -100,14 +100,59 @@ function UniteCreatorParamsPanel(){
 		
 		var name = objParam.name;
 		
-		addParam(name, null, filter);
+		if(g_objThumbSizes){
+			addParam(name, "ucparam_parent", filter);
+		}
+		else{			//if only image present
+			
+			addParam(name, null, filter);
+		}
 		
-		if(isAddThumb)
-			addParam(name+"_thumb", null, filter);
+		var objParamThumb = {
+				name: name+"_thumb",
+				type: "ucparam_child",
+				tooltip: null,
+				parent_name: name
+			}
 		
-		if(isAddThumbLarge)
-			addParam(name+"_thumb_large", null, filter);
-		
+		if(g_objThumbSizes == null){
+			
+			if(isAddThumb){
+				objParamThumb.tooltip = "Thumb";
+				objParamThumb.type = "uc_textfield";
+				addParam(objParamThumb, null, filter);
+			}
+			
+			if(isAddThumbLarge){
+				objParamThumb.name = name+"_thumb_large";
+				objParamThumb.tooltip = "Large";
+				objParamThumb.type = "uc_textfield";
+				addParam(objParamThumb, null, filter);
+			}
+		}else{
+			
+			//add thumb
+			objParamThumb.tooltip = "Thumb";
+			if(isAddThumb)
+				objParamThumb.type = "uc_textfield";
+			addParam(objParamThumb, null, filter);
+			
+			
+			//add other sizes
+			jQuery.each(g_objThumbSizes, function(size, sizeTitle){
+				
+				objParamThumb.name = name+"_thumb_"+size;
+				objParamThumb.tooltip = sizeTitle;
+				objParamThumb.type = "ucparam_child";
+				
+				if(size == "large" && isAddThumbLarge)
+					objParamThumb.type = "uc_textfield";
+				
+				
+				addParam(objParamThumb, null, filter);
+			});
+			
+		}
 		
 	}
 	
@@ -123,9 +168,10 @@ function UniteCreatorParamsPanel(){
 				name: objParam,
 				type: "uc_textfield"
 			};
-			if(type)
-				objParam.type = type;
 		}
+		
+		if(type)
+			objParam.type = type;
 		
 		
 		switch(objParam.type){
@@ -143,14 +189,15 @@ function UniteCreatorParamsPanel(){
 			break;
 		}
 		
+		
 		//get param type
-		var paramType = "uc-type-param";
+		var paramClassType = "uc-type-param";
 		switch(objParam.type){
 			case "uc_function":
-				paramType = "uc-type-function";
+				paramClassType = "uc-type-function";
 			break;
 			case "uc_constant":
-				paramType = "uc-type-constant";
+				paramClassType = "uc-type-constant";
 			break;
 		}
 		
@@ -158,18 +205,48 @@ function UniteCreatorParamsPanel(){
 		var classFilter = getFilterClass(filter);
 		
 		var name = objParam.name;
+		
+		//set ending
+		var ending = "";
+		switch(objParam.type){
+			case "uc_editor":
+				ending = "|raw";
+			break;
+		}
+		
 		var prefix = getPrefix(filter);
 		
-		var text = "{{"+prefix+name+"}}";
-		
-		var htmlClass = "uc-link-paramkey " + paramType +" " + classFilter;
-		
+		var text = "{{"+prefix+name+ending+"}}";
+				
 		//check if hidden by filter
 		var style = "";
 		if(g_activeFilter && filter && g_activeFilter !== filter)
 			style = "style='display:none'";
 		
-		var html = "<a data-name='"+name+"' data-text='"+text+"' href='javascript:void(0)' class='"+htmlClass+"' "+style+">"+text+"</a>";
+		var htmlClass = "uc-link-paramkey " + paramClassType +" " + classFilter;
+		var htmlTip = "";
+		
+		//special output
+		switch(objParam.type){
+			case "ucparam_parent":
+				var html = "<div class='uc-param-wrapper uc-param-parent uc-hover "+classFilter+"' "+style+" data-name='"+name+"'>";
+				html += "<a data-name='"+name+"' data-text='"+text+"' href='javascript:void(0)' class='uc-link-paramkey "+classFilter+"' >"+text+"</a>";
+				html += "<div class='uc-icons-wrapper uc-icons-parent'>";
+				html += "<a class='uc-icon-show-children uc-tip' title='Show All Thumbs'></a>";
+				html += "</div>";
+				html += "</div>";
+			break;
+			case "ucparam_child":
+				var tooltip = g_ucAdmin.getVal(objParam, "tooltip");
+				if(tooltip)
+					htmlTip = " title='"+objParam.tooltip+"'";
+				
+				htmlClass += " ucparent-"+objParam.parent_name+" uc-child-hidden";
+			default:
+				var html = "<a data-name='"+name+"' data-text='"+text+"' href='javascript:void(0)' class='"+htmlClass+"' "+style+htmlTip+">"+text+"</a>";
+			break;
+		}
+		
 		
 		g_objWrapper.append(html);
 	}
@@ -194,9 +271,8 @@ function UniteCreatorParamsPanel(){
 		var style = "";
 		if(g_activeFilter && filter && g_activeFilter !== filter)
 			style = "style='display:none'";
-
 		
-		var html = "<div class='uc-variable-wrapper' data-name='"+name+"' data-index='"+index+"'>";
+		var html = "<div class='uc-param-wrapper uc-variable-wrapper' data-name='"+name+"' data-index='"+index+"'>";
 		html += "<a data-name='"+name+"' data-text='"+text+"' href='javascript:void(0)' class='"+htmlClass+"' "+style+">"+text+"</a>";
 		html += "<div class='uc-icons-wrapper'>";
 		html += "<div class='uc-icon-edit'></div>";
@@ -272,6 +348,21 @@ function UniteCreatorParamsPanel(){
 		
 		});
 		
+		g_objWrapper.delegate(".uc-param-parent .uc-icon-show-children","click",function(){
+			
+			var objLink = jQuery(this);
+			var objMenu = objLink.parents(".uc-icons-wrapper");
+			var objParamWrapper = objLink.parents(".uc-param-wrapper");
+			var paramName = objParamWrapper.data("name");
+			var classChildren = ".ucparent-"+paramName;
+			
+			var objChildren = g_objWrapper.find(classChildren);
+						
+			objMenu.hide();
+			objChildren.removeClass("uc-child-hidden");
+			
+		});
+		
 		
 		g_objWrapper.delegate(".uc-variable-wrapper .uc-icon-delete","click",function(){
 			
@@ -282,8 +373,6 @@ function UniteCreatorParamsPanel(){
 			triggerEvent(events.DELETE_VARIABLE, varIndex);
 			
 		});
-		
-		
 		
 	}
 	
@@ -348,10 +437,10 @@ function UniteCreatorParamsPanel(){
 		var classFilter = getFilterClass(g_activeFilter, true);
 		
 		var objFilterKeys = g_objWrapper.find(classFilter);
-		var objOtherKeys = g_objWrapper.find("a").not(objFilterKeys);
+		var objOtherKeys = g_objWrapper.find("a").add(g_objWrapper.find(".uc-param-wrapper")).not(objFilterKeys);
 		
 		objOtherKeys.hide();
-		objFilterKeys.show();
+		objFilterKeys.show().css({"display":"block"});
 		
 	}
 	
@@ -431,6 +520,16 @@ function UniteCreatorParamsPanel(){
 	 */
 	this.onDeleteVariable = function(func){
 		onEvent(events.DELETE_VARIABLE, func);
+	}
+	
+	
+	/**
+	 * set thumb sizes
+	 */
+	this.setThumbSizes = function(objThumbSizes){
+		g_objThumbSizes = objThumbSizes;
+		if(g_objThumbSizes && g_objThumbSizes.length == 0)
+			g_objThumbSizes = null;
 	}
 	
 	

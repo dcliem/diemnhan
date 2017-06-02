@@ -4,7 +4,7 @@ Plugin Name: Addon Library
 Plugin URI: http://addon-library.com
 Description: Addon Library - Addons for Visual Editors
 Author: Unite CMS
-Version: 1.3.39
+Version: 1.3.42
 Author URI: http://addon-library.com
 */
 

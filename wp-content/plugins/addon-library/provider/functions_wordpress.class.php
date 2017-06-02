@@ -166,6 +166,55 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		
 		
 		/**
+		 * get thumbnail sizes array
+		 * mode: null, "small_only", "big_only"
+		 */
+		public static function getArrThumbSizes($mode = null){
+			global $_wp_additional_image_sizes;
+			
+			$arrWPSizes = get_intermediate_image_sizes();
+		
+			$arrSizes = array();
+		
+			if($mode != "big_only"){
+				$arrSizes[self::THUMB_SMALL] = "Thumbnail (150x150)";
+				$arrSizes[self::THUMB_MEDIUM] = "Medium (max width 300)";
+			}
+		
+			if($mode == "small_only")
+				return($arrSizes);
+		
+			foreach($arrWPSizes as $size){
+				$title = ucfirst($size);
+				switch($size){
+					case self::THUMB_LARGE:
+					case self::THUMB_MEDIUM:
+					case self::THUMB_FULL:
+					case self::THUMB_SMALL:
+						continue(2);
+						break;
+					case "ug_big":
+						$title = __("Big", ADDONLIBRARY_TEXTDOMAIN);
+						break;
+				}
+		
+				$arrSize = UniteFunctionsUC::getVal($_wp_additional_image_sizes, $size);
+				$maxWidth = UniteFunctionsUC::getVal($arrSize, "width");
+		
+				if(!empty($maxWidth))
+					$title .= " (max width $maxWidth)";
+		
+				$arrSizes[$size] = $title;
+			}
+		
+			$arrSizes[self::THUMB_LARGE] = __("Large (max width 1024)", ADDONLIBRARY_TEXTDOMAIN);
+			$arrSizes[self::THUMB_FULL] = __("Full", ADDONLIBRARY_TEXTDOMAIN);
+		
+			return($arrSizes);
+		}
+		
+		
+		/**
 		 * Get an attachment ID given a URL.
 		*
 		* @param string $url

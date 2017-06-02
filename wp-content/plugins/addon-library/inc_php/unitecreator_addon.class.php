@@ -7,8 +7,7 @@
  * */
 defined('ADDON_LIBRARY_INC') or die('Restricted access');
 
-
-	class UniteCreatorAddon extends UniteElementsBaseUC{
+	class UniteCreatorAddonWork extends UniteElementsBaseUC{
 		
 		const FIELDS_ADDONS = "title,name,alias,addontype,description,ordering,templates,config,catid,test_slot1,test_slot2,test_slot3,is_active";
 		const ITEMS_TYPE_IMAGE = "image";
@@ -1216,9 +1215,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		 * convert from url assets
 		 */
 		private function convertFromUrlAssets($value){
-			
-			//dmp($value);
-			
+						
 			$urlAssets = $this->getUrlAssets();
 			
 			if(!empty($urlAssets))
@@ -1278,6 +1275,16 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			return($arrParams);
 		}
 		
+		
+		/**
+		 * add other image thumbs based of the platform
+		 */
+		protected function addOtherImageThumbs($data, $name, $value){
+			
+			return($data);
+		}
+		
+		
 		/**
 		 * process image param value, add to data
 		 * @param unknown_type $param
@@ -1308,6 +1315,8 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 				$urlThumb = HelperUC::$operations->getThumbURLFromImageUrl($value, null, GlobalsUC::THUMB_SIZE_LARGE);
 				$data[$name."_thumb_large"] = $urlThumb;
 			}
+			
+			$data = $this->addOtherImageThumbs($data, $name, $value);
 			
 			
 			return($data);
@@ -1420,10 +1429,13 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			$this->validateInited();
 			
 			$objParams = $this->getParams();
+						
 			$arrParams = $this->getProcessedParamsValues($objParams);
+			
 			$arrParams = $this->processFonts($arrParams, "main");
 			
 			$arrVars = $this->getMainVariablesProcessed($arrParams);
+			
 			$arrParams = array_merge($arrParams, $arrVars);
 			
 			return($arrParams);

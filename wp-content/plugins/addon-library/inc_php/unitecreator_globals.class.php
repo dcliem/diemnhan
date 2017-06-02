@@ -81,6 +81,7 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		public static $url_assets_internal;
 		
 		public static $is_admin;
+		public static $is_ssl;
 		public static $path_base;
 		public static $path_cache;
 		public static $path_images;
@@ -115,9 +116,11 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			//check for wp version
 			UniteFunctionsUC::validateNotEmpty(GlobalsUC::$url_assets_internal, "assets internal");
 			
-			//$action = UniteFunctionsUC::getGetVar("maxaction", "", UniteFunctionsUC::SANITIZE_KEY);
-			//if($action == "showvars")
-				//GlobalsUC::printVars();
+			/*
+			$action = UniteFunctionsUC::getGetVar("maxaction", "", UniteFunctionsUC::SANITIZE_KEY);
+			if($action == "showvars")
+				GlobalsUC::printVars();
+			*/
 			
 			//GlobalsUC::printVars();
 		}
@@ -127,15 +130,6 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		 * print all globals variables
 		 */
 		public static function printVars(){
-			
-			/*
-			dmp("WP_CONTENT_DIR ".WP_CONTENT_DIR);
-			dmp("WP_CONTENT_URL ".WP_CONTENT_URL);
-			dmp("wp_upload_dir() ");
-			dmp(wp_upload_dir());
-			dmp("site_url() ");
-			dmp(site_url());
-			*/
 			
 			$methods = get_class_vars( "GlobalsUC" );
 			dmp($methods);

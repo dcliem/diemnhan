@@ -1,3 +1,18 @@
+version 1.3.42
+
+-bug fix: fixed some php related bug
+-bug fix: removed the set_time_limit function from security reasons
+
+version 1.3.41
+
+-feature: made support for all image sizes in wp
+-feature: made "expand" button in the html editors
+-bug fix: made support for biger zips to upload
+
+version 1.3.40
+
+-bug fix: fixed ssl url includes issue
+
 version 1.3.39
 
 -bug fix: fixed some small bug in test addon and icon field

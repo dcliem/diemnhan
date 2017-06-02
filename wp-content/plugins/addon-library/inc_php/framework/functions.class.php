@@ -822,6 +822,18 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		}
 		
 		
+		/**
+		 * convert url to https if needed
+		 */
+		public static function urlToSsl($url){
+			
+			$url = str_replace("http://", "https://", $url);
+			$url = str_replace("HTTP://", "HTTPS://", $url);
+			
+			return($url);
+		}
+		
+		
 		public static function z______________VALIDATIONS_____________(){}
 		
 		

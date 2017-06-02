@@ -6,7 +6,7 @@ if(!defined("ADDON_LIBRARY_INC"))
 
 
 if(!defined("ADDON_LIBRARY_VERSION"))
-	define("ADDON_LIBRARY_VERSION", "1.3.39");
+	define("ADDON_LIBRARY_VERSION", "1.3.42");
 
 
 $currentFile = __FILE__;
@@ -20,6 +20,7 @@ require_once $folderIncludesMain . 'unitecreator_globals.class.php';
 require_once $folderIncludesMain . 'unitecreator_operations.class.php';
 require_once $folderIncludesMain . 'unitecreator_categories.class.php';
 require_once $folderIncludesMain . 'unitecreator_addon.class.php';
+require_once GlobalsUC::$pathProvider . 'provider_addon.class.php';
 require_once $folderIncludesMain . 'unitecreator_addons.class.php';
 require_once $folderIncludesMain . 'unitecreator_helper.class.php';
 require_once $folderIncludesMain . 'unitecreator_helperhtml.class.php';

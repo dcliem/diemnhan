@@ -381,6 +381,15 @@ class UniteCreatorAddonView{
 		$objAssets->putHTML($pathAbsolute);
 	}
 	
+	/**
+	 * put expand link
+	 */
+	private function putLinkExpand(){
+		?>
+			<a class="uc-tabcontent-link-expand" href="javascript:void(0)"><?php _e("expand", ADDONLIBRARY_TEXTDOMAIN);?></a>
+		<?php 
+	}
+	
 	
 	/**
 	 * put html tab content
@@ -410,6 +419,7 @@ class UniteCreatorAddonView{
 						<td class="uc-tabcontent-cell-left">
 							<div class="uc-editor-title"><?php echo $title?></div>
 							<textarea id="<?php echo $textareaID?>" class="area_addon <?php echo $textareaID?>"><?php echo $areaHtml?></textarea>
+							<?php $this->putLinkExpand()?>
 						</td>
 						<td class="uc-tabcontent-cell-right">
 
@@ -616,6 +626,8 @@ class UniteCreatorAddonView{
 							<div class="uc-editor-title"><?php _e("Addon CSS", ADDONLIBRARY_TEXTDOMAIN)?></div>
 						
 							<textarea id="area_addon_css" class="area_addon area_addon_css"><?php echo $css?></textarea>
+							<?php $this->putLinkExpand()?>
+							
 						</td>
 						<td class="uc-tabcontent-cell-right">
 							<div id="uc_params_panel_css" class="uc-params-panel"></div>
@@ -635,6 +647,8 @@ class UniteCreatorAddonView{
 							<div class="uc-editor-title"><?php _e("Addon Javascript", ADDONLIBRARY_TEXTDOMAIN)?></div>
 						
 							<textarea id="area_addon_js" class="area_addon area_addon_js"><?php echo $js?></textarea>
+							<?php $this->putLinkExpand()?>
+							
 						</td>
 						<td class="uc-tabcontent-cell-right">
 							<div id="uc_params_panel_js" class="uc-params-panel"></div>
@@ -720,6 +734,13 @@ class UniteCreatorAddonView{
 		<?php 
 	}
 	
+	/**
+	 * get thumb sizes
+	 */
+	protected function getThumbSizes(){
+		
+		return(null);
+	}
 	
 	
 	/**
@@ -729,6 +750,8 @@ class UniteCreatorAddonView{
 		
 		$options = array();
 		$options["url_preview"] = $this->objAddon->getUrlPreview();
+		$options["thumb_sizes"] = $this->getThumbSizes();
+		
 		$dataOptions = UniteFunctionsUC::jsonEncodeForHtmlData($options, "options");
 		
 		$params = $this->objAddon->getParams();
@@ -756,7 +779,7 @@ class UniteCreatorAddonView{
 		?>
 		
 		<div id="uc_edit_item_config" style="display:none"
-			<?php echo $dataParams?>	
+			<?php echo $dataParams?>
 			<?php echo $dataParamsItems?>
 			<?php echo $dataPanelKeys?>
 			<?php echo $dataItemPanelKeys?>

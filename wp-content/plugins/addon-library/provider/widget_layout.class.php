@@ -23,7 +23,7 @@ class AddonLibrary_WidgetLayout extends WP_Widget {
     	$objLayouts = new UniteCreatorLayouts();
     	$arrLayouts = $objLayouts->getArrLayoutsShort(true);
     	$fieldID = "addonlibrarylayoutid";
-    	$layoutID = UniteFunctionsUG::getVal($instance, $fieldID);
+    	$layoutID = UniteFunctionsUC::getVal($instance, $fieldID);
     	
     	if(empty($arrLayouts)){
     		?>

@@ -652,6 +652,7 @@ class UniteCreatorExporter extends UniteCreatorExporterBase{
 		
 		$info = pathinfo($filename);
 		$ext = UniteFunctionsUC::getVal($info, "extension");
+		$ext = strtolower($ext);
 		
 		if($ext != "zip")
 			UniteFunctionsUC::throwError("Wrong import addon file type: {$filename}, should be zip type only.");

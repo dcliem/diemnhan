@@ -446,6 +446,17 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 			return($value);
 		}
 		
+		/**
+		 * if the website is ssl - convert url to ssl
+		 */
+		public static function urlToSSLCheck($url){
+			
+			if(GlobalsUC::$is_ssl == true)
+				$url = UniteFunctionsUC::urlToSsl($url);
+			
+			return($url);
+		}
+		
 		
 		public static function a________________VIEW_TEMPLATE______________(){}
 		

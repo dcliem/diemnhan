@@ -67,7 +67,9 @@ class UniteProviderFunctionsUC{
 		GlobalsUC::$layoutShortcodeName = "uc_layout";
 		GlobalsUC::$layoutsAddonType = "wp";
 		
+		GlobalsUC::$is_ssl = is_ssl();
 	}
+	
 	
 	/**
 	 * set assets path
@@ -300,12 +302,22 @@ class UniteProviderFunctionsUC{
 		return($urlImage);
 	}
 	
+	
 	/**
 	 * get image url from image id
 	 */
 	public static function getThumbUrlFromImageID($imageID, $size = null){
 		if($size == null)
 			$size = UniteFunctionsWPUC::THUMB_MEDIUM;
+		
+		switch($size){
+			case GlobalsUC::THUMB_SIZE_NORMAL:
+				$size = UniteFunctionsWPUC::THUMB_MEDIUM;
+			break;
+			case GlobalsUC::THUMB_SIZE_LARGE:
+				$size = UniteFunctionsWPUC::THUMB_LARGE;
+			break;
+		}
 		
 		$urlThumb = UniteFunctionsWPUC::getUrlAttachmentImage($imageID, $size);
 		

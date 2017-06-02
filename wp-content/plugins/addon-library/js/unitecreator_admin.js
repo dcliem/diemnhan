@@ -1,6 +1,6 @@
 function UniteCreatorAdmin(){
 	
-	var t = this;
+	var t = this, g_thumbSizes = null, g_objWrapper;
 	var g_providerAdmin = new UniteProviderAdminUC();
 	var g_objIncludes = new UniteCreatorIncludes();
 	
@@ -328,6 +328,16 @@ function UniteCreatorAdmin(){
 		var objWrapperCss = jQuery("#uc_params_panel_css");
 		var objWrapperItem = jQuery("#uc_params_panel_item");
 		var objWrapperItem2 = jQuery("#uc_params_panel_item2");
+		
+		
+		if(g_thumbSizes){
+			g_paramsPanelMain.setThumbSizes(g_thumbSizes);
+			g_paramsPanelJs.setThumbSizes(g_thumbSizes);
+			g_paramsPanelCss.setThumbSizes(g_thumbSizes);
+			g_paramsPanelCss.setThumbSizes(g_thumbSizes);
+			g_paramsPanelItem.setThumbSizes(g_thumbSizes);
+			g_paramsPanelItem2.setThumbSizes(g_thumbSizes);
+		}
 		
 		g_paramsPanelMain.init(objWrapperMain,"main", null, arrPanelKeys);
 		g_paramsPanelJs.init(objWrapperJs,"js", null, arrPanelKeys);
@@ -821,6 +831,17 @@ function UniteCreatorAdmin(){
 				
 		});
 		
+		//expand click
+		jQuery(".uc-tabcontent-link-expand").click(function(){
+			
+			var objLink = jQuery(this);
+			var objRow = objLink.parents("tr");
+			objRow.addClass("uc-row-expanded");
+			
+			objLink.hide();
+			
+		});
+		
 	}
 	
 	function ____________STICKY_MENU____________(){};
@@ -898,6 +919,26 @@ function UniteCreatorAdmin(){
 	
 	
 	/**
+	 * init tipsy
+	 */
+	function initTipsy(){
+		
+		if(typeof jQuery("body").tipsy != "function")
+			return(false);
+		
+		var tipsyOptions = {
+				html:true,
+				gravity:"s",
+		        delayIn: 200,
+		        selector: ".uc-tip"
+		};
+		
+		g_objWrapper.tipsy(tipsyOptions);
+		
+	}
+	
+	
+	/**
 	 * init items tab
 	 */
 	function initItemsTab(){
@@ -930,6 +971,8 @@ function UniteCreatorAdmin(){
 		if(urlPreview)
 			putPreviewImage(urlPreview);
 		
+		g_thumbSizes = arrOptions["thumb_sizes"];
+		
 	}
 	
 	
@@ -957,6 +1000,8 @@ function UniteCreatorAdmin(){
 	 */
 	this.initEditAddonView = function(){
 		
+		g_objWrapper = jQuery("#uc_tab_contents");
+		
 		var objConfig = jQuery("#uc_edit_item_config");
 		var objParamsMain = objConfig.data("params");
 		var objParamsItems = objConfig.data("params-items");
@@ -981,6 +1026,8 @@ function UniteCreatorAdmin(){
 		
 		initTabs();
 		
+		initTipsy();
+		
 		g_generalSettings.init(objSettingsWrapper);
 		
 		initIncludesTab();
@@ -988,13 +1035,13 @@ function UniteCreatorAdmin(){
 		initParamsEditors(objParamsMain, objParamsItems);
 		
 		initAssetsTab();
+
+		initByOptions(arrOptions);
 		
 		initVariables(arrVariablesItems, arrVariablesMain);	//must init before params panels
 		
 		initParamsPanels(arrPanelKeys, arrPanelItemKeys);
-		
-		initByOptions(arrOptions);
-		
+				
 		jQuery("#button_update_addon").click(onUpdateAddonClick);
 		jQuery("#button_export_addon").click(onExportAddonClick);
 		

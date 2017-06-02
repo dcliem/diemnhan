@@ -20,9 +20,8 @@ defined('ADDON_LIBRARY_INC') or die('Restricted access');
 		 * the constructor
 		 */
 		public function __construct(){
-			
+						
 			parent::__construct();
-
 		}
 		
 		
