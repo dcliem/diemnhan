@@ -274,3 +274,24 @@ deactivated
 [02-Jun-2017 03:49:03 UTC] PHP  12. call_user_func_array:{D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:296}() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:296
 [02-Jun-2017 03:49:03 UTC] PHP  13. wp_update_themes() D:\WorkSpace\public_html\diemnhan\wp-includes\class-wp-hook.php:296
 [02-Jun-2017 03:49:03 UTC] PHP  14. trigger_error() D:\WorkSpace\public_html\diemnhan\wp-includes\update.php:500
+[03-Jun-2017 01:52:33 UTC] PHP Notice:  Undefined offset: 1 in /home/ubuntu/workspace/wp-admin/includes/dashboard.php on line 1227
+[03-Jun-2017 01:52:33 UTC] PHP Stack trace:
+[03-Jun-2017 01:52:33 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[03-Jun-2017 01:52:33 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[03-Jun-2017 01:52:33 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[03-Jun-2017 01:52:33 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[03-Jun-2017 01:52:33 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[03-Jun-2017 01:52:33 UTC] PHP   6. wp_ajax_dashboard_widgets() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[03-Jun-2017 01:52:33 UTC] PHP   7. wp_dashboard_primary() /home/ubuntu/workspace/wp-admin/includes/ajax-actions.php:314
+[03-Jun-2017 01:52:33 UTC] PHP   8. wp_dashboard_cached_rss_widget() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1169
+[03-Jun-2017 01:52:33 UTC] PHP   9. call_user_func_array:{/home/ubuntu/workspace/wp-admin/includes/dashboard.php:999}() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
+[03-Jun-2017 01:52:33 UTC] PHP  10. wp_dashboard_primary_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:999
+[03-Jun-2017 01:52:33 UTC] PHP  11. wp_dashboard_plugins_output() /home/ubuntu/workspace/wp-admin/includes/dashboard.php:1185
+[03-Jun-2017 01:57:41 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, class 'woo_visual_hook_guide' does not have a method 'wvh_woocommerce_missing_notice' in /home/ubuntu/workspace/wp-includes/class-wp-hook.php on line 298
+[03-Jun-2017 01:57:41 UTC] PHP Stack trace:
+[03-Jun-2017 01:57:41 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/plugins.php:0
+[03-Jun-2017 01:57:41 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/plugins.php:430
+[03-Jun-2017 01:57:41 UTC] PHP   3. do_action() /home/ubuntu/workspace/wp-admin/admin-header.php:255
+[03-Jun-2017 01:57:41 UTC] PHP   4. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[03-Jun-2017 01:57:41 UTC] PHP   5. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[03-Jun-2017 01:57:41 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
