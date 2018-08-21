@@ -50,10 +50,10 @@ class Loco_mvc_View implements IteratorAggregate {
      */
     public function cd( $path ){
         if( $path && '/' === $path{0} ){
-            $this->cwd = rtrim( loco_plugin_root().'/tpl'.$path, '/' );
+            $this->cwd = untrailingslashit( loco_plugin_root().'/tpl'.$path );
         }
         else {
-            $this->cwd = rtrim( $this->cwd.'/'.$path );
+            $this->cwd = untrailingslashit( $this->cwd.'/'.$path );
         }
         return $this;
     }    
@@ -271,7 +271,7 @@ class Loco_mvc_View implements IteratorAggregate {
      * Shorthand for `echo esc_html( sprintf( ...`
      * @return void
      */
-    private function e( $text ){
+    private static function e( $text ){
         if( 1 < func_num_args() ){
             $args = func_get_args();
             $text = call_user_func_array( 'sprintf', $args );

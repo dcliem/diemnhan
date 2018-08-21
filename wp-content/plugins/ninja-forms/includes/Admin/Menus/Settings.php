@@ -17,11 +17,11 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
         if( isset( $_POST[ 'update_ninja_forms_settings' ] ) ) {
             add_action( 'admin_init', array( $this, 'update_settings' ) );
         }
-        
-        // Catch Contact Form 7 reCAPTCHA conflict.
-        add_action( 'admin_init', array( $this, 'nf_cf7_notice_dismissed' ) );
-        add_action( 'admin_notices', array( $this, 'ninja_forms_cf7_notice' ) );
+
         add_action( 'admin_body_class', array( $this, 'body_class' ) );
+
+        // Catch Contact Form 7 reCAPTCHA conflict.
+        add_filter( 'nf_admin_notices', array( $this, 'ninja_forms_cf7_notice' ) );
     }
 
     public function body_class( $classes )
@@ -38,46 +38,27 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
      * Function to notify users of CF7 conflict
      * 
      * Since 3.0
-     * 
-     * @return (bool) false on exit
+     *
+     * @param (array) $notices
+     * @return (array) $notices
      */
-    public function ninja_forms_cf7_notice()
+    public function ninja_forms_cf7_notice( $notices )
     {
         // If we don't have recaptcha keys, bail.
         $recaptcha_site_key = Ninja_Forms()->get_settings();
         if ( $recaptcha_site_key[ 'recaptcha_site_key' ] === '' ) {
-            return false;
+            return $notices;
         }
         // If we can detect Contact Form 7...
         include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
         if ( is_plugin_active( 'contact-form-7/wp-contact-form-7.php' ) ) {
-            $user_id = get_current_user_id();
-            // And if the user has not dimsmissed our notice...
-            if ( ! get_user_meta( $user_id, 'nf_cf7_notice_dismissed', true ) ) {
-                ?>
-                <div class="nf-admin-notice notice">
-                    <div class="nf-notice-logo"></div>
-                        <p class="nf-notice-title"><?php _e( 'Contact Form 7 is currently activated.', 'ninja-forms' ); ?></p>
-                        <p class="nf-notice-body"><?php _e( 'Please be aware that there is an issue with Contact Form 7 that breaks reCAPTCHA in other plugins.<br />If you need to use reCAPTCHA on any of your Ninja Forms, you will need to disable Contact Form 7.', 'ninja-forms' ); ?></p>
-                        <a href="<?php print(add_query_arg('nf-cf7-notice-dismissed', 'true')); ?>">Dismiss</a>
-                </div>
-                <?php
-
-                wp_enqueue_style( 'nf-admin-notices', Ninja_Forms::$url .'assets/css/admin-notices.css?nf_ver=' . Ninja_Forms::VERSION );
-            }
+            $notices[ 'cf7' ] = array(
+                'title' => __( 'Contact Form 7 is currently activated.', 'ninja-forms' ),
+                'msg' => sprintf( __( 'Please be aware that there is an issue with Contact Form 7 that breaks reCAPTCHA in other plugins.%sIf you need to use reCAPTCHA on any of your Ninja Forms, you will need to disable Contact Form 7.', 'ninja-forms' ), '<br />' ),
+                'int' => 0
+            );
         }
-    }
-    
-    /**
-     * Function to hide our CF7 conflict notice, once dismissed
-     * 
-     * Since 3.0
-     */
-    public function nf_cf7_notice_dismissed()
-    {
-        $user_id = get_current_user_id();
-        if ( isset( $_GET['nf-cf7-notice-dismissed'] ) )
-            add_user_meta( $user_id, 'nf_cf7_notice_dismissed', 'true', true );
+        return $notices;
     }
 
     public function get_page_title()
@@ -148,20 +129,50 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
             $grouped_settings[ 'saved_fields'][] = array(
                 'id' => '',
                 'type' => 'html',
-                'html' => '<a class="js-delete-saved-field button button-secondary" data-id="' . $saved_field_id . '">' . __( 'Delete' ) . '</a>',
+                'html' => '<a class="js-delete-saved-field button button-secondary" data-id="' . $saved_field_id . '">' . __( 'Delete', 'ninja-forms' ) . '</a>',
                 'label' => $saved_field->get_setting( 'label' ),
 
             );
         }
 
-        if( $saved_fields ){
-            wp_register_script( 'ninja_forms_admin_menu_settings', Ninja_Forms::$url . 'assets/js/admin-settings.js', array( 'jquery' ), FALSE, TRUE );
-            wp_localize_script( 'ninja_forms_admin_menu_settings', 'nf_settings', array(
-                'ajax_url' => admin_url( 'admin-ajax.php' ),
-                'nonce'    => wp_create_nonce( "ninja_forms_settings_nonce" )
-            ));
-            wp_enqueue_script( 'ninja_forms_admin_menu_settings' );
+	    $forms = Ninja_Forms()->form()->get_forms();
+	    $form_options = array();
+	    foreach( $forms as $form ){
+		    $form_options[] = array( 'id' => $form->get_id(),
+			    'title' => $form->get_setting( 'title' ) );
+	    }
+	    $form_options = apply_filters( 'ninja_forms_submission_filter_form_options', $form_options );
+	    asort($form_options);
+        
+        if ( get_option( 'ninja_forms_allow_tracking' ) && '1' == get_option( 'ninja_forms_allow_tracking' ) ) {
+            $allow_tel = 1;
+        } else {
+            $allow_tel = 0;
         }
+
+	    wp_enqueue_script( 'jBox', Ninja_Forms::$url . 'assets/js/lib/jBox.min.js', array( 'jquery' ) );
+        wp_enqueue_style( 'nf-combobox', Ninja_Forms::$url . 'assets/css/combobox.css' );
+	    wp_enqueue_style( 'jBox', Ninja_Forms::$url . 'assets/css/jBox.css' );
+        wp_register_script( 'ninja_forms_admin_menu_settings', Ninja_Forms::$url . 'assets/js/admin-settings.js', array( 'jquery' ), FALSE, TRUE );
+        wp_localize_script( 'ninja_forms_admin_menu_settings', 'nf_settings', array(
+            'ajax_url'      => admin_url( 'admin-ajax.php' ),
+            'forms'         => $form_options,
+            'nf_nuke_title' => __( 'Remove ALL Ninja Forms data and uninstall?', 'ninja-forms' ),
+            'nonce'         => wp_create_nonce( "ninja_forms_settings_nonce" ),
+            'batch_nonce'   => wp_create_nonce( 'ninja_forms_batch_nonce' ),
+            'i18n'          => array(
+                'rollbackConfirm'                  => __( 'Are you sure you want to rollback?', 'ninja-forms' ),
+                'trashExpiredSubsMessage'          => __( 'Are you sure you want to trash all expired submissions?', 'ninja-forms' ),
+                'trashExpiredSubsButtonPrimary'    => __( 'Trash', 'ninja-forms' ),
+                'trashExpiredSubsButtonSecondary'  => __( 'Cancel', 'ninja-forms' ),
+            ),
+            'allow_telemetry' => $allow_tel,
+        ));
+        wp_enqueue_script( 'nf-ninja-modal', Ninja_Forms::$url . 'assets/js/lib/ninjaModal.js' );
+        wp_enqueue_style( 'nf-font-awesome', Ninja_Forms::$url . 'assets/css/font-awesome.min.css' );
+
+
+        wp_enqueue_script( 'ninja_forms_admin_menu_settings' );
 
         Ninja_Forms::template( 'admin-menu-settings.html.php', compact( 'tabs', 'active_tab', 'groups', 'grouped_settings', 'save_button_text', 'errors' ) );
 

@@ -58,7 +58,10 @@ jQuery(document).ready(function($) {
                     if ( ! form.converted ) redirectToThree = 0;
                     if ( form.failed ) data.showSupportLink = 1;
                 }, this);
-                if( redirectToThree ) window.location.href = nfThreeUpgrade.redirectURL;
+                if( redirectToThree ) {
+                    jQuery( window ).unbind( 'beforeunload' );
+                    window.location.href = nfThreeUpgrade.redirectURL;
+                }
             }
 
             jQuery( this.container ).html( this.tmpl.table( data ) );
@@ -95,6 +98,7 @@ jQuery(document).ready(function($) {
         },
 
         start: function () {
+
             _.each( nfThreeUpgrade.forms, function( formID ) {
                 this.forms.push({
                     id: formID,
@@ -120,7 +124,12 @@ jQuery(document).ready(function($) {
             console.log( app );
             app.step = 'converting';
 
-            $.post( ajaxurl, { nf2to3: 1, action: 'ninja_forms_ajax_migrate_database' }, function( response ) {
+            // Add a notice if the user tries to navigate away during conversion.
+            jQuery( window ).bind( 'beforeunload', function(){
+                return 'You have unsaved changes.';
+            } );
+
+            $.post( ajaxurl, { nf2to3: 1, action: 'ninja_forms_ajax_migrate_database', security: nfThreeUpgrade.nonce }, function( response ) {
 
                 $.post( ajaxurl, { action: 'nfThreeUpgrade_GetSerializedFields' }, function( fieldsExport ) {
                     $.post(ajaxurl, { nf2to3: 1, fields: fieldsExport.serialized, action: 'ninja_forms_ajax_import_fields' }, function ( fieldsImport ) {

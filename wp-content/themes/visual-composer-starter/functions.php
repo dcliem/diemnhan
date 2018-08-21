@@ -7,9 +7,7 @@
  * @since Visual Composer Starter 1.0
  */
 
-/** Slug used in update mechanism */
-define( 'VCT_SLUG', basename( get_template_directory() ) );
-define( 'VCT_VERSION', '1.1.1' );
+define( 'VISUALCOMPOSERSTARTER_VERSION', '1.3' );
 
 if ( ! function_exists( 'visualcomposerstarter_setup' ) ) :
 	/**
@@ -24,11 +22,11 @@ if ( ! function_exists( 'visualcomposerstarter_setup' ) ) :
 		/*
 		 * Define sidebars
 		 */
-		define( 'VCT_PAGE_SIDEBAR',                     'vct_overall_site_page_sidebar' );
-		define( 'VCT_POST_SIDEBAR',                     'vct_overall_site_post_sidebar' );
-		define( 'VCT_ARCHIVE_AND_CATEGORY_SIDEBAR',     'vct_overall_site_aac_sidebar' );
-		define( 'VCT_DISABLE_HEADER',                   'vct_overall_site_disable_header' );
-		define( 'VCT_DISABLE_FOOTER',                   'vct_overall_site_disable_footer' );
+		define( 'VISUALCOMPOSERSTARTER_PAGE_SIDEBAR',                     'vct_overall_site_page_sidebar' );
+		define( 'VISUALCOMPOSERSTARTER_POST_SIDEBAR',                     'vct_overall_site_post_sidebar' );
+		define( 'VISUALCOMPOSERSTARTER_ARCHIVE_AND_CATEGORY_SIDEBAR',     'vct_overall_site_aac_sidebar' );
+		define( 'VISUALCOMPOSERSTARTER_DISABLE_HEADER',                   'vct_overall_site_disable_header' );
+		define( 'VISUALCOMPOSERSTARTER_DISABLE_FOOTER',                   'vct_overall_site_disable_footer' );
 
 		/*
 		 * Let WordPress manage the document title.
@@ -42,6 +40,41 @@ if ( ! function_exists( 'visualcomposerstarter_setup' ) ) :
 		 * Enable custom logo
 		 */
 		add_theme_support( 'custom-logo' );
+
+		/*
+		 * Enable custom background
+		 */
+		add_theme_support( 'custom-background', array(
+				'default-color' => '#ffffff',
+			) );
+
+		visualcomposerstarter_set_old_styles();
+
+		/*
+		 * Feed Links
+		 */
+		add_theme_support( 'automatic-feed-links' );
+
+		add_theme_support( 'post-formats', array( 'gallery', 'video', 'image' ) );
+
+		add_theme_support( 'html5', array( 'comment-form', 'comment-list', 'gallery', 'caption' ) );
+
+		if ( get_theme_mod( 'vct_overall_site_featured_image', true ) === true ) {
+			add_theme_support( 'post-thumbnails' );
+		}
+
+		add_image_size( 'visualcomposerstarter-featured-loop-image', 848, 0 );
+		add_image_size( 'visualcomposerstarter-featured-loop-image-full', 1140, 0 );
+		add_image_size( 'visualcomposerstarter-featured-single-image-boxed', 1170, 0 );
+		add_image_size( 'visualcomposerstarter-featured-single-image-full', 1920, 0 );
+
+		/*
+		 * Set the default content width.
+		 */
+		global $content_width;
+		if ( ! isset( $content_width ) ) {
+			$content_width = 848;
+		}
 
 		/*
 		 * This theme uses wp_nav_menu() in two locations.
@@ -60,197 +93,170 @@ if ( ! function_exists( 'visualcomposerstarter_setup' ) ) :
 		 * ACF Integration
 		 */
 
-		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		if ( class_exists( 'acf' ) && function_exists( 'register_field_group' ) ) {
+			$vct_acf_page_options = array(
+				'id' => 'acf_page-options',
+				'title' => esc_html__( 'Page Options', 'visual-composer-starter' ),
+				'fields' => array(
+					array(
+						'key' => 'field_589f5a321f0bc',
+						'label' => esc_html__( 'Sidebar Position', 'visual-composer-starter' ),
+						'name' => 'sidebar_position',
+						'type' => 'select',
+						'instructions' => esc_html__( 'Select specific sidebar position.', 'visual-composer-starter' ),
+						'choices' => array(
+							'none' => esc_html__( 'None', 'visual-composer-starter' ),
+							'left' => esc_html__( 'Left', 'visual-composer-starter' ),
+							'right' => esc_html__( 'Right', 'visual-composer-starter' ),
+						),
+						'default_value' => get_theme_mod( VISUALCOMPOSERSTARTER_PAGE_SIDEBAR, 'none' ),
+						'allow_null' => 0,
+						'multiple' => 0,
+					),
+					array(
+						'key' => 'field_589f55db2faa9',
+						'label' => esc_html__( 'Hide Page Title', 'visual-composer-starter' ),
+						'name' => 'hide_page_title',
+						'type' => 'checkbox',
+						'choices' => array(
+							1 => esc_html__( 'Yes', 'visual-composer-starter' ),
+						),
+						'default_value' => '',
+						'layout' => 'vertical',
+					),
+				),
+				'location' => array(
+					array(
+						array(
+							'param' => 'post_type',
+							'operator' => '==',
+							'value' => 'page',
+							'order_no' => 0,
+							'group_no' => 0,
+						),
+					),
+				),
+				'options' => array(
+					'position' => 'side',
+					'layout' => 'default',
+					'hide_on_screen' => array(),
+				),
+				'menu_order' => 0,
+			);
 
-		$plugins   = get_plugins();
-		$basic_acf = array_key_exists( 'advanced-custom-fields/acf.php', $plugins );
-		$pro_acf   = array_key_exists( 'advanced-custom-fields-pro/acf.php', $plugins );
-		if ( ! $basic_acf && ! $pro_acf ) {
-			add_action( 'admin_notices', 'vct_acf_admin_notice__install' );
-		} else {
-			$activated_pro   = $pro_acf && is_plugin_active( 'advanced-custom-fields-pro/acf.php' );
-			$activated_basic = $basic_acf && is_plugin_active( 'advanced-custom-fields/acf.php' );
-			if ( ( ! $activated_pro && ! $activated_basic )
-				 || ( ! $activated_pro && ! $basic_acf )
-				 || ( ! $activated_basic && ! $pro_acf )
-			) {
-				add_action( 'admin_notices', 'vct_acf_admin_notice__activate' );
-			} else {
-				$name     = $activated_pro ? 'advanced-custom-fields-pro/acf.php' : 'advanced-custom-fields/acf.php';
-				$acf_info = get_plugin_data( WP_PLUGIN_DIR . '/' . $name );
-				if ( version_compare( $acf_info['Version'], '4.1.0', '<' ) ) {
-					add_action( 'admin_notices', 'vct_acf_admin_notice__update' );
-				} else {
-					if ( function_exists( 'register_field_group' ) ) {
-						$vct_acf_page_options = array(
-							'id' => 'acf_page-options',
-							'title' => esc_html__( 'Page Options', 'visual-composer-starter' ),
-							'fields' => array(
-								array(
-									'key' => 'field_589f5a321f0bc',
-									'label' => esc_html__( 'Sidebar Position', 'visual-composer-starter' ),
-									'name' => 'sidebar_position',
-									'type' => 'select',
-									'instructions' => esc_html__( 'Select specific sidebar position.', 'visual-composer-starter' ),
-									'choices' => array(
-										'none' => esc_html__( 'None', 'visual-composer-starter' ),
-										'left' => esc_html__( 'Left', 'visual-composer-starter' ),
-										'right' => esc_html__( 'Right', 'visual-composer-starter' ),
-									),
-									'default_value' => get_theme_mod( VCT_PAGE_SIDEBAR, 'none' ),
-									'allow_null' => 0,
-									'multiple' => 0,
-								),
-								array(
-									'key' => 'field_589f55db2faa9',
-									'label' => esc_html__( 'Hide Page Title', 'visual-composer-starter' ),
-									'name' => 'hide_page_title',
-									'type' => 'checkbox',
-									'choices' => array(
-										1 => esc_html__( 'Yes', 'visual-composer-starter' ),
-									),
-									'default_value' => '',
-									'layout' => 'vertical',
-								),
-							),
-							'location' => array(
-								array(
-									array(
-										'param' => 'post_type',
-										'operator' => '==',
-										'value' => 'page',
-										'order_no' => 0,
-										'group_no' => 0,
-									),
-								),
-							),
-							'options' => array(
-								'position' => 'side',
-								'layout' => 'default',
-								'hide_on_screen' => array(),
-							),
-							'menu_order' => 0,
-						);
+			$vct_acf_post_options = array(
+				'id' => 'acf_post-options',
+				'title' => esc_html__( 'Post Options', 'visual-composer-starter' ),
+				'fields' => array(
+					array(
+						'key' => 'field_589f5b1d656ca',
+						'label' => esc_html__( 'Sidebar Position', 'visual-composer-starter' ),
+						'name' => 'sidebar_position',
+						'type' => 'select',
+						'instructions' => esc_html__( 'Select specific sidebar position.', 'visual-composer-starter' ),
+						'choices' => array(
+							'none' => esc_html__( 'None', 'visual-composer-starter' ),
+							'left' => esc_html__( 'Left', 'visual-composer-starter' ),
+							'right' => esc_html__( 'Right', 'visual-composer-starter' ),
+						),
+						'default_value' => get_theme_mod( VISUALCOMPOSERSTARTER_POST_SIDEBAR, 'none' ),
+						'allow_null' => 0,
+						'multiple' => 0,
+					),
+					array(
+						'key' => 'field_589f5b9a56207',
+						'label' => esc_html__( 'Hide Post Title', 'visual-composer-starter' ),
+						'name' => 'hide_page_title',
+						'type' => 'checkbox',
+						'choices' => array(
+							1 => esc_html__( 'Yes', 'visual-composer-starter' ),
+						),
+						'default_value' => '',
+						'layout' => 'vertical',
+					),
+				),
+				'location' => array(
+					array(
+						array(
+							'param' => 'post_type',
+							'operator' => '==',
+							'value' => 'post',
+							'order_no' => 0,
+							'group_no' => 0,
+						),
+					),
+				),
+				'options' => array(
+					'position' => 'side',
+					'layout' => 'default',
+					'hide_on_screen' => array(),
+				),
+				'menu_order' => 0,
+			);
 
-						$vct_acf_post_options = array(
-							'id' => 'acf_post-options',
-							'title' => esc_html__( 'Post Options', 'visual-composer-starter' ),
-							'fields' => array(
-								array(
-									'key' => 'field_589f5b1d656ca',
-									'label' => esc_html__( 'Sidebar Position', 'visual-composer-starter' ),
-									'name' => 'sidebar_position',
-									'type' => 'select',
-									'instructions' => esc_html__( 'Select specific sidebar position.', 'visual-composer-starter' ),
-									'choices' => array(
-										'none' => esc_html__( 'None', 'visual-composer-starter' ),
-										'left' => esc_html__( 'Left', 'visual-composer-starter' ),
-										'right' => esc_html__( 'Right', 'visual-composer-starter' ),
-									),
-									'default_value' => get_theme_mod( VCT_POST_SIDEBAR, 'none' ),
-									'allow_null' => 0,
-									'multiple' => 0,
-								),
-								array(
-									'key' => 'field_589f5b9a56207',
-									'label' => esc_html__( 'Hide Post Title', 'visual-composer-starter' ),
-									'name' => 'hide_page_title',
-									'type' => 'checkbox',
-									'choices' => array(
-										1 => esc_html__( 'Yes', 'visual-composer-starter' ),
-									),
-									'default_value' => '',
-									'layout' => 'vertical',
-								),
-							),
-							'location' => array(
-								array(
-									array(
-										'param' => 'post_type',
-										'operator' => '==',
-										'value' => 'post',
-										'order_no' => 0,
-										'group_no' => 0,
-									),
-								),
-							),
-							'options' => array(
-								'position' => 'side',
-								'layout' => 'default',
-								'hide_on_screen' => array(),
-							),
-							'menu_order' => 0,
-						);
+			if ( ! get_theme_mod( VISUALCOMPOSERSTARTER_DISABLE_HEADER, false ) ) {
+				$vct_acf_page_options['fields'][] = array(
+					'key' => 'field_58c800e5a7722',
+					'label' => 'Disable Header',
+					'name' => 'disable_page_header',
+					'type' => 'checkbox',
+					'choices' => array(
+						1 => esc_html__( 'Yes', 'visual-composer-starter' ),
+					),
+					'default_value' => '',
+					'layout' => 'vertical',
+				);
 
-						if ( ! get_theme_mod( VCT_DISABLE_HEADER, false ) ) {
-							$vct_acf_page_options['fields'][] = array(
-								'key' => 'field_58c800e5a7722',
-								'label' => 'Disable Header',
-								'name' => 'disable_page_header',
-								'type' => 'checkbox',
-								'choices' => array(
-									1 => esc_html__( 'Yes', 'visual-composer-starter' ),
-								),
-								'default_value' => '',
-								'layout' => 'vertical',
-							);
+				$vct_acf_post_options['fields'][] = array(
+					'key' => 'field_58c7e3f0b7dfb',
+					'label' => 'Disable Header',
+					'name' => 'disable_post_header',
+					'type' => 'checkbox',
+					'choices' => array(
+						1 => esc_html__( 'Yes', 'visual-composer-starter' ),
+					),
+					'default_value' => '',
+					'layout' => 'vertical',
+				);
+			}
 
-							$vct_acf_post_options['fields'][] = array(
-								'key' => 'field_58c7e3f0b7dfb',
-								'label' => 'Disable Header',
-								'name' => 'disable_post_header',
-								'type' => 'checkbox',
-								'choices' => array(
-									1 => esc_html__( 'Yes', 'visual-composer-starter' ),
-								),
-								'default_value' => '',
-								'layout' => 'vertical',
-							);
-						}
+			if ( ! get_theme_mod( VISUALCOMPOSERSTARTER_DISABLE_FOOTER, false ) ) {
+				$vct_acf_page_options['fields'][] = array(
+					'key' => 'field_58c800faa7723',
+					'label' => 'Disable Footer',
+					'name' => 'disable_page_footer',
+					'type' => 'checkbox',
+					'choices' => array(
+						1 => esc_html__( 'Yes', 'visual-composer-starter' ),
+					),
+					'default_value' => '',
+					'layout' => 'vertical',
+				);
 
-						if ( ! get_theme_mod( VCT_DISABLE_FOOTER, false ) ) {
-							$vct_acf_page_options['fields'][] = array(
-								'key' => 'field_58c800faa7723',
-								'label' => 'Disable Footer',
-								'name' => 'disable_page_footer',
-								'type' => 'checkbox',
-								'choices' => array(
-									1 => esc_html__( 'Yes', 'visual-composer-starter' ),
-								),
-								'default_value' => '',
-								'layout' => 'vertical',
-							);
-
-							$vct_acf_post_options['fields'][] = array(
-								'key' => 'field_58c7e40db7dfc',
-								'label' => 'Disable Footer',
-								'name' => 'disable_post_footer',
-								'type' => 'checkbox',
-								'choices' => array(
-									1 => esc_html__( 'Yes', 'visual-composer-starter' ),
-								),
-								'default_value' => '',
-								'layout' => 'vertical',
-							);
-						}
-
-						register_field_group( $vct_acf_page_options );
-						register_field_group( $vct_acf_post_options );
-					} // End if().
-				} // End if().
-			} // End if().
+				$vct_acf_post_options['fields'][] = array(
+					'key' => 'field_58c7e40db7dfc',
+					'label' => 'Disable Footer',
+					'name' => 'disable_post_footer',
+					'type' => 'checkbox',
+					'choices' => array(
+						1 => esc_html__( 'Yes', 'visual-composer-starter' ),
+					),
+					'default_value' => '',
+					'layout' => 'vertical',
+				);
+			}
+			register_field_group( $vct_acf_page_options );
+			register_field_group( $vct_acf_post_options );
 		} // End if().
 
 		/**
 		 * Customizer settings.
 		 */
-		require get_template_directory() . '/inc/customizer/class-vct-fonts.php';
-		require get_template_directory() . '/inc/customizer/class-vct-customizer.php';
-		require get_template_directory() . '/inc/class-vct-update.php';
+		require get_template_directory() . '/inc/customizer/class-visualcomposerstarter-fonts.php';
+		require get_template_directory() . '/inc/customizer/class-visualcomposerstarter-customizer.php';
 		require get_template_directory() . '/inc/hooks.php';
-		new VCT_Fonts();
-		new VCT_Customizer();
-		new VCT_Update();
+		new VisualComposerStarter_Fonts();
+		new VisualComposerStarter_Customizer();
 
 	}
 endif; /* visualcomposerstarter_setup */
@@ -260,20 +266,30 @@ add_action( 'after_setup_theme', 'visualcomposerstarter_setup' );
 /**
  *  Style Switch Toggle function
  */
-function vct_style_switch_toggle_acf() {
-	wp_register_style( 'toggle-acf-style', get_template_directory_uri() . '/css/toggle-switch.css', array(), false );
-	wp_enqueue_style( 'toggle-acf-style' );
+function visualcomposerstarter_style_switch_toggle_acf() {
+	$screen = get_current_screen();
+	if ( isset( $screen->base ) && 'post' === $screen->base ) {
+		$font_uri = VisualComposerStarter_Fonts::vct_theme_get_google_font_uri( array( 'Open Sans' ) );
+		wp_register_style( 'visualcomposerstarter-toggle-acf-fonts', $font_uri );
+		wp_enqueue_style( 'visualcomposerstarter-toggle-acf-fonts' );
+
+		wp_register_style( 'visualcomposerstarter-toggle-acf-style', get_template_directory_uri() . '/css/toggle-switch.css', array(), false );
+		wp_enqueue_style( 'visualcomposerstarter-toggle-acf-style' );
+	}
 }
-add_action( 'admin_enqueue_scripts', 'vct_style_switch_toggle_acf' );
+add_action( 'admin_enqueue_scripts', 'visualcomposerstarter_style_switch_toggle_acf' );
 
 /**
  *  Script Switch Toggle function
  */
-function vct_script_switch_toggle_acf() {
-	wp_register_script( 'toggle-acf-script', get_template_directory_uri() . '/js/toggle-switch-acf.js',  array( 'jquery' ), false, true );
-	wp_enqueue_script( 'toggle-acf-script' );
+function visualcomposerstarter_script_switch_toggle_acf() {
+	$screen = get_current_screen();
+	if ( isset( $screen->base ) && 'post' === $screen->base ) {
+		wp_register_script( 'visualcomposerstarter-toggle-acf-script', get_template_directory_uri() . '/js/toggle-switch-acf.js', array( 'jquery' ), false, true );
+		wp_enqueue_script( 'visualcomposerstarter-toggle-acf-script' );
+	}
 }
-add_action( 'admin_enqueue_scripts', 'vct_script_switch_toggle_acf' );
+add_action( 'admin_enqueue_scripts', 'visualcomposerstarter_script_switch_toggle_acf' );
 
 /**
  * Ajax Comment Reply
@@ -285,71 +301,24 @@ function visualcomposerstarter_enqueue_comments_reply() {
 }
 
 /**
- * ACF install admin notice
- */
-function vct_acf_admin_notice__install() {
-	?>
-	<div class="notice notice-success">
-		<p><?php
-			/* translators: 1. link to ACF with a tag, 2. a closing */
-			printf( esc_html__( 'In order to access full theme options, please make sure to install %1$sAdvanced Custom Fields%2$s', 'visual-composer-starter' ), '<a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">','</a>' );?></p>
-	</div>
-	<?php
-}
-/**
- * ACF activate admin notice
- */
-function vct_acf_admin_notice__activate() {
-	?>
-	<div class="notice notice-success">
-		<p><?php
-			/* translators: 1. link to ACF activate with a tag, 2. a closing */
-			printf( esc_html__( 'In order to access full theme options, please make sure to activate %1$sAdvanced Custom Fields%2$s', 'visual-composer-starter' ), '<a href="' . esc_url( admin_url( 'plugins.php' ) ) . '">', '</a>' ); ?></p>
-	</div>
-	<?php
-}
-/**
- * ACF update admin notice
- */
-function vct_acf_admin_notice__update() {
-	?>
-	<div class="notice notice-success">
-		<p><?php
-			/* translators: 1. link to ACF update with a tag, 2. a closing */
-			printf( esc_html__( 'In order to access full theme options, please make sure to update %1$sAdvanced Custom Fields%2$s', 'visual-composer-starter' ), '<a href="' . esc_url( admin_url( 'plugins.php' ) ) . '">', '</a>' ); ?></p>
-	</div>
-	<?php
-}
-
-/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
-
-
-add_theme_support( 'post-formats', array( 'gallery', 'video', 'image' ) );
-
-if ( get_theme_mod( 'vct_overall_site_featured_image', true ) === true ) {
-	add_theme_support( 'post-thumbnails' );
-
-}
-
-add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 
 /*
  * Add Next Page Button to WYSIWYG editor
  */
 
-add_filter( 'mce_buttons', 'mce_page_break' );
+add_filter( 'mce_buttons', 'visualcomposerstarter_page_break' );
 
 /**
  * Add page break
  *
- * @param VCT_Customizer $mce_buttons Add page break.
+ * @param VisualComposerStarter_Customizer $mce_buttons Add page break.
  *
  * @return array
  */
-function mce_page_break( $mce_buttons ) {
+function visualcomposerstarter_page_break( $mce_buttons ) {
 	$pos = array_search( 'wp_more', $mce_buttons, true );
 
 	if ( false !== $pos ) {
@@ -372,19 +341,19 @@ function visualcomposerstarter_style() {
 	wp_register_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7' );
 
 	/* Add Visual Composer Starter Font */
-	wp_register_style( 'visual-composer-starter-font', get_template_directory_uri() . '/css/visual-composer-starter-font.min.css', array(), VCT_VERSION );
+	wp_register_style( 'visualcomposerstarter-font', get_template_directory_uri() . '/css/visual-composer-starter-font.min.css', array(), VISUALCOMPOSERSTARTER_VERSION );
 
 	/* Slick slider stylesheet */
 	wp_register_style( 'slick-style', get_template_directory_uri() . '/css/slick.min.css', array(), '1.6.0' );
 
 	/* General theme stylesheet */
-	wp_register_style( 'visual-composer-starter-general', get_template_directory_uri() . '/css/style.min.css', array(), VCT_VERSION );
+	wp_register_style( 'visualcomposerstarter-general', get_template_directory_uri() . '/css/style.min.css', array(), VISUALCOMPOSERSTARTER_VERSION );
 
 	/* Stylesheet with additional responsive style */
-	wp_register_style( 'visual-composer-starter-responsive', get_template_directory_uri() . '/css/responsive.min.css', array(), VCT_VERSION );
+	wp_register_style( 'visualcomposerstarter-responsive', get_template_directory_uri() . '/css/responsive.min.css', array(), VISUALCOMPOSERSTARTER_VERSION );
 
 	/* Theme stylesheet */
-	wp_register_style( 'visual-composer-starter-style', get_stylesheet_uri() );
+	wp_register_style( 'visualcomposerstarter-style', get_stylesheet_uri() );
 
 	/* Font options */
 	$fonts = array(
@@ -398,19 +367,19 @@ function visualcomposerstarter_style() {
 		get_theme_mod( 'vct_fonts_and_style_buttons_font_family', 'Playfair Display' ),
 	);
 
-	$font_uri = VCT_Fonts::vct_theme_get_google_font_uri( $fonts );
+	$font_uri = VisualComposerStarter_Fonts::vct_theme_get_google_font_uri( $fonts );
 
 	/* Load Google Fonts */
-	wp_register_style( 'vct-theme-fonts', $font_uri, array(), null, 'screen' );
+	wp_register_style( 'visualcomposerstarter-fonts', $font_uri, array(), null, 'screen' );
 
 	/* Enqueue styles */
 	wp_enqueue_style( 'bootstrap' );
-	wp_enqueue_style( 'visual-composer-starter-font' );
+	wp_enqueue_style( 'visualcomposerstarter-font' );
 	wp_enqueue_style( 'slick-style' );
-	wp_enqueue_style( 'visual-composer-starter-general' );
-	wp_enqueue_style( 'visual-composer-starter-responsive' );
-	wp_enqueue_style( 'visual-composer-starter-style' );
-	wp_enqueue_style( 'vct-theme-fonts' );
+	wp_enqueue_style( 'visualcomposerstarter-general' );
+	wp_enqueue_style( 'visualcomposerstarter-responsive' );
+	wp_enqueue_style( 'visualcomposerstarter-style' );
+	wp_enqueue_style( 'visualcomposerstarter-fonts' );
 }
 add_action( 'wp_enqueue_scripts', 'visualcomposerstarter_style' );
 
@@ -431,13 +400,13 @@ function visualcomposerstarter_script() {
 	wp_register_script( 'slick-js', get_template_directory_uri() . '/js/slick/slick.min.js', array( 'jquery' ), '1.6.0', true );
 
 	/* Main theme JS functions */
-	wp_register_script( 'visual-composer-starter-script', get_template_directory_uri() . '/js/functions.min.js', array( 'jquery' ), VCT_VERSION, true );
+	wp_register_script( 'visualcomposerstarter-script', get_template_directory_uri() . '/js/functions.min.js', array( 'jquery' ), VISUALCOMPOSERSTARTER_VERSION, true );
 
 	/* Enqueue scripts */
 	wp_enqueue_script( 'bootstrap-transition' );
 	wp_enqueue_script( 'bootstrap-collapser' );
 	wp_enqueue_script( 'slick-js' );
-	wp_enqueue_script( 'visual-composer-starter-script' );
+	wp_enqueue_script( 'visualcomposerstarter-script' );
 }
 add_action( 'wp_enqueue_scripts', 'visualcomposerstarter_script' );
 
@@ -489,6 +458,13 @@ function visualcomposerstarter_body_classes( $classes ) {
 
 	if ( get_theme_mod( 'vct_overall_site_featured_image_height', 'auto' ) === 'custom' ) {
 		$classes[] = 'featured-image-custom-height';
+	}
+
+	if ( false === visualcomposerstarter_is_the_header_displayed() ) {
+		$classes[] = 'header-area-disabled';
+	}
+	if ( false === visualcomposerstarter_is_the_footer_displayed() ) {
+		$classes[] = 'footer-area-disabled';
 	}
 
 	return $classes;
@@ -557,7 +533,7 @@ register_sidebar(
  *
  * @return array
  */
-function vct_footer_1() {
+function visualcomposerstarter_footer_1() {
 	return array(
 		'name' => esc_html__( 'Footer Widget Column 1', 'visual-composer-starter' ),
 		'id' => 'footer',
@@ -573,7 +549,7 @@ function vct_footer_1() {
  *
  * @return array
  */
-function vct_footer_2() {
+function visualcomposerstarter_footer_2() {
 	return array(
 		'name' => esc_html__( 'Footer Widget Column 2', 'visual-composer-starter' ),
 		'id' => 'footer-2',
@@ -589,7 +565,7 @@ function vct_footer_2() {
  *
  * @return array
  */
-function vct_footer_3() {
+function visualcomposerstarter_footer_3() {
 	return array(
 		'name' => esc_html__( 'Footer Widget Column 3', 'visual-composer-starter' ),
 		'id' => 'footer-3',
@@ -605,7 +581,7 @@ function vct_footer_3() {
  *
  * @return array
  */
-function vct_footer_4() {
+function visualcomposerstarter_footer_4() {
 	return array(
 		'name' => esc_html__( 'Footer Widget Column 4', 'visual-composer-starter' ),
 		'id' => 'footer-4',
@@ -617,34 +593,34 @@ function vct_footer_4() {
 	);
 }
 
-add_action( 'widgets_init',             'visual_composer_starter_all_widgets' );
-add_action( 'admin_bar_init',           'visual_composer_starter_widgets' );
+add_action( 'widgets_init',             'visualcomposerstarter_all_widgets' );
+add_action( 'admin_bar_init',           'visualcomposerstarter_widgets' );
 
 /**
  * All widgets.
  */
-function visual_composer_starter_all_widgets() {
+function visualcomposerstarter_all_widgets() {
 	/**
 	 * Register all zones for availability in customizer
 	 */
 	register_sidebar(
-		vct_footer_1()
+		visualcomposerstarter_footer_1()
 	);
 	register_sidebar(
-		vct_footer_2()
+		visualcomposerstarter_footer_2()
 	);
 	register_sidebar(
-		vct_footer_3()
+		visualcomposerstarter_footer_3()
 	);
 	register_sidebar(
-		vct_footer_4()
+		visualcomposerstarter_footer_4()
 	);
 }
 
 /**
  * Widgets handler
  */
-function visual_composer_starter_widgets() {
+function visualcomposerstarter_widgets() {
 	unregister_sidebar( 'footer' );
 	unregister_sidebar( 'footer-2' );
 	unregister_sidebar( 'footer-3' );
@@ -653,24 +629,24 @@ function visual_composer_starter_widgets() {
 		$footer_columns = intval( get_theme_mod( 'vct_footer_area_widgetized_columns', 1 ) );
 		if ( $footer_columns >= 1 ) {
 			register_sidebar(
-				vct_footer_1()
+				visualcomposerstarter_footer_1()
 			);
 		}
 
 		if ( $footer_columns >= 2 ) {
 			register_sidebar(
-				vct_footer_2()
+				visualcomposerstarter_footer_2()
 			);
 		}
 
 		if ( $footer_columns >= 3 ) {
 			register_sidebar(
-				vct_footer_3()
+				visualcomposerstarter_footer_3()
 			);
 		}
 		if ( 4 === $footer_columns ) {
 			register_sidebar(
-				vct_footer_4()
+				visualcomposerstarter_footer_4()
 			);
 		}
 	}
@@ -682,8 +658,8 @@ function visual_composer_starter_widgets() {
  *
  * @return bool
  */
-function vct_is_the_header_displayed() {
-	if ( get_theme_mod( VCT_DISABLE_HEADER, false ) ) {
+function visualcomposerstarter_is_the_header_displayed() {
+	if ( get_theme_mod( VISUALCOMPOSERSTARTER_DISABLE_HEADER, false ) ) {
 		return false;
 	} elseif ( function_exists( 'get_field' ) ) {
 		if ( is_page() ) {
@@ -703,8 +679,8 @@ function vct_is_the_header_displayed() {
  *
  * @return bool
  */
-function vct_is_the_footer_displayed() {
-	if ( get_theme_mod( VCT_DISABLE_FOOTER, false ) ) {
+function visualcomposerstarter_is_the_footer_displayed() {
+	if ( get_theme_mod( VISUALCOMPOSERSTARTER_DISABLE_FOOTER, false ) ) {
 		return false;
 	} elseif ( function_exists( 'get_field' ) ) {
 		if ( is_page() ) {
@@ -724,7 +700,7 @@ function vct_is_the_footer_displayed() {
  *
  * @return string
  */
-function vct_get_header_container_class() {
+function visualcomposerstarter_get_header_container_class() {
 	if ( get_theme_mod( 'vct_header_top_header_width', 'boxed' ) === 'full_width' ) {
 		return 'container-fluid';
 	} else {
@@ -737,7 +713,7 @@ function vct_get_header_container_class() {
  *
  * @return string
  */
-function vct_get_header_image_container_class() {
+function visualcomposerstarter_get_header_image_container_class() {
 	if ( get_theme_mod( 'vct_overall_site_featured_image_width', 'full_width' ) === 'full_width' ) {
 		return 'container-fluid';
 	} else {
@@ -750,7 +726,7 @@ function vct_get_header_image_container_class() {
  *
  * @return string
  */
-function vct_get_content_container_class() {
+function visualcomposerstarter_get_content_container_class() {
 	if ( 'full_width' === get_theme_mod( 'vct_content_area_size', 'boxed' ) ) {
 		return 'container-fluid';
 	} else {
@@ -758,25 +734,18 @@ function vct_get_content_container_class() {
 	}
 }
 
-
-if ( get_theme_mod( 'vct_overall_site_sidebar' ) ) {
-	set_theme_mod( VCT_PAGE_SIDEBAR, get_theme_mod( 'vct_overall_site_sidebar' ) );
-	set_theme_mod( VCT_POST_SIDEBAR, get_theme_mod( 'vct_overall_site_sidebar' ) );
-	remove_theme_mod( 'vct_overall_site_sidebar' );
-}
-
 /**
  * Check needed sidebar
  *
  * @return string
  */
-function vct_check_needed_sidebar() {
+function visualcomposerstarter_check_needed_sidebar() {
 	if ( is_page() ) {
-		return VCT_PAGE_SIDEBAR;
+		return VISUALCOMPOSERSTARTER_PAGE_SIDEBAR;
 	} elseif ( is_singular() ) {
-		return VCT_POST_SIDEBAR;
+		return VISUALCOMPOSERSTARTER_POST_SIDEBAR;
 	} elseif ( is_archive() || is_category() || is_search() || is_front_page() ) {
-		return VCT_ARCHIVE_AND_CATEGORY_SIDEBAR;
+		return VISUALCOMPOSERSTARTER_ARCHIVE_AND_CATEGORY_SIDEBAR;
 	} else {
 		return 'none';
 	}
@@ -787,7 +756,7 @@ function vct_check_needed_sidebar() {
  *
  * @return null
  */
-function vct_specify_sidebar() {
+function visualcomposerstarter_specify_sidebar() {
 	if ( is_page() ) {
 		$value = function_exists( 'get_field' ) ? get_field( 'field_589f5a321f0bc' ) : null;
 	} elseif ( is_singular() ) {
@@ -801,7 +770,7 @@ function vct_specify_sidebar() {
 	if ( $specify_setting ) {
 		return $specify_setting;
 	} else {
-		return get_theme_mod( vct_check_needed_sidebar(), 'none' );
+		return get_theme_mod( visualcomposerstarter_check_needed_sidebar(), 'none' );
 	}
 }
 
@@ -810,7 +779,7 @@ function vct_specify_sidebar() {
  *
  * @return bool
  */
-function vct_is_the_title_displayed() {
+function visualcomposerstarter_is_the_title_displayed() {
 	if ( function_exists( 'get_field' ) ) {
 		if ( is_page() ) {
 			return (bool) ! get_field( 'field_589f55db2faa9' );
@@ -829,8 +798,8 @@ function vct_is_the_title_displayed() {
  *
  * @return string
  */
-function vct_get_maincontent_block_class() {
-	switch ( vct_specify_sidebar() ) {
+function visualcomposerstarter_get_maincontent_block_class() {
+	switch ( visualcomposerstarter_specify_sidebar() ) {
 		case 'none':
 			return 'col-md-12';
 		case 'left':
@@ -847,8 +816,8 @@ function vct_get_maincontent_block_class() {
  *
  * @return bool|string
  */
-function vct_get_sidebar_class() {
-	switch ( vct_specify_sidebar() ) {
+function visualcomposerstarter_get_sidebar_class() {
+	switch ( visualcomposerstarter_specify_sidebar() ) {
 		case 'none':
 			return false;
 		case 'left':
@@ -864,8 +833,8 @@ function vct_get_sidebar_class() {
  * Inline styles.
  */
 function visualcomposerstarter_inline_styles() {
-	wp_register_style( 'vct-custom-style', get_template_directory_uri() . '/css/customizer-custom.css', array(), false );
-	wp_enqueue_style( 'vct-custom-style' );
+	wp_register_style( 'visualcomposerstarter-custom-style', get_template_directory_uri() . '/css/customizer-custom.css', array(), false );
+	wp_enqueue_style( 'visualcomposerstarter-custom-style' );
 	$css = '';
 
 	// Fonts and style.
@@ -874,12 +843,12 @@ function visualcomposerstarter_inline_styles() {
 	body,
 	#main-menu ul li ul li,
 	.comment-content cite,
-	.entry-content cite { font-family: ' . get_theme_mod( 'vct_fonts_and_style_body_font_family', 'Roboto' ) . '; }
+	.entry-content cite { font-family: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_body_font_family', 'Roboto' ) ) . '; }
 	 body,
 	 .sidebar-widget-area a:hover, .sidebar-widget-area a:focus,
 	 .sidebar-widget-area .widget_recent_entries ul li:hover, .sidebar-widget-area .widget_archive ul li:hover, .sidebar-widget-area .widget_categories ul li:hover, .sidebar-widget-area .widget_meta ul li:hover, .sidebar-widget-area .widget_recent_entries ul li:focus, .sidebar-widget-area .widget_archive ul li:focus, .sidebar-widget-area .widget_categories ul li:focus, .sidebar-widget-area .widget_meta ul li:focus { color: ' . get_theme_mod( 'vct_fonts_and_style_body_primary_color', '#555555' ) . '; }
 	  .comment-content table,
-	  .entry-content table { border-color: ' . get_theme_mod( 'vct_fonts_and_style_body_primary_color', '#555555' ) . '; }
+	  .entry-content table { border-color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_body_primary_color', '#555555' ) ) . '; }
 	  .entry-full-content .entry-author-data .author-biography,
 	  .entry-full-content .entry-meta,
 	  .nav-links.post-navigation a .meta-nav,
@@ -890,11 +859,10 @@ function visualcomposerstarter_inline_styles() {
 	  .comment-content blockquote,
 	  .entry-content blockquote,
 	  .wp-caption .wp-caption-text,
-	  .comments-area .comment-list .comment-metadata a { color: ' . get_theme_mod( 'vct_fonts_and_style_body_secondary_text_color', '#777777' ) . '; }
+	  .comments-area .comment-list .comment-metadata a { color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_body_secondary_text_color', '#777777' ) ) . '; }
 	  .comments-area .comment-list .comment-metadata a:hover,
-	  .comments-area .comment-list .comment-metadata a:focus { border-bottom-color: ' . get_theme_mod( 'vct_fonts_and_style_body_secondary_text_color', '#777777' ) . '; }
+	  .comments-area .comment-list .comment-metadata a:focus { border-bottom-color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_body_secondary_text_color', '#777777' ) ) . '; }
 	  a,
-	  a.blue-button:hover,
 	  .comments-area .comment-list .reply a,
 	  .comments-area span.required,
 	  .comments-area .comment-subscription-form label:before,
@@ -938,7 +906,7 @@ function visualcomposerstarter_inline_styles() {
 	  .sidebar-widget-area .widget_recent_entries ul li,
 	  .sidebar-widget-area .widget_archive ul li,
 	  .sidebar-widget-area .widget_categories ul li,
-	  .sidebar-widget-area .widget_meta ul li { color: ' . get_theme_mod( 'vct_fonts_and_style_body_active_color', '#557cbf' ) . '; }     
+	  .sidebar-widget-area .widget_meta ul li { color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_body_active_color', '#557cbf' ) ) . '; }     
 	  .comments-area .comment-list .reply a:hover,
 	  .comments-area .comment-list .reply a:focus,
 	  .comment-content p a,
@@ -956,22 +924,22 @@ function visualcomposerstarter_inline_styles() {
 	  .entry-content datalist a,
 	  .entry-content blockquote a,
 	  .entry-content dl a,
-	  .entry-content address a { border-bottom-color: ' . get_theme_mod( 'vct_fonts_and_style_body_active_color', '#557cbf' ) . '; }    
-	  .entry-content blockquote, .comment-content { border-left-color: ' . get_theme_mod( 'vct_fonts_and_style_body_active_color', '#557cbf' ) . '; }
+	  .entry-content address a { border-bottom-color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_body_active_color', '#557cbf' ) ) . '; }    
+	  .entry-content blockquote, .comment-content { border-left-color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_body_active_color', '#557cbf' ) ) . '; }
 	  
 	  .comments-area .form-submit input[type=submit]:hover, .comments-area .form-submit input[type=submit]:focus,
 	  .blue-button:hover, .blue-button:focus {
-		background-color: ' . get_theme_mod( 'vct_fonts_and_style_hover_background', '#3c63a6' ) . ';
-		color: ' . get_theme_mod( 'vct_fonts_and_style_button_text_color', '#f4f4f4' ) . ';
+		background-color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_hover_background', '#3c63a6' ) ) . ';
+		color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_button_text_color', '#f4f4f4' ) ) . ';
 	  }
 	  
-	  html, #main-menu ul li ul li { font-size: ' . get_theme_mod( 'vct_fonts_and_style_body_font_size', '16px' ) . ' }
-	  body, #footer, .footer-widget-area .widget-title { line-height: ' . get_theme_mod( 'vct_fonts_and_style_body_line_height', '1.7' ) . '; }
+	  html, #main-menu ul li ul li { font-size: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_body_font_size', '16px' ) ) . ' }
+	  body, #footer, .footer-widget-area .widget-title { line-height: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_body_line_height', '1.7' ) ) . '; }
 	  body {
-		letter-spacing: ' . get_theme_mod( 'vct_fonts_and_style_body_letter_spacing', '0.01rem' ) . ';
-		font-weight: ' . get_theme_mod( 'vct_fonts_and_style_body_weight', '400' ) . ';
-		font-style: ' . get_theme_mod( 'vct_fonts_and_style_body_font_style', 'normal' ) . ';
-		text-transform: ' . get_theme_mod( 'vct_fonts_and_style_body_capitalization', 'none' ) . ';
+		letter-spacing: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_body_letter_spacing', '0.01rem' ) ) . ';
+		font-weight: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_body_weight', '400' ) ) . ';
+		font-style: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_body_font_style', 'normal' ) ) . ';
+		text-transform: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_body_capitalization', 'none' ) ) . ';
 	  }
 	  
 	  .comment-content address,
@@ -990,29 +958,30 @@ function visualcomposerstarter_inline_styles() {
 	  .entry-content p,
 	  .entry-content table,
 	  .entry-content ul {
-		margin-top: ' . get_theme_mod( 'vct_fonts_and_style_body_margin_top', '0' ) . ';
-		margin-bottom: ' . get_theme_mod( 'vct_fonts_and_style_body_margin_bottom', '1.5rem' ) . ';
+		margin-top: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_body_margin_top', '0' ) ) . ';
+		margin-bottom: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_body_margin_bottom', '1.5rem' ) ) . ';
 	  }
 	  
 	  /*Buttons font and style*/
 	  .comments-area .form-submit input[type=submit],
 	  .blue-button { 
-			background-color: ' . get_theme_mod( 'vct_fonts_and_style_buttons_background_color', '#557cbf' ) . '; 
-			color: ' . get_theme_mod( 'vct_fonts_and_style_buttons_text_color', '#f4f4f4' ) . ';
-			font-family: ' . get_theme_mod( 'vct_fonts_and_style_buttons_font_family', 'Playfair Display' ) . ';
-			font-size: ' . get_theme_mod( 'vct_fonts_and_style_buttons_font_size', '16px' ) . ';
-			font-weight: ' . get_theme_mod( 'vct_fonts_and_style_buttons_weight', '400' ) . ';
-			font-style: ' . get_theme_mod( 'vct_fonts_and_style_buttons_font_style', 'normal' ) . ';
-			letter-spacing: ' . get_theme_mod( 'vct_fonts_and_style_buttons_letter_spacing', '0.01rem' ) . ';
-			line-height: ' . get_theme_mod( 'vct_fonts_and_style_buttons_line_height', '1' ) . ';
-			text-transform: ' . get_theme_mod( 'vct_fonts_and_style_buttons_capitalization', 'none' ) . ';
-			margin-top: ' . get_theme_mod( 'vct_fonts_and_style_buttons_margin_top', '0' ) . ';
-			margin-bottom: ' . get_theme_mod( 'vct_fonts_and_style_buttons_margin_bottom', '0' ) . ';
+			background-color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_buttons_background_color', '#557cbf' ) ) . '; 
+			color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_buttons_text_color', '#f4f4f4' ) ) . ';
+			font-family: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_buttons_font_family', 'Playfair Display' ) ) . ';
+			font-size: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_buttons_font_size', '16px' ) ) . ';
+			font-weight: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_buttons_weight', '400' ) ) . ';
+			font-style: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_buttons_font_style', 'normal' ) ) . ';
+			letter-spacing: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_buttons_letter_spacing', '0.01rem' ) ) . ';
+			line-height: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_buttons_line_height', '1' ) ) . ';
+			text-transform: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_buttons_capitalization', 'none' ) ) . ';
+			margin-top: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_buttons_margin_top', '0' ) ) . ';
+			margin-bottom: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_buttons_margin_bottom', '0' ) ) . ';
 	  }
 	  .comments-area .form-submit input[type=submit]:hover, .comments-area .form-submit input[type=submit]:focus,
-	  .blue-button:hover, .blue-button:focus { 
-			background-color: ' . get_theme_mod( 'vct_fonts_and_style_buttons_background_hover_color', '#3c63a6' ) . '; 
-			color: ' . get_theme_mod( 'vct_fonts_and_style_buttons_text_hover_color', '#f4f4f4' ) . '; 
+	  .blue-button:hover, .blue-button:focus, 
+	  .entry-content p a.blue-button:hover { 
+			background-color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_buttons_background_hover_color', '#3c63a6' ) ) . '; 
+			color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_buttons_text_hover_color', '#f4f4f4' ) ) . '; 
 	  }
 	';
 
@@ -1030,7 +999,7 @@ function visualcomposerstarter_inline_styles() {
 	 .comments-area .comment-form-email label,
 	 .comments-area .comment-form-url label,
 	 .comment-content blockquote,
-	 .entry-content blockquote { font-family: ' . get_theme_mod( 'vct_fonts_and_style_h1_font_family', 'Playfair Display' ) . '; }
+	 .entry-content blockquote { font-family: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h1_font_family', 'Playfair Display' ) ) . '; }
 	.entry-full-content .entry-author-data .author-name,
 	.entry-full-content .entry-meta a,
 	.nav-links.post-navigation a .post-title,
@@ -1038,167 +1007,139 @@ function visualcomposerstarter_inline_styles() {
 	.comments-area .comment-list .comment-author a,
 	.search-results-header h4 strong,
 	.entry-preview .entry-meta li a:hover,
-	.entry-preview .entry-meta li a:focus { color: ' . get_theme_mod( 'vct_fonts_and_style_h1_text_color', '#333333' ) . '; }
+	.entry-preview .entry-meta li a:focus { color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h1_text_color', '#333333' ) ) . '; }
 	
 	.entry-full-content .entry-meta a,
 	.comments-area .comment-list .comment-author a:hover,
 	.comments-area .comment-list .comment-author a:focus,
-	.nav-links.post-navigation a .post-title { border-bottom-color: ' . get_theme_mod( 'vct_fonts_and_style_h1_text_color', '#333333' ) . '; }
+	.nav-links.post-navigation a .post-title { border-bottom-color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h1_text_color', '#333333' ) ) . '; }
 
 	 
 	 h1 {
-		color: ' . get_theme_mod( 'vct_fonts_and_style_h1_text_color', '#333333' ) . ';
-		font-family: ' . get_theme_mod( 'vct_fonts_and_style_h1_font_family', 'Playfair Display' ) . ';
-		font-size: ' . get_theme_mod( 'vct_fonts_and_style_h1_font_size', '42px' ) . ';
-		font-weight: ' . get_theme_mod( 'vct_fonts_and_style_h1_weight', '400' ) . ';
-		font-style: ' . get_theme_mod( 'vct_fonts_and_style_h1_font_style', 'normal' ) . ';
-		letter-spacing: ' . get_theme_mod( 'vct_fonts_and_style_h1_letter_spacing', '0.01rem' ) . ';
-		line-height: ' . get_theme_mod( 'vct_fonts_and_style_h1_line_height', '1.1' ) . ';
-		margin-top: ' . get_theme_mod( 'vct_fonts_and_style_h1_margin_top', '0' ) . ';
-		margin-bottom: ' . get_theme_mod( 'vct_fonts_and_style_h1_margin_bottom', '2.125rem' ) . ';
-		text-transform: ' . get_theme_mod( 'vct_fonts_and_style_h1_capitalization', 'none' ) . ';  
+		color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h1_text_color', '#333333' ) ) . ';
+		font-family: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h1_font_family', 'Playfair Display' ) ) . ';
+		font-size: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h1_font_size', '42px' ) ) . ';
+		font-weight: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h1_weight', '400' ) ) . ';
+		font-style: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h1_font_style', 'normal' ) ) . ';
+		letter-spacing: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h1_letter_spacing', '0.01rem' ) ) . ';
+		line-height: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h1_line_height', '1.1' ) ) . ';
+		margin-top: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h1_margin_top', '0' ) ) . ';
+		margin-bottom: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h1_margin_bottom', '2.125rem' ) ) . ';
+		text-transform: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h1_capitalization', 'none' ) ) . ';  
 	 }
-	 h1 a {color: ' . get_theme_mod( 'vct_fonts_and_style_h1_active_color', '#557cbf' ) . ';}
-	 h1 a:hover, h1 a:focus {color: ' . get_theme_mod( 'vct_fonts_and_style_h1_active_color', '#557cbf' ) . ';}
+	 h1 a {color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h1_active_color', '#557cbf' ) ) . ';}
+	 h1 a:hover, h1 a:focus {color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h1_active_color', '#557cbf' ) ) . ';}
 	 h2 {
-		color: ' . get_theme_mod( 'vct_fonts_and_style_h2_text_color', '#333333' ) . ';
-		font-family: ' . get_theme_mod( 'vct_fonts_and_style_h2_font_family', 'Playfair Display' ) . ';
-		font-size: ' . get_theme_mod( 'vct_fonts_and_style_h2_font_size', '36px' ) . ';
-		font-weight: ' . get_theme_mod( 'vct_fonts_and_style_h2_weight', '400' ) . ';
-		font-style: ' . get_theme_mod( 'vct_fonts_and_style_h2_font_style', 'normal' ) . ';
-		letter-spacing: ' . get_theme_mod( 'vct_fonts_and_style_h2_letter_spacing', '0.01rem' ) . ';
-		line-height: ' . get_theme_mod( 'vct_fonts_and_style_h2_line_height', '1.1' ) . ';
-		margin-top: ' . get_theme_mod( 'vct_fonts_and_style_h2_margin_top', '0' ) . ';
-		margin-bottom: ' . get_theme_mod( 'vct_fonts_and_style_h2_margin_bottom', '0.625rem' ) . ';
-		text-transform: ' . get_theme_mod( 'vct_fonts_and_style_h2_capitalization', 'none' ) . ';  
+		color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h2_text_color', '#333333' ) ) . ';
+		font-family: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h2_font_family', 'Playfair Display' ) ) . ';
+		font-size: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h2_font_size', '36px' ) ) . ';
+		font-weight: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h2_weight', '400' ) ) . ';
+		font-style: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h2_font_style', 'normal' ) ) . ';
+		letter-spacing: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h2_letter_spacing', '0.01rem' ) ) . ';
+		line-height: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h2_line_height', '1.1' ) ) . ';
+		margin-top: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h2_margin_top', '0' ) ) . ';
+		margin-bottom: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h2_margin_bottom', '0.625rem' ) ) . ';
+		text-transform: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h2_capitalization', 'none' ) ) . ';  
 	 }
-	 h2 a {color: ' . get_theme_mod( 'vct_fonts_and_style_h2_active_color', '#557cbf' ) . ';}
-	 h2 a:hover, h2 a:focus {color: ' . get_theme_mod( 'vct_fonts_and_style_h2_active_color', '#557cbf' ) . ';}
+	 h2 a {color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h2_active_color', '#557cbf' ) ) . ';}
+	 h2 a:hover, h2 a:focus {color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h2_active_color', '#557cbf' ) ) . ';}
 	 h3 {
-		color: ' . get_theme_mod( 'vct_fonts_and_style_h3_text_color', '#333333' ) . ';
-		font-family: ' . get_theme_mod( 'vct_fonts_and_style_h3_font_family', 'Playfair Display' ) . ';
-		font-size: ' . get_theme_mod( 'vct_fonts_and_style_h3_font_size', '30px' ) . ';
-		font-weight: ' . get_theme_mod( 'vct_fonts_and_style_h3_weight', '400' ) . ';
-		font-style: ' . get_theme_mod( 'vct_fonts_and_style_h3_font_style', 'normal' ) . ';
-		letter-spacing: ' . get_theme_mod( 'vct_fonts_and_style_h3_letter_spacing', '0.01rem' ) . ';
-		line-height: ' . get_theme_mod( 'vct_fonts_and_style_h3_line_height', '1.1' ) . ';
-		margin-top: ' . get_theme_mod( 'vct_fonts_and_style_h3_margin_top', '0' ) . ';
-		margin-bottom: ' . get_theme_mod( 'vct_fonts_and_style_h3_margin_bottom', '0.625rem' ) . ';
-		text-transform: ' . get_theme_mod( 'vct_fonts_and_style_h3_capitalization', 'none' ) . ';  
+		color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h3_text_color', '#333333' ) ) . ';
+		font-family: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h3_font_family', 'Playfair Display' ) ) . ';
+		font-size: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h3_font_size', '30px' ) ) . ';
+		font-weight: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h3_weight', '400' ) ) . ';
+		font-style: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h3_font_style', 'normal' ) ) . ';
+		letter-spacing: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h3_letter_spacing', '0.01rem' ) ) . ';
+		line-height: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h3_line_height', '1.1' ) ) . ';
+		margin-top: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h3_margin_top', '0' ) ) . ';
+		margin-bottom: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h3_margin_bottom', '0.625rem' ) ) . ';
+		text-transform: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h3_capitalization', 'none' ) ) . ';  
 	 }
-	 h3 a {color: ' . get_theme_mod( 'vct_fonts_and_style_h3_active_color', '#557cbf' ) . ';}
-	 h3 a:hover, h3 a:focus {color: ' . get_theme_mod( 'vct_fonts_and_style_h3_active_color', '#557cbf' ) . ';}
+	 h3 a {color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h3_active_color', '#557cbf' ) ) . ';}
+	 h3 a:hover, h3 a:focus {color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h3_active_color', '#557cbf' ) ) . ';}
 	 h4 {
-		color: ' . get_theme_mod( 'vct_fonts_and_style_h4_text_color', '#333333' ) . ';
-		font-family: ' . get_theme_mod( 'vct_fonts_and_style_h4_font_family', 'Playfair Display' ) . ';
-		font-size: ' . get_theme_mod( 'vct_fonts_and_style_h4_font_size', '22px' ) . ';
-		font-weight: ' . get_theme_mod( 'vct_fonts_and_style_h4_weight', '400' ) . ';
-		font-style: ' . get_theme_mod( 'vct_fonts_and_style_h4_font_style', 'normal' ) . ';
-		letter-spacing: ' . get_theme_mod( 'vct_fonts_and_style_h4_letter_spacing', '0.01rem' ) . ';
-		line-height: ' . get_theme_mod( 'vct_fonts_and_style_h4_line_height', '1.1' ) . ';
-		margin-top: ' . get_theme_mod( 'vct_fonts_and_style_h4_margin_top', '0' ) . ';
-		margin-bottom: ' . get_theme_mod( 'vct_fonts_and_style_h4_margin_bottom', '0.625rem' ) . ';
-		text-transform: ' . get_theme_mod( 'vct_fonts_and_style_h4_capitalization', 'none' ) . ';  
+		color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h4_text_color', '#333333' ) ) . ';
+		font-family: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h4_font_family', 'Playfair Display' ) ) . ';
+		font-size: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h4_font_size', '22px' ) ) . ';
+		font-weight: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h4_weight', '400' ) ) . ';
+		font-style: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h4_font_style', 'normal' ) ) . ';
+		letter-spacing: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h4_letter_spacing', '0.01rem' ) ) . ';
+		line-height: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h4_line_height', '1.1' ) ) . ';
+		margin-top: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h4_margin_top', '0' ) ) . ';
+		margin-bottom: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h4_margin_bottom', '0.625rem' ) ) . ';
+		text-transform: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h4_capitalization', 'none' ) ) . ';  
 	 }
-	 h4 a {color: ' . get_theme_mod( 'vct_fonts_and_style_h4_active_color', '#557cbf' ) . ';}
-	 h4 a:hover, h4 a:focus {color: ' . get_theme_mod( 'vct_fonts_and_style_h4_active_color', '#557cbf' ) . ';}
+	 h4 a {color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h4_active_color', '#557cbf' ) ) . ';}
+	 h4 a:hover, h4 a:focus {color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h4_active_color', '#557cbf' ) ) . ';}
 	 h5 {
-		color: ' . get_theme_mod( 'vct_fonts_and_style_h5_text_color', '#333333' ) . ';
-		font-family: ' . get_theme_mod( 'vct_fonts_and_style_h5_font_family', 'Playfair Display' ) . ';
-		font-size: ' . get_theme_mod( 'vct_fonts_and_style_h5_font_size', '22px' ) . ';
-		font-weight: ' . get_theme_mod( 'vct_fonts_and_style_h5_weight', '400' ) . ';
-		font-style: ' . get_theme_mod( 'vct_fonts_and_style_h5_font_style', 'normal' ) . ';
-		letter-spacing: ' . get_theme_mod( 'vct_fonts_and_style_h5_letter_spacing', '0.01rem' ) . ';
-		line-height: ' . get_theme_mod( 'vct_fonts_and_style_h5_line_height', '1.1' ) . ';
-		margin-top: ' . get_theme_mod( 'vct_fonts_and_style_h5_margin_top', '0' ) . ';
-		margin-bottom: ' . get_theme_mod( 'vct_fonts_and_style_h5_margin_bottom', '0.625rem' ) . ';
-		text-transform: ' . get_theme_mod( 'vct_fonts_and_style_h5_capitalization', 'none' ) . ';  
+		color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h5_text_color', '#333333' ) ) . ';
+		font-family: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h5_font_family', 'Playfair Display' ) ) . ';
+		font-size: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h5_font_size', '22px' ) ) . ';
+		font-weight: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h5_weight', '400' ) ) . ';
+		font-style: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h5_font_style', 'normal' ) ) . ';
+		letter-spacing: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h5_letter_spacing', '0.01rem' ) ) . ';
+		line-height: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h5_line_height', '1.1' ) ) . ';
+		margin-top: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h5_margin_top', '0' ) ) . ';
+		margin-bottom: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h5_margin_bottom', '0.625rem' ) ) . ';
+		text-transform: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h5_capitalization', 'none' ) ) . ';  
 	 }
-	 h5 a {color: ' . get_theme_mod( 'vct_fonts_and_style_h5_active_color', '#557cbf' ) . ';}
-	 h5 a:hover, h5 a:focus {color: ' . get_theme_mod( 'vct_fonts_and_style_h5_active_color', '#557cbf' ) . ';}
+	 h5 a {color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h5_active_color', '#557cbf' ) ) . ';}
+	 h5 a:hover, h5 a:focus {color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h5_active_color', '#557cbf' ) ) . ';}
 	 h6 {
-		color: ' . get_theme_mod( 'vct_fonts_and_style_h6_text_color', '#333333' ) . ';
-		font-family: ' . get_theme_mod( 'vct_fonts_and_style_h6_font_family', 'Playfair Display' ) . ';
-		font-size: ' . get_theme_mod( 'vct_fonts_and_style_h6_font_size', '16px' ) . ';
-		font-weight: ' . get_theme_mod( 'vct_fonts_and_style_h6_weight', '400' ) . ';
-		font-style: ' . get_theme_mod( 'vct_fonts_and_style_h6_font_style', 'normal' ) . ';
-		letter-spacing: ' . get_theme_mod( 'vct_fonts_and_style_h6_letter_spacing', '0.01rem' ) . ';
-		line-height: ' . get_theme_mod( 'vct_fonts_and_style_h6_line_height', '1.1' ) . ';
-		margin-top: ' . get_theme_mod( 'vct_fonts_and_style_h6_margin_top', '0' ) . ';
-		margin-bottom: ' . get_theme_mod( 'vct_fonts_and_style_h6_margin_bottom', '0.625rem' ) . ';
-		text-transform: ' . get_theme_mod( 'vct_fonts_and_style_h6_capitalization', 'none' ) . ';  
+		color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h6_text_color', '#333333' ) ) . ';
+		font-family: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h6_font_family', 'Playfair Display' ) ) . ';
+		font-size: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h6_font_size', '16px' ) ) . ';
+		font-weight: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h6_weight', '400' ) ) . ';
+		font-style: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h6_font_style', 'normal' ) ) . ';
+		letter-spacing: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h6_letter_spacing', '0.01rem' ) ) . ';
+		line-height: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h6_line_height', '1.1' ) ) . ';
+		margin-top: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h6_margin_top', '0' ) ) . ';
+		margin-bottom: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h6_margin_bottom', '0.625rem' ) ) . ';
+		text-transform: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h6_capitalization', 'none' ) ) . ';  
 	 }
-	 h6 a {color: ' . get_theme_mod( 'vct_fonts_and_style_h6_active_color', '#557cbf' ) . ';}
-	 h6 a:hover, h6 a:focus {color: ' . get_theme_mod( 'vct_fonts_and_style_h6_active_color', '#557cbf' ) . ';}
+	 h6 a {color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h6_active_color', '#557cbf' ) ) . ';}
+	 h6 a:hover, h6 a:focus {color: ' . esc_html( get_theme_mod( 'vct_fonts_and_style_h6_active_color', '#557cbf' ) ) . ';}
 	';
-
-	$overall_site_bg_color = get_theme_mod( 'vct_overall_site_bg_color', '#ffffff' );
-	if ( '#ffffff' !== $overall_site_bg_color ) {
-		$css .= "
-		/*Overall site background color*/
-		body {background-color: {$overall_site_bg_color};}
-		";
-	}
-
-	if ( get_theme_mod( 'vct_overall_site_enable_bg_image', false ) ) {
-		$overall_site_bg_image = get_theme_mod( 'vct_overall_site_bg_image', '' );
-		if ( 'repeat' === get_theme_mod( 'vct_overall_site_bg_image_style', 'cover' ) ) {
-			$overall_site_bg_image_style = 'background-repeat: repeat;';
-		} else {
-			$overall_site_bg_image_style = '
-			background-size: ' . get_theme_mod( 'vct_overall_site_bg_image_style', 'cover' ) . ';
-			background-repeat: no-repeat;';
-		}
-
-		if ( '' !== $overall_site_bg_image ) {
-			$css .= "
-			body {
-				background-image: url('{$overall_site_bg_image}');
-				{$overall_site_bg_image_style}
-			}
-			";
-		}
-	}
 
 	$header_and_menu_area_background = get_theme_mod( 'vct_header_background', '#ffffff' );
 	if ( true === get_theme_mod( 'vct_header_reserve_space_for_header', true ) || '#ffffff' !== $header_and_menu_area_background ) {
-		$css .= "
+		$css .= '
 		/*Header and menu area background color*/
 		#header .navbar .navbar-wrapper,
 		body.navbar-no-background #header .navbar.fixed.scroll,
 		body.header-full-width-boxed #header .navbar,
 		body.header-full-width #header .navbar {
-			background-color: {$header_and_menu_area_background};
+			background-color: ' . esc_html( $header_and_menu_area_background ) . ';
 		}
 		
 		@media only screen and (min-width: 768px) {
-			body:not(.menu-sandwich) #main-menu ul li ul { background-color: {$header_and_menu_area_background}; }
+			body:not(.menu-sandwich) #main-menu ul li ul { background-color: ' . esc_html( $header_and_menu_area_background ) . '; }
 		}
 		body.navbar-no-background #header .navbar {background-color: transparent;}
-		";
+		';
 	}
 
 	$header_and_menu_area_text_color = get_theme_mod( 'vct_header_text_color', '#555555' );
 	if ( '#555555' !== $header_and_menu_area_text_color ) {
-		$css .= "
+		$css .= '
 		/*Header and menu area text color*/
-		#header { color: {$header_and_menu_area_text_color} }
+		#header { color: ' . esc_html( $header_and_menu_area_text_color ) . ' }
 		
 		@media only screen and (min-width: 768px) {
 			body:not(.menu-sandwich) #main-menu ul li,
 			body:not(.menu-sandwich) #main-menu ul li a,
-			body:not(.menu-sandwich) #main-menu ul li ul li a { color: {$header_and_menu_area_text_color} }
+			body:not(.menu-sandwich) #main-menu ul li ul li a { color:  ' . esc_html( $header_and_menu_area_text_color ) . ' }
 		}
-		";
+		';
 	}
 
 	$header_and_menu_area_text_active_color = get_theme_mod( 'vct_header_text_active_color', '#333333' );
 	if ( '#333333' !== $header_and_menu_area_text_active_color ) {
-		$css .= "
+		$css .= '
 		/*Header and menu area active text color*/
 		#header a:hover {
-			color: {$header_and_menu_area_text_active_color};
-			border-bottom-color: {$header_and_menu_area_text_active_color};
+			color: ' . esc_html( $header_and_menu_area_text_active_color ) . ';
+			border-bottom-color: ' . esc_html( $header_and_menu_area_text_active_color ) . ';
 		}
 		
 		@media only screen and (min-width: 768px) {
@@ -1207,35 +1148,35 @@ function visualcomposerstarter_inline_styles() {
 			body:not(.menu-sandwich) #main-menu ul li ul li a:focus, body:not(.menu-sandwich) #main-menu ul li ul li a:hover,
 			body:not(.menu-sandwich) .sandwich-color-light #main-menu>ul>li.current_page_item>a,
 			body:not(.menu-sandwich) .sandwich-color-light #main-menu>ul ul li.current_page_item>a {
-				color: {$header_and_menu_area_text_active_color};
-				border-bottom-color: {$header_and_menu_area_text_active_color};
+				color: ' . esc_html( $header_and_menu_area_text_active_color ) . ';
+				border-bottom-color: ' . esc_html( $header_and_menu_area_text_active_color ) . ';
 			}
 		}
-		";
+		';
 	}
 
 	$header_padding = get_theme_mod( 'vct_header_padding', '25px' );
 	if ( '25px' !== $header_padding ) {
-		$css .= "
+		$css .= '
 		/* Header padding */
 
-		.navbar-wrapper { padding: {$header_padding} 15px; }
-		";
+		.navbar-wrapper { padding: ' . esc_html( $header_padding ) . ' 15px; }
+		';
 	}
 
 	$header_sandwich_icon_color = get_theme_mod( 'vct_header_sandwich_icon_color', '#ffffff' );
 	if ( '#ffffff' !== $header_sandwich_icon_color ) {
 		$css .= '
-			.navbar-toggle .icon-bar {background-color: ' . $header_sandwich_icon_color . ';}
+			.navbar-toggle .icon-bar {background-color: ' . esc_html( $header_sandwich_icon_color ) . ';}
 		';
 	}
 
 	$header_and_menu_area_menu_hover_background = get_theme_mod( 'vct_header_menu_hover_background', '#eeeeee' );
 	if ( '#eeeeee' !== $header_and_menu_area_menu_hover_background ) {
-		$css .= "
+		$css .= '
 		/*Header and menu area menu hover background color*/
-		@media only screen and (min-width: 768px) { body:not(.menu-sandwich) #main-menu ul li ul li:hover > a { background-color: {$header_and_menu_area_menu_hover_background}; } }
-		";
+		@media only screen and (min-width: 768px) { body:not(.menu-sandwich) #main-menu ul li ul li:hover > a { background-color: ' . esc_html( $header_and_menu_area_menu_hover_background ) . '; } }
+		';
 	}
 
 	// Featured image custom height.
@@ -1246,25 +1187,25 @@ function visualcomposerstarter_inline_styles() {
 	if ( get_theme_mod( 'vct_overall_site_featured_image_height', 'auto' ) === 'custom' ) {
 		$css .= '
 		/*Featured image custom height*/
-		.header-image .fade-in-img { height: ' . $vct_featured_image_custom_height . '; }
+		.header-image .fade-in-img { height: ' . esc_html( $vct_featured_image_custom_height ) . '; }
 		';
 
 	}
 
 	$content_area_background = get_theme_mod( 'vct_overall_site_content_background', '#ffffff' );
 	if ( '#ffffff' !== $content_area_background ) {
-		$css .= "
+		$css .= '
 		/*Content area background*/
-		.content-wrapper { background-color: {$content_area_background}; }
-		";
+		.content-wrapper { background-color: ' . esc_html( $content_area_background ) . '; }
+		';
 	}
 
 	$content_area_comments_background = get_theme_mod( 'vct_overall_site_comments_background', '#f4f4f4' );
 	if ( '#f4f4f4' !== $content_area_comments_background ) {
-		$css .= "
+		$css .= '
 		/*Comments background*/
-		.comments-area { background-color: {$content_area_comments_background}; }
-		";
+		.comments-area { background-color: ' . esc_html( $content_area_comments_background ) . '; }
+		';
 	}
 
 	$footer_area_background = get_theme_mod( 'vct_footer_area_background', '#333333' );
@@ -1296,68 +1237,96 @@ function visualcomposerstarter_inline_styles() {
 			$hex .= $hex_digit;
 		}
 		$footer_widget_area_background = '#' . $hex;
-		$css .= "
+		$css .= '
 		/*Footer area background color*/
-		#footer { background-color: {$footer_area_background}; }
-		.footer-widget-area { background-color: {$footer_widget_area_background}; }
-		";
+		#footer { background-color: ' . esc_html( $footer_area_background ) . '; }
+		.footer-widget-area { background-color: ' . esc_html( $footer_widget_area_background ) . '; }
+		';
 	}
 
 	$footer_area_text_color = get_theme_mod( 'vct_footer_area_text_color', '#777777' );
 	if ( '#777777' !== $footer_area_text_color ) {
-		$css .= "
+		$css .= '
 		/*Footer area text color*/
 		#footer,
-		#footer .footer-socials ul li a span {color: {$footer_area_text_color}; }
-		";
+		#footer .footer-socials ul li a span {color: ' . esc_html( $footer_area_text_color ) . '; }
+		';
 	}
 
 	$footer_area_text_active_color = get_theme_mod( 'vct_footer_area_text_active_color', '#ffffff' );
 	if ( '#ffffff' !== $footer_area_text_active_color ) {
-		$css .= "
+		$css .= '
 		/*Footer area text active color*/
 		#footer a,
-		#footer .footer-socials ul li a:hover span { color: {$footer_area_text_active_color}; }
-		#footer a:hover { border-bottom-color: {$footer_area_text_active_color}; }
-		";
+		#footer .footer-socials ul li a:hover span { color: ' . esc_html( $footer_area_text_active_color ) . '; }
+		#footer a:hover { border-bottom-color: ' . esc_html( $footer_area_text_active_color ) . '; }
+		';
 	}
 
-	wp_add_inline_style( 'vct-custom-style', $css );
+	wp_add_inline_style( 'visualcomposerstarter-custom-style', $css );
 }
 add_action( 'wp_enqueue_scripts', 'visualcomposerstarter_inline_styles' );
 
+/**
+ * Include the TGM_Plugin_Activation class.
+ */
+require_once get_template_directory() . '/inc/tgmpa/class-tgm-plugin-activation.php';
+
+add_action( 'tgmpa_register', 'visualcomposerstarter_register_required_plugins' );
 
 /**
- * Inline footer js.
+ * Register the required plugins for this theme.
  */
-function vct_inline_footer_js() {
-	$js = '';
+function visualcomposerstarter_register_required_plugins() {
+	/*
+	 * Array of plugin arrays. Required keys are name and slug.
+	 */
+	$plugins = array(
+		array(
+			'name'      => 'Advanced Custom Fields',
+			'slug'      => 'advanced-custom-fields',
+			'required'  => false,
+		),
+	);
 
-	// custom footer scripts.
-	$footer_js = get_theme_mod( 'vct_scripts_footer', '' );
-	$js .= $footer_js;
-
-	wp_add_inline_script( 'visual-composer-starter-script', $js );
+	/*
+	 * Array of configuration settings. Amend each line as needed.
+	 */
+	$config = array(
+		'id'           => 'visual-composer-starter',                 // Unique ID for hashing notices for multiple instances of TGMPA.
+		'default_path' => '',                      // Default absolute path to bundled plugins.
+		'menu'         => 'tgmpa-install-plugins', // Menu slug.
+		'has_notices'  => true,                    // Show admin notices or not.
+		'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
+		'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
+		'is_automatic' => false,                   // Automatically activate plugins after installation or not.
+		'message'      => '',                      // Message to output right before the plugins table.
+	);
+	tgmpa( $plugins, $config );
 }
-
-add_action( 'wp_enqueue_scripts', 'vct_inline_footer_js' );
 
 /**
- * Inline header js.
+ * For backward compatibility for background
+ * Will be removed in v 1.7
  */
-function vct_inline_header_js() {
-	/* Header scripts */
-	wp_register_script( 'visual-composer-starter-header-script', get_template_directory_uri() . '/js/header-scripts.js', array( 'jquery' ), VCT_VERSION, false );
-	/* Enqueue scripts */
-	wp_enqueue_script( 'visual-composer-starter-header-script' );
+function visualcomposerstarter_set_old_styles() {
+	if ( get_theme_mod( 'vct_overall_site_bg_color' ) ) {
+		set_theme_mod( 'background_color', str_replace( '#', '', get_theme_mod( 'vct_overall_site_bg_color' ) ) );
+		remove_theme_mod( 'vct_overall_site_bg_color' );
+	}
 
-	$js = '';
+	if ( get_theme_mod( 'vct_overall_site_enable_bg_image' ) ) {
 
-	// custom header scripts.
-	$header_js = get_theme_mod( 'vct_scripts_header', '' );
-	$js .= $header_js;
-
-	wp_add_inline_script( 'visual-composer-starter-header-script', $js );
+		set_theme_mod( 'background_attachment', 'scroll' );
+		set_theme_mod( 'background_image', esc_url_raw( get_theme_mod( 'vct_overall_site_bg_image' ) ) );
+		if ( 'repeat' === get_theme_mod( 'vct_overall_site_bg_image_style' ) ) {
+			set_theme_mod( 'background_repeat', 'repeat' );
+		} else {
+			set_theme_mod( 'background_repeat', 'no-repeat' );
+			set_theme_mod( 'background_size', esc_html( get_theme_mod( 'vct_overall_site_bg_image_style' ) ) );
+		}
+		remove_theme_mod( 'vct_overall_site_bg_image' );
+		remove_theme_mod( 'vct_overall_site_bg_image_style' );
+		remove_theme_mod( 'vct_overall_site_enable_bg_image' );
+	}
 }
-
-add_action( 'wp_enqueue_scripts', 'vct_inline_header_js' );

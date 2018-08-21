@@ -14,6 +14,8 @@ a {
 *,
 :before,
 :after {
+  -webkit-transition: border-bottom 0.4s ease, color 0.4s ease, background-color 0.4s ease;
+  -o-transition: border-bottom 0.4s ease, color 0.4s ease, background-color 0.4s ease;
   transition: border-bottom 0.4s ease, color 0.4s ease, background-color 0.4s ease;
 }
 .blue-button {
@@ -51,7 +53,6 @@ Accessibility
 }
 .screen-reader-text:focus {
   background-color: #f1f1f1;
-  -webkit-border-radius: 3px;
   border-radius: 3px;
   -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
@@ -73,13 +74,12 @@ Accessibility
 }
 img {
   opacity: 1;
+  -webkit-transition: opacity 0.5s ease;
+  -o-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
 }
 img[data-src] {
   opacity: 0;
-}
-#wpadminbar {
-  position: fixed;
 }
 .navbar {
   border: none;
@@ -144,13 +144,21 @@ body.menu-sandwich #main-menu ul.nav li {
   height: auto;
   padding: 0 15px;
 }
+.navbar-brand h1 a {
+  font-size: 30px;
+  color: #333;
+}
+.navbar-brand h1 a:hover {
+  color: #557cbf;
+  text-decoration: none;
+}
 .navbar-toggle {
   margin-bottom: 0;
 }
 .navbar-toggle .icon-bar {
   width: 20px;
   border-radius: 0;
-  background-color: #fff;
+  background-color: #333;
 }
 .sandwich-color-light #main-menu {
   background-color: #fff;
@@ -195,6 +203,8 @@ body.menu-sandwich #main-menu ul.nav li {
   background-color: #333;
   padding: 40px 30px 0 30px;
   width: 270px;
+  -webkit-transition: margin 0.8s ease;
+  -o-transition: margin 0.8s ease;
   transition: margin 0.8s ease;
 }
 #main-menu .header-widgetised-area {
@@ -228,14 +238,21 @@ body.menu-sandwich #main-menu ul.nav li {
   line-height: 1.45;
   border: none;
   background: none;
+  -webkit-box-shadow: none;
   box-shadow: none;
   outline: none;
   font-family: 'Visual Composer Starter Font';
   font-size: 0.64em;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  -o-transition: transform 0.3s ease;
   transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
   color: #fff;
 }
 #main-menu .dropdown-toggle.open {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 #main-menu ul li {
@@ -387,6 +404,10 @@ body.featured-image-custom-height .header-image .fade-in-img .fade-in-img-inner-
 }
 .main-content {
   padding-bottom: 40px;
+}
+.main-content article.post.sticky {
+  border: 6px #eeeeee solid;
+  padding: 13px;
 }
 .entry-full-content .entry-author-data {
   text-align: center;
@@ -751,6 +772,37 @@ body.featured-image-custom-height .header-image .fade-in-img .fade-in-img-inner-
   background-color: #3c63a6;
   outline: none;
 }
+.comments-area .comment div#respond {
+  min-height: 500px;
+}
+.comments-area .bypostauthor .fade-in-image:before {
+  font-family: 'Visual Composer Starter Font';
+  content: '\6e';
+  background: #557cbf;
+  color: #fff;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  position: absolute;
+  margin: 55px 0 0 52px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-left: 1px;
+  padding-bottom: 1px;
+  font-size: 20px;
+}
+.logged-in .comments-area .comment div#respond {
+  min-height: 400px;
+}
 .screen-reader-text,
 .says {
   clip: rect(1px, 1px, 1px, 1px);
@@ -789,7 +841,7 @@ body.featured-image-custom-height .header-image .fade-in-img .fade-in-img-inner-
   margin-bottom: 22px;
 }
 .featured-content img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
   display: block;
 }
@@ -845,6 +897,7 @@ body.featured-image-custom-height .header-image .fade-in-img .fade-in-img-inner-
   overflow: hidden;
   border-radius: 50%;
   border: none;
+  -webkit-box-shadow: none;
   box-shadow: none;
   background-color: rgba(255, 255, 255, 0.5);
 }
@@ -1089,6 +1142,24 @@ h6 {
 .comment-content address a.image-link {
   border-bottom: none;
 }
+.entry-content p a.blue-button,
+.comment-content p a.blue-button,
+.entry-content ol a.blue-button,
+.comment-content ol a.blue-button,
+.entry-content ul a.blue-button,
+.comment-content ul a.blue-button,
+.entry-content table a.blue-button,
+.comment-content table a.blue-button,
+.entry-content datalist a.blue-button,
+.comment-content datalist a.blue-button,
+.entry-content blockquote a.blue-button,
+.comment-content blockquote a.blue-button,
+.entry-content dl a.blue-button,
+.comment-content dl a.blue-button,
+.entry-content address a.blue-button,
+.comment-content address a.blue-button {
+  border: none;
+}
 .entry-content ol ol,
 .comment-content ol ol,
 .entry-content ul ul,
@@ -1261,9 +1332,51 @@ h6 {
 .alignnone {
   margin: 5px 20px 20px 0;
 }
-.widget-title {
+.widget .widget-title {
   margin: 0 0 1rem 0;
   font-size: 22px;
+}
+.widget select {
+  width: 100%;
+}
+.widget img {
+  max-width: 100%;
+  height: auto;
+}
+/* Calendar widget */
+.widget_calendar th,
+.widget_calendar td {
+  text-align: center;
+}
+.widget_calendar tfoot td {
+  border: 0;
+}
+.widget_calendar table {
+  border-collapse: collapse;
+  margin: 0 0 1.5em;
+  width: 100%;
+}
+.widget_calendar thead th {
+  border-bottom: 2px solid #bbb;
+  padding-bottom: 0.5em;
+}
+.widget_calendar th {
+  padding: 0.4em;
+  text-align: left;
+}
+.widget_calendar tr {
+  border-bottom: 1px solid #eee;
+}
+.widget_calendar td {
+  padding: 0.4em;
+}
+.widget_calendar th:first-child,
+.widget_calendar td:first-child {
+  padding-left: 0;
+}
+.widget_calendar th:last-child,
+.widget_calendar td:last-child {
+  padding-right: 0;
 }
 .search-form {
   position: relative;
@@ -1409,6 +1522,8 @@ h6 {
 }
 #footer .footer-socials ul li a span {
   display: block;
+  -webkit-transition: opacity 0.4s ease;
+  -o-transition: opacity 0.4s ease;
   transition: opacity 0.4s ease;
 }
 #footer .copyright {
@@ -1463,4 +1578,10 @@ h6 {
   display: inline-block;
   list-style: none;
   margin-right: 8px;
+}
+.header-area-disabled .content-wrapper {
+  padding-top: 0;
+}
+.footer-area-disabled .main-content {
+  padding-bottom: 0;
 }

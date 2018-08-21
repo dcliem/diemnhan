@@ -295,3 +295,62 @@ deactivated
 [03-Jun-2017 01:57:41 UTC] PHP   4. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
 [03-Jun-2017 01:57:41 UTC] PHP   5. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
 [03-Jun-2017 01:57:41 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[21-Aug-2018 03:06:27 UTC] PHP Notice: A feed could not be found at http://www.nicewebz.com/wordpress/feed/. A feed with an invalid mime type may fall victim to this error, or SimplePie was unable to auto-discover it.. Use force_feed() if you are certain this URL is a real feed. in /home/ubuntu/workspace/wp-includes/class-simplepie.php on line 1555
+[21-Aug-2018 03:06:41 UTC] PHP Notice: A feed could not be found at http://wordpress.org/plugins/rss/browse/popular/. A feed with an invalid mime type may fall victim to this error, or SimplePie was unable to auto-discover it.. Use force_feed() if you are certain this URL is a real feed. in /home/ubuntu/workspace/wp-includes/class-simplepie.php on line 1555
+[21-Aug-2018 03:06:54 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 40
+[21-Aug-2018 03:06:54 UTC] PHP Stack trace:
+[21-Aug-2018 03:06:54 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[21-Aug-2018 03:06:54 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[21-Aug-2018 03:06:54 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[21-Aug-2018 03:06:54 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 43
+[21-Aug-2018 03:06:54 UTC] PHP Stack trace:
+[21-Aug-2018 03:06:54 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[21-Aug-2018 03:06:54 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[21-Aug-2018 03:06:54 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[21-Aug-2018 03:06:54 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 46
+[21-Aug-2018 03:06:54 UTC] PHP Stack trace:
+[21-Aug-2018 03:06:54 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[21-Aug-2018 03:06:54 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[21-Aug-2018 03:06:54 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[21-Aug-2018 03:06:54 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 46
+[21-Aug-2018 03:06:54 UTC] PHP Stack trace:
+[21-Aug-2018 03:06:54 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[21-Aug-2018 03:06:54 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[21-Aug-2018 03:06:54 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[21-Aug-2018 03:06:54 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 56
+[21-Aug-2018 03:06:54 UTC] PHP Stack trace:
+[21-Aug-2018 03:06:54 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[21-Aug-2018 03:06:54 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[21-Aug-2018 03:06:54 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[21-Aug-2018 03:06:54 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 93
+[21-Aug-2018 03:06:54 UTC] PHP Stack trace:
+[21-Aug-2018 03:06:54 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[21-Aug-2018 03:06:54 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[21-Aug-2018 03:06:54 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[21-Aug-2018 03:06:54 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 94
+[21-Aug-2018 03:06:54 UTC] PHP Stack trace:
+[21-Aug-2018 03:06:54 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[21-Aug-2018 03:06:54 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[21-Aug-2018 03:06:54 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[21-Aug-2018 03:06:54 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 103
+[21-Aug-2018 03:06:54 UTC] PHP Stack trace:
+[21-Aug-2018 03:06:54 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[21-Aug-2018 03:06:54 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[21-Aug-2018 03:06:54 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[21-Aug-2018 03:06:54 UTC] PHP Notice:  Trying to get property of non-object in /home/ubuntu/workspace/wp-admin/update-core.php on line 109
+[21-Aug-2018 03:06:54 UTC] PHP Stack trace:
+[21-Aug-2018 03:06:54 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/update-core.php:0
+[21-Aug-2018 03:06:54 UTC] PHP   2. core_upgrade_preamble() /home/ubuntu/workspace/wp-admin/update-core.php:612
+[21-Aug-2018 03:06:54 UTC] PHP   3. list_core_update() /home/ubuntu/workspace/wp-admin/update-core.php:204
+[21-Aug-2018 03:14:29 UTC] PHP Notice: A feed could not be found at http://www.nicewebz.com/wordpress/feed/. A feed with an invalid mime type may fall victim to this error, or SimplePie was unable to auto-discover it.. Use force_feed() if you are certain this URL is a real feed. in /home/ubuntu/workspace/wp-includes/class-simplepie.php on line 1555
+[21-Aug-2018 03:26:52 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Duplicate column name 'form_title' với truy vấn ALTER TABLE nice_nf3_forms
+            ADD `form_title` longtext COLLATE utf8mb4_general_ci,
+            ADD `default_label_pos` varchar(15) COLLATE utf8mb4_general_ci,
+            ADD `show_title` bit,
+            ADD `clear_complete` bit,
+            ADD `hide_complete` bit,
+            ADD `logged_in` bit,
+            ADD `seq_num` int yêu cầu bởi require_once('wp-admin/admin.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), include_once('/plugins/ninja-forms/ninja-forms.php'), Ninja_Forms, Ninja_Forms::instance, NF_Database_Migrations->do_stage_one, NF_Abstracts_Migration->_stage_one, NF_Database_Migrations_Forms->do_stage_one
+[21-Aug-2018 03:26:52 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Duplicate column name 'meta_key' với truy vấn ALTER TABLE nice_nf3_form_meta
+            ADD `meta_key` longtext COLLATE utf8mb4_general_ci,
+            ADD `meta_value` longtext COLLATE utf8mb4_general_ci yêu cầu bởi require_once('wp-admin/admin.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), include_once('/plugins/ninja-forms/ninja-forms.php'), Ninja_Forms, Ninja_Forms::instance, NF_Database_Migrations->do_stage_one, NF_Abstracts_Migration->_stage_one, NF_Database_Migrations_FormMeta->do_stage_one

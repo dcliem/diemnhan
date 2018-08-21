@@ -70,7 +70,6 @@ class NF_THREE_Submenu
      */
     public function register()
     {
-        if( ! ninja_forms_three_calc_check() ) return;
         if( ! ninja_forms_three_addons_version_check() ) return;
 
         if( ! ninja_forms_three_addons_check() ){
@@ -95,14 +94,35 @@ class NF_THREE_Submenu
      */
     public function display()
     {
+        global $ninja_forms_tabs_metaboxes;
+
+        $addon_installed = false;
+        if ( isset ( $ninja_forms_tabs_metaboxes['ninja-forms-settings']['license_settings']['license_settings']['settings'] ) ) {
+            if ( 0 < count( $ninja_forms_tabs_metaboxes['ninja-forms-settings']['license_settings']['license_settings']['settings'] ) ) {
+                $addon_installed = true;
+            }            
+        }
+        
+        $is_opted_in = get_option( 'ninja_forms_allow_tracking', false );
+        $is_opted_out = get_option( 'ninja_forms_do_not_allow_tracking', false );
+        if ( ! $addon_installed && ( ! $is_opted_in || $is_opted_out ) ) {
+            $opted_in = 0;
+        } else {
+            $opted_in = 1;
+        }
+
         $all_forms = Ninja_Forms()->forms()->get_all();
 
         wp_enqueue_style( 'ninja-forms-three-upgrade-styles', plugin_dir_url(__FILE__) . 'upgrade.css' );
+        wp_enqueue_style( 'ninja-forms-three-upgrade-jbox', plugin_dir_url(__FILE__) . 'jBox.css' );
 
         wp_enqueue_script( 'ninja-forms-three-upgrade', plugin_dir_url(__FILE__) . 'upgrade.js', array( 'jquery', 'wp-util' ), '', TRUE );
+        wp_enqueue_script( 'ninja-forms-three-upgrade-jbox', plugin_dir_url(__FILE__) . 'jBox.min.js', array( 'jquery', 'wp-util' ), '', TRUE );
         wp_localize_script( 'ninja-forms-three-upgrade', 'nfThreeUpgrade', array(
             'forms' => $all_forms,
             'redirectURL' => admin_url( 'admin.php?page=ninja-forms&nf-switcher=upgrade' ),
+            'optedIn' => $opted_in,
+            'nonce' => wp_create_nonce( 'ninja_forms_upgrade_nonce' ),
         ) );
 
         include plugin_dir_path( __FILE__ ) . 'tmpl-submenu.html.php';

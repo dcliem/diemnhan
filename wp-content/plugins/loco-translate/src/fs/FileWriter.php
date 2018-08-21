@@ -17,7 +17,7 @@ class Loco_fs_FileWriter {
 
     public function __construct( Loco_fs_File $file ){
         $this->file = $file;
-        $this->connect( Loco_api_WordPressFileSystem::direct() );
+        $this->disconnect();
     }
     
     
@@ -29,7 +29,6 @@ class Loco_fs_FileWriter {
         return $this;
     }
     
-
 
     /**
      * Connect to alternative file system context
@@ -49,6 +48,16 @@ class Loco_fs_FileWriter {
         $this->fs = $fs;
         return $this;
     }
+    
+    
+    /**
+     * Revert to direct file system connection
+     * @return Loco_fs_FileWriter
+     */
+    public function disconnect(){
+        $this->fs = Loco_api_WordPressFileSystem::direct();
+        return $this;
+    }
 
 
     /**
@@ -61,40 +70,31 @@ class Loco_fs_FileWriter {
 
 
     /**
-     * @internal
+     * Map virtual path for remote file system
      */
     private function mapPath( $path ){
-        /*/ restrict file extensions to Gettext files for additional layer of security
-        // disabled until configurable, too annoying when using safely (e.g. zip files)
-        if( ( $ext = $this->file->extension() ) && ! preg_match('/^(po|mo|pot)~?$/',$ext) ){
-            throw new Loco_error_WriteException('Unwriteable file extension: *.'.$ext.' disallowed');
-        }*/
-        // sanitize writeable locations
-        $remote = ! $this->isDirect();
-        $base = rtrim( loco_constant('WP_CONTENT_DIR'), '/' );
-        $snip = strlen($base);
-        if( substr( $path, 0, $snip ) !== $base ){
-            if( $remote ){
-                throw new Loco_error_WriteException('Remote path must be under WP_CONTENT_DIR');
+        if( ! $this->isDirect() ){
+            $base = untrailingslashit( Loco_fs_File::abs(loco_constant('WP_CONTENT_DIR')) );
+            $snip = strlen($base);
+            if( substr( $path, 0, $snip ) !== $base ){
+                // fall back to default path in case of symlinks
+                $base = trailingslashit(ABSPATH).'wp-content';
+                $snip = strlen($base);
+                if( substr( $path, 0, $snip ) !== $base ){
+                    throw new Loco_error_WriteException('Remote path must be under WP_CONTENT_DIR');
+                }
             }
-            /*/ Allowing direct file system access, because symlinks and also get_temp_dir()
-            else {
-                throw new Loco_error_WriteException('Direct path must be under WP_CONTENT_DIR');
-            }*/
-        }
-        // map virtual path for remote file system
-        if( $remote ){
             $virt = $this->fs->wp_content_dir();
             if( false === $virt ){
                 throw new Loco_error_WriteException('Failed to find WP_CONTENT_DIR via remote connection');
             }
-            $virt = rtrim( $virt, '/' );
+            $virt = untrailingslashit( $virt );
             $path = substr_replace( $path, $virt, 0, $snip );
         }
         return $path;
     }
 
-    
+
     /**
      * Test if a direct (not remote) file system
      * @return bool
@@ -191,7 +191,7 @@ class Loco_fs_FileWriter {
                 throw new Loco_error_WriteException( __("Parent directory doesn't exist",'loco-translate') );
             }
             // else reason for failure is not established
-            throw new Loco_error_WriteException( __('Failed to save file','loco-translate') );
+            throw new Loco_error_WriteException( __('Failed to save file','loco-translate').': '.$file->basename() );
         }
         
         return $this;
@@ -215,7 +215,7 @@ class Loco_fs_FileWriter {
         while( $parent = $here->getParent() ){
             array_unshift( $stack, $this->mapPath( $here->getPath() ) );
             if( $parent->exists() ){
-                // have existant directory, now build full path
+                // have existent directory, now build full path
                 foreach( $stack as $path ){
                     if( ! $fs->mkdir( $path, $mode ) ){
                         throw new Loco_error_WriteException( __('Failed to create directory','loco-translate') );
@@ -239,17 +239,27 @@ class Loco_fs_FileWriter {
         if( $this->disabled() ){
             throw new Loco_error_WriteException( __('File modification is disallowed by your WordPress config','loco-translate') );
         }
+        // deny system file changes (fs_protect = 2)
+        if( 1 < Loco_data_Settings::get()->fs_protect && $this->file->getUpdateType() ){
+            throw new Loco_error_WriteException( __('Modification of installed files is disallowed by the plugin settings','loco-translate') );
+        }
         return $this;
     } 
 
 
 
     /**
-     * Check if file system modification is banned
+     * Check if file system modification is banned at WordPress level
      * @return bool
      */
     public function disabled(){
-        return loco_constant('DISALLOW_FILE_MODS');
+        // WordPress >= 4.8
+        if( function_exists('wp_is_file_mod_allowed') ){
+            $context = apply_filters( 'loco_file_mod_allowed_context', 'download_language_pack', $this->file );
+            return ! wp_is_file_mod_allowed( $context );
+        }
+        // fall back to direct constant check
+        return (bool) loco_constant('DISALLOW_FILE_MODS');
     }
 
 }

@@ -8,7 +8,7 @@ echo $header;
 
   
     <?php
-    if( ! $file->existant ):?> 
+    if( ! $file->existent ):?> 
     <div class="notice inline notice-error">
         <h3 class="has-icon">
             <?php esc_html_e("File doesn't exist",'loco-translate')?> 
@@ -33,7 +33,7 @@ echo $header;
     else:?> 
     <div class="notice inline notice-locked">
         <h3 class="has-icon">
-            <?php esc_html_e('File is write-protected','loco-translate')?> 
+            <?php esc_html_e('Write protected','loco-translate')?> 
         </h3>
         <p>
             <?php esc_html_e("This file can't be updated directly by the web server",'loco-translate')?>.
@@ -49,7 +49,7 @@ echo $header;
     endif;
 
 
-    if( ! $dir->existant ):?> 
+    if( ! $dir->existent ):?> 
     <div class="notice inline notice-error">
         <h3 class="has-icon">
             <?php esc_html_e("Directory doesn't exist",'loco-translate')?> 
@@ -86,7 +86,7 @@ echo $header;
     else:?> 
     <div class="notice inline notice-locked">
         <h3 class="has-icon">
-            <?php esc_html_e('Directory is write-protected','loco-translate')?> 
+            <?php esc_html_e('Write protected','loco-translate')?> 
         </h3>
         <p>
             <?php esc_html_e("This directory can't be written to directly by the web server",'loco-translate')?>.
@@ -99,5 +99,29 @@ echo $header;
             <code><?php $dir->ls()?></code>
         </p>
     </div><?php
-    endif; 
+    endif;
     
+    if( $file->autoupdate ):?> 
+    <div class="notice inline notice-info">
+        <h3 class="has-icon"><?php 
+            esc_html_e('WordPress updates','loco-translate')?> 
+        </h3>
+        <p><?php 
+            esc_html_e("Files in this location can be modified or deleted by WordPress automatic updates",'loco-translate')?>.
+            <a target="_blank" href="<?php 
+                echo esc_url( apply_filters('loco_external','https://localise.biz/wordpress/plugin/faqs/files-deleted') )?>"><?php
+                esc_html_e("What's this?",'loco-translate');
+            ?></a>
+        </p>
+    </div><?php
+    endif;
+
+    if( $params->has('debug') ):?> 
+    <div class="notice inline notice-debug">
+        <h3 class="has-icon">Developer notes</h3>
+        <div><?php
+        foreach( $debug as $prop => $raw ):?> 
+        <p><?php $debug->e($prop)?></p><?php
+        endforeach?> 
+    </div><?php
+    endif;

@@ -100,7 +100,8 @@ class Loco_mvc_ViewParams extends ArrayObject implements JsonSerializable {
 
 
     /**
-     * Format property with passed formatting string
+     * Print property with passed formatting string
+     * e.g. $params->f('name', 'My name is %s' );
      */
     public function f( $p, $f = '%s' ){
         echo $this->escape( sprintf( $f, $this->__get($p) ) );
@@ -158,6 +159,17 @@ class Loco_mvc_ViewParams extends ArrayObject implements JsonSerializable {
         return esc_attr( $this->__get($p) );
     }*/
 
+    
+
+    /**
+     * @return Loco_mvc_ViewParams
+     */
+    public function sort( $callback ){
+        $raw = $this->getArrayCopy();
+        uasort( $raw, $callback );
+        $this->exchangeArray( $raw );
+        return $this;
+    }
 
     
     

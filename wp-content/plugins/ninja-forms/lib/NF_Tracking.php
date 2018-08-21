@@ -26,13 +26,13 @@ final class NF_Tracking
      */
     public function __construct()
     {
-        if( isset( $_GET[ self::FLAG ] ) ){
-            add_action( 'admin_init', array( $this, 'maybe_opt_in' ) );
-        }
 
-        add_filter( 'nf_admin_notices', array( $this, 'admin_notice' ) );
+        // Temporary: Report previously opted-in users that were not already reported. @todo Remove after a couple of versions.
+//        add_action( 'admin_init', array( $this, 'report_optin' ) );
 
-        add_action( 'ninja_forms_upgrade', array( $this, 'opt_in' ) );
+        add_action( 'wp_ajax_nf_optin', array( $this, 'maybe_opt_in' ) );
+        add_filter( 'ninja_forms_check_setting_allow_tracking',  array( $this, 'check_setting' ) );
+        add_filter( 'ninja_forms_update_setting_allow_tracking', array( $this, 'update_setting' ) );
     }
 
     /**
@@ -45,7 +45,7 @@ final class NF_Tracking
     {
         if( $this->can_opt_in() ) {
 
-            $opt_in_action = htmlspecialchars( $_GET[ self::FLAG ] );
+            $opt_in_action = htmlspecialchars( $_POST[ self::FLAG ] );
 
             if( self::OPT_IN == $opt_in_action ){
                 $this->opt_in();
@@ -55,42 +55,29 @@ final class NF_Tracking
                 $this->opt_out();
             }
         }
-        header( 'Location: ' . admin_url( 'admin.php?page=ninja-forms' ) );
+        die( 1 );
     }
 
     /**
-     * Register the Admin Notice for asking users to opt in to tracking
+     * Report that a user has opted-in.
      *
-     * @access public
-     * @hook nf_admin_notices
-     * @param array $notices
-     * @return array $notices
+     * @param array $data Dispatch event data.
      */
-    public function admin_notice( $notices )
+    function report_optin($data = array() )
     {
-        // Check if the user is allowed to opt in.
-        if( ! $this->can_opt_in() ) return $notices;
+        // Only send initial opt-in.
+        if( get_option( 'ninja_forms_optin_reported', 0 ) ) return;
 
-        // Check if the user is already opted in/out.
-        if( $this->is_opted_in() || $this->is_opted_out()  ) return $notices;
+        $data = wp_parse_args( $data, array(
+            'send_email' => 0, // Do not send email by default.
+            'user_email' => ''
+        ) );
 
-        $notices[ 'allow_tracking' ] = array(
-            'title' => __( 'Please help us improve Ninja Forms!', 'ninja-forms' ),
-            'msg' => implode( '<br />', array(
-                __( 'If you opt-in, some data about your installation of Ninja Forms will be sent to NinjaForms.com (this does NOT include your submissions).', 'ninja-forms' ),
-                __( 'If you skip this, that\'s okay! Ninja Forms will still work just fine.', 'ninja-forms' ),
-            )),
-            'link' => implode( ' ', array(
-                sprintf( __( '%sAllow%s', 'ninja-forms' ), '<a href="' . $this->get_opt_in_url( admin_url( 'admin.php?page=ninja-forms' ) ) . '" class="button-primary" id="ninja-forms-allow-tracking">', '</a>' ),
-                sprintf( __( '%sDo not allow%s', 'ninja-forms' ), '<a href="' . $this->get_opt_out_url( admin_url( 'admin.php?page=ninja-forms' ) ) . '" class="button-secondary" id="ninja-forms-do-not-allow-tracking">', '</a>' ),
-            )),
-            'int' => 0, // No delay
-            'blacklist' => array(
-                'ninja-forms-three'
-            )
-        );
+        Ninja_Forms()->dispatcher()->send( 'optin', $data );
+        Ninja_Forms()->dispatcher()->update_environment_vars();
 
-        return $notices;
+        // Debounce opt-in dispatch.
+        update_option( 'ninja_forms_optin_reported', 1 );
     }
 
     /**
@@ -111,17 +98,7 @@ final class NF_Tracking
      */
     public function is_opted_in()
     {
-        return (bool) get_option( 'ninja_forms_allow_tracking', $this->is_freemius_opted_in() );
-    }
-
-    private function is_freemius_opted_in()
-    {
-        $freemius = get_option( 'fs_accounts' );
-        if( ! $freemius ) return false;
-        if( ! isset( $freemius[ 'plugin_data' ] ) ) return false;
-        if( ! isset( $freemius[ 'plugin_data' ][ 'ninja-forms' ] ) ) return false;
-        if( ! isset( $freemius[ 'plugin_data' ][ 'ninja-forms' ][ 'activation_timestamp' ] ) ) return false;
-        return true;
+        return (bool) get_option( 'ninja_forms_allow_tracking' );
     }
 
     /**
@@ -132,19 +109,32 @@ final class NF_Tracking
      */
     public function opt_in()
     {
-        update_option( 'ninja_forms_allow_tracking', true );
-    }
+        if( $this->is_opted_in() ) return;
 
-    /**
-     * Get the Opt In URL
-     *
-     * @access private
-     * @param string $url
-     * @return string $url
-     */
-    private function get_opt_in_url( $url )
-    {
-        return add_query_arg( 'ninja_forms_opt_in', self::OPT_IN, $url );
+        /**
+         * Update our tracking options.
+         */
+        update_option( 'ninja_forms_allow_tracking', true );
+        update_option( 'ninja_forms_do_not_allow_tracking', false );
+
+        /**
+         * Send updated environment variables.
+         */
+        Ninja_Forms()->dispatcher()->update_environment_vars();
+
+        /**
+         * Send our optin event
+         */
+        if ( isset ( $_REQUEST[ 'send_email' ] ) ) {
+            $send_email = absint( $_REQUEST[ 'send_email' ] );
+            $user_email = $_REQUEST[ 'user_email' ];
+            add_option( 'ninja_forms_optin_email', $user_email, '', 'no' );
+        } else {
+            $send_email = 0;
+            $user_email = '';
+        }
+
+        $this->report_optin( array( 'send_email' => $send_email, 'user_email' => $user_email ) );
     }
 
     /**
@@ -155,17 +145,7 @@ final class NF_Tracking
      */
     public function is_opted_out()
     {
-        return (bool) get_option( 'ninja_forms_do_not_allow_tracking', $this->is_freemius_opted_out() );
-    }
-
-    private function is_freemius_opted_out()
-    {
-        $freemius = get_option( 'fs_accounts' );
-        if( ! $freemius ) return false;
-        if( ! isset( $freemius[ 'plugin_data' ] ) ) return false;
-        if( ! isset( $freemius[ 'plugin_data' ][ 'ninja-forms' ] ) ) return false;
-        if( ! isset( $freemius[ 'plugin_data' ][ 'ninja-forms' ][ 'is_anonymous' ] ) ) return false;
-        return true;
+        return (bool) get_option( 'ninja_forms_do_not_allow_tracking' );
     }
 
     /**
@@ -176,19 +156,42 @@ final class NF_Tracking
      */
     private function opt_out()
     {
+        if( $this->is_opted_out() ) return;
+        
+        $data = array();
+        $user_email = get_option( 'ninja_forms_optin_email' );
+        if ( $user_email ) {
+            $data[ 'user_email' ] = $user_email;
+        }
+        Ninja_Forms()->dispatcher()->send( 'optout', $data );
+        delete_option( 'ninja_forms_optin_email' );
+
+        // Disable tracking.
+        update_option( 'ninja_forms_allow_tracking', false );
         update_option( 'ninja_forms_do_not_allow_tracking', true );
+
+        // Clear dispatch debounce flag.
+        update_option( 'ninja_forms_optin_reported', 0 );
     }
 
-    /**
-     * Get the Opt Out URL
-     *
-     * @access private
-     * @param string $url
-     * @return string $url
-     */
-    private function get_opt_out_url( $url )
+    public function check_setting( $setting )
     {
-        return add_query_arg( 'ninja_forms_opt_in', self::OPT_OUT, $url );
+        if( $this->is_opted_in() && ! $this->is_opted_out() ) {
+            $setting[ 'value' ] = "1";
+        } else {
+            $setting[ 'value' ] = "0";
+        }
+        return $setting;
+    }
+
+    public function update_setting( $value )
+    {
+        if( "1" == $value ){ // Allow Tracking
+            $this->opt_in();
+        } else {
+            $this->opt_out();
+        }
+        return $value;
     }
 
 } // END CLASS NF_Tracking

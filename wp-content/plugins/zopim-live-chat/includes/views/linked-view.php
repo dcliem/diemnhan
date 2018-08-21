@@ -18,7 +18,7 @@
 
   <br><br><?php echo $messages[ 'dashboard-access-label' ]; ?>
   <br><br>
-  <a class="no-underline" href="<?php echo ZOPIM_DASHBOARD_LINK . "&username=" . get_option( Zopim_Options::ZOPIM_OPTION_USERNAME ); ?>"
+  <a class="no-underline" href="<?php echo ZOPIM_DASHBOARD_LINK ?>"
      target="_blank"
      data-popup="true">
     <div class="zopim_btn_orange"><?php echo $messages[ 'launch-dashboard' ]; ?></div>

@@ -1,20 +1,35 @@
 <?php
 /**
- * Intitialize a new PO translations file
+ * Initialize a new PO translations file
  */
- 
 $this->extend('../layout');
-?> 
 
-    <?php if( $params->has('ext') ):?> 
+    // warn if doing direct extraction
+    if( $params->has('ext') ):?> 
     <div class="notice inline notice-info">
         <p>
             <?php esc_html_e("You're creating translations directly from source code",'loco-translate')?>.
             <a href="<?php $ext->e('link')?>"><?php esc_html_e('Create template instead','loco-translate')?></a>.
         </p>
     </div><?php
-    endif?> 
-            
+    endif;
+
+
+    /*/ warning to show/hide when locations are marked unsafe
+    if( $params->has('fsNotice') ):?> 
+    <div id="loco-fs-info" class="has-nav notice inline notice-info jshide">
+        <p>
+            <strong class="has-icon"><?php esc_html_e('Warning','loco-translate')?>:</strong>
+            <span><?php $params->e('fsNotice')?>.</span>
+        </p>
+        <nav>
+            <a href="<?php echo $help?>#locations" target="_blank"><?php esc_html_e('Documentation','loco-translate')?></a>
+            <span>|</span>
+            <a href="<?php $this->route('config')->e('href')?>#loco--fs-protect"><?php esc_html_e('Settings','loco-translate')?></a>
+        </nav>
+    </div><?php
+    endif*/?> 
+
 
     <div class="notice inline notice-generic">
 
@@ -32,7 +47,7 @@ $this->extend('../layout');
                     <tr valign="top">
                         <th scope="row">
                             <label for="loco-select-locale">
-                                <?php esc_html_e('Choose a language','loco-translate')?>:
+                                1. <?php esc_html_e('Choose a language','loco-translate')?>:
                             </label>
                         </th>
                         <td>
@@ -77,11 +92,11 @@ $this->extend('../layout');
                     <tr valign="top">
                         <th scope="row">
                             <label>
-                                <?php esc_html_e('Choose a location','loco-translate')?>:
+                                2. <?php esc_html_e('Choose a location','loco-translate')?>:
                             </label>
                         </th>
                         <td>
-                            <p class="description"> </p>
+                            <a href="<?php $help->e('href')?>#locations" class="has-icon icon-help" target="_blank" tabindex="-1"><?php $help->e('text')?></a>
                         </td>
                     </tr><?php
                     $choiceId = 0;
@@ -98,12 +113,17 @@ $this->extend('../layout');
                         foreach( $location['paths'] as $choice ): 
                             $parent = $choice['parent']; 
                             $offset = sprintf('%u',++$choiceId);?> 
-                            <p>
+                            <p><?php
+                                if( $choice->disabled ):?> 
+                                <label class="for-disabled">
+                                    <span class="icon icon-lock"></span>
+                                    <input type="radio" name="select-path" class="disabled" disabled /><?php
+                                else:?> 
                                 <label>
                                     <input type="radio" name="select-path" value="<?php echo $offset?>" <?php echo $choice->checked?> />
-                                    <input type="hidden" name="path[<?php echo $offset?>]" value="<?php $choice->e('hidden')?>" />
+                                    <input type="hidden" name="path[<?php echo $offset?>]" value="<?php $choice->e('hidden')?>" /><?php
+                                endif?> 
                                     <code class="path"><?php $parent->e('relpath')?>/<?php echo $choice->holder?></code>
-                                    <?php $choice->locked && print('<!-- no direct fs -->')?> 
                                 </label>
                             </p><?php
                         endforeach?> 
@@ -115,9 +135,14 @@ $this->extend('../layout');
                 if( $params->has('sourceLocale') ):?> 
                 <tbody>
                     <tr valign="top">
-                        <th scope="row" rowspan="2">
-                            <?php esc_html_e('Template options','loco-translate')?>:
+                        <th scope="row" rowspan="3">
+                            3. <?php esc_html_e('Template options','loco-translate')?>:
                         </th>
+                        <td>
+                            <a href="<?php $help->e('href')?>#copy" class="has-icon icon-help" target="_blank" tabindex="-1"><?php $help->e('text')?></a>
+                        </td>
+                    </tr>
+                    <tr valign="top" class="compact">
                         <td>
                             <p>
                                 <label>
@@ -133,7 +158,7 @@ $this->extend('../layout');
                             </p>
                         </td>
                     </tr>                    
-                    <tr valign="top">
+                    <tr valign="top" class="compact">
                         <td>
                             <p>
                                 <label>

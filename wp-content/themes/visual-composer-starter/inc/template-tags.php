@@ -18,7 +18,17 @@ if ( ! function_exists( 'visualcomposerstarter_post_thumbnail' ) ) :
 			?>
 			<div class="featured-content">
 				<div class="fade-in-img">
-					<img src="<?php the_post_thumbnail_url(); ?>" data-src="<?php the_post_thumbnail_url() ?>" alt="<?php the_title() ?>">
+					<?php
+					if ( 'none' === get_theme_mod( visualcomposerstarter_check_needed_sidebar(), 'none' ) ) {
+						the_post_thumbnail( 'vct-featured-loop-image-full', array(
+								'data-src' => get_the_post_thumbnail_url( null, 'vct-featured-loop-image-full' ),
+							) );
+					} else {
+						the_post_thumbnail( 'vct-featured-loop-image', array(
+								'data-src' => get_the_post_thumbnail_url( null, 'vct-featured-loop-image' ),
+							) );
+					}
+					?>
 					<noscript>
 						<?php the_post_thumbnail(); ?>
 					</noscript>
@@ -33,22 +43,9 @@ if ( ! function_exists( 'visualcomposerstarter_header_featured_content' ) ) :
 	 * Header featured content.
 	 */
 	function visualcomposerstarter_header_featured_content() {
-		if ( 'video' === get_post_format() ) {
-			$post = get_post( get_the_ID() );
-			remove_filter( 'the_content', 'wpautop' );
+		if ( 'gallery' === get_post_format() ) {
 			?>
-			<div class="<?php echo esc_attr( vct_get_header_image_container_class() ); ?>">
-				<div class="row">
-					<div class="video-wrapper">
-						<?php echo esc_html( apply_filters( 'the_content', $post->post_content ) ); ?>
-					</div>
-				</div>
-			</div>
-			<?php
-			add_filter( 'the_content', 'wpautop' );
-		} elseif ( 'gallery' === get_post_format() ) {
-			?>
-			<div class="<?php echo esc_attr( vct_get_header_image_container_class() ); ?>">
+			<div class="<?php echo esc_attr( visualcomposerstarter_get_header_image_container_class() ); ?>">
 				<div class="row">
 					<div class="gallery-slider">
 						<?php
@@ -59,9 +56,9 @@ if ( ! function_exists( 'visualcomposerstarter_header_featured_content' ) ) :
 							<div class="gallery-item">
 								<div class="fade-in-img">
 									<div class="fade-in-img-inner-wrap">
-										<img src="<?php echo esc_url( $src );?>" data-src="<?php echo esc_url( $src );?>" alt="">
+										<img src="<?php echo esc_url( $src );?>" data-src="<?php echo esc_url( $src );?>">
 										<noscript>
-											<img src="<?php echo esc_url( $src );?>" alt="">
+											<img src="<?php echo esc_url( $src );?>">
 										</noscript>
 									</div>
 								</div><!--.fade-in-img-->
@@ -78,12 +75,21 @@ if ( ! function_exists( 'visualcomposerstarter_header_featured_content' ) ) :
 			return;
 		} else {
 			?>
-			<div class="<?php echo esc_attr( vct_get_header_image_container_class() ); ?>">
+			<div class="<?php echo esc_attr( visualcomposerstarter_get_header_image_container_class() ); ?>">
 				<div class="row">
 					<div class="fade-in-img">
 						<div class="fade-in-img-inner-wrap">
-							<img src="<?php the_post_thumbnail_url(); ?>" data-src="<?php the_post_thumbnail_url() ?>"
-								 alt="<?php the_title() ?>">
+							<?php
+							if ( 'full_width' === get_theme_mod( 'vct_overall_site_featured_image_width', 'full_width' ) ) {
+								the_post_thumbnail( 'vct-featured-single-image-full', array(
+										'data-src' => get_the_post_thumbnail_url( null, 'vct-featured-single-image-full' ),
+									) );
+							} else {
+								the_post_thumbnail( 'vct-featured-single-image-boxed', array(
+										'data-src' => get_the_post_thumbnail_url( null, 'vct-featured-single-image-boxed' ),
+									) );
+							}
+							?>
 							<noscript>
 								<?php the_post_thumbnail(); ?>
 							</noscript>
@@ -122,12 +128,12 @@ if ( ! function_exists( 'visualcomposerstarter_entry_date' ) ) :
 			'</span>',
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' .
 			wp_kses( $time_string,
-			         array(
-			         		'time' => array(
-					                'class' => array(),
-									'datetime' => array(),
-				            ),
-			         )
+				array(
+					'time' => array(
+					'class' => array(),
+					'datetime' => array(),
+					),
+				)
 			) .
 			'</a>'
 		);
@@ -149,9 +155,9 @@ if ( ! function_exists( 'visualcomposerstarter_entry_meta' ) ) :
 			<?php if ( 'post' === get_post_type() ) : ?>
 				<li class="entry-meta-author"><a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><span class="author vcard"><?php the_author(); ?></span></a></li>
 			<?php endif; ?>
-
-			<li class="entry-meta-category"><?php the_category( _x( ', ', 'Used between list items, there is a space after the comma.', 'visual-composer-starter' ) ); ?></li>
-
+			<?php if ( get_the_category_list() ) : ?>
+				<li class="entry-meta-category"><?php the_category( _x( ', ', 'Used between list items, there is a space after the comma.', 'visual-composer-starter' ) ); ?></li>
+			<?php endif; ?>
 			<?php if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) : ?>
 				<li class="entry-meta-comments"><?php comments_popup_link( esc_html__( 'Leave a comment', 'visual-composer-starter' ), esc_html__( '1 Comment', 'visual-composer-starter' ), esc_html__( '% Comments', 'visual-composer-starter' ) ); ?>
 			<?php endif; ?>

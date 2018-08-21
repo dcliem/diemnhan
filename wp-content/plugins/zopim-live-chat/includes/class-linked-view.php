@@ -6,7 +6,7 @@ class Zopim_Linked_View extends Zopim_Base_View
   {
     $this->_messages = array(
       'options-updated'        => __( 'Widget options updated.', 'zopim-live-chat' ),
-      'trial'                  => __( 'Trial Plan with 14 Days Full-features', 'zopim-live-chat' ),
+      'trial'                  => __( 'Trial Plan with 30 Days Full-features', 'zopim-live-chat' ),
       'plan'                   => __( ' Plan', 'zopim-live-chat' ),
       'deactivate'             => __( 'Deactivate', 'zopim-live-chat' ),
       'current-account-label'  => __( 'Currently Activated Account', 'zopim-live-chat' ),

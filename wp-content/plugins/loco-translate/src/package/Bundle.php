@@ -103,8 +103,8 @@ abstract class Loco_package_Bundle extends ArrayObject implements JsonSerializab
             throw new Loco_error_Exception('Unexpected bundle type: '.$type );
         }  
         return $bundle;
-    } 
- 
+    }
+
  
     /**
      * Construct from WordPress handle and friendly name
@@ -249,7 +249,7 @@ abstract class Loco_package_Bundle extends ArrayObject implements JsonSerializab
             return $this->root->getPath();
         }
         // without a root directory return WordPress root
-        return rtrim(ABSPATH,'/');
+        return untrailingslashit(ABSPATH);
     }
 
 
@@ -323,10 +323,11 @@ abstract class Loco_package_Bundle extends ArrayObject implements JsonSerializab
     
     /**
      * Add all projects defined in a TextDomain
+     * @param Loco_package_TextDomain
      * @return Loco_package_Bundle
      */
     public function addDomain( Loco_package_TextDomain $domain ){
-        /* @var $proj Loco_package_Project */
+        /* @var Loco_package_Project $proj */
         foreach( $domain as $proj ){
             $this->addProject($proj);
         }

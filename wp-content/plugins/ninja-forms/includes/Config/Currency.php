@@ -58,7 +58,7 @@ return apply_filters( 'ninja_forms_currency', array(
         'value' => 'PLN'
     ),
     'GBP' => array(
-        'label' => __( 'Pound Sterling', 'ninja-forms' ),
+        'label' => __( 'British Pounds Sterling', 'ninja-forms' ),
         'value' => 'GBP'
     ),
     'SGD' => array(
@@ -85,4 +85,12 @@ return apply_filters( 'ninja_forms_currency', array(
         'label' => __( 'U.S. Dollars', 'ninja-forms' ),
         'value' => 'USD'
     ),
+    'ZAR' => array(
+        'label' => __( 'South African Rand', 'ninja-forms' ),
+        'value' => 'ZAR'
+    ),
+	'INR' => array(
+		'label' => __( 'Indian Rupee', 'ninja-forms' ),
+		'value' => 'INR'
+	),
 ));

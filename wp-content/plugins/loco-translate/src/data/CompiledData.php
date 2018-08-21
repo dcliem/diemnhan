@@ -3,7 +3,7 @@
  * Static, read-only caching of data held in serialized files.
  * Used for pre-built arrays of information such as plural forms.
  */
-class Loco_data_CompiledData implements ArrayAccess {
+class Loco_data_CompiledData implements ArrayAccess, Countable, IteratorAggregate {
     
     /**
      * @var array
@@ -33,7 +33,7 @@ class Loco_data_CompiledData implements ArrayAccess {
     
 
     private function __construct( $name ){
-        $path = 'lib/compiled/'.$name.'.php';
+        $path = 'lib/data/'.$name.'.php';
         $this->data = loco_include( $path );
         $this->name = $name;
     }
@@ -62,5 +62,16 @@ class Loco_data_CompiledData implements ArrayAccess {
     public function offsetSet( $k, $v ){
         throw new RuntimeException('Read only');
     }
+
+    public function count(){
+        return count($this->data);
+    }
     
+    /**
+     * Implements IteratorAggregate::getIterator
+     * @return ArrayIterator
+     */
+    public function getIterator(){
+        return new ArrayIterator( $this->data );
+    }
 }

@@ -59,7 +59,7 @@ class Loco_fs_File {
     
 
     /**
-     * @internal
+     * Create file with initial, unvalidated path
      */    
     public function __construct( $path ){
         $this->setPath( $path );
@@ -68,6 +68,8 @@ class Loco_fs_File {
 
     /**
      * Internally set path value and flag whether relative or absolute
+     * @param string
+     * @return string
      */
     private function setPath( $path ){
         $path = (string) $path;
@@ -87,7 +89,7 @@ class Loco_fs_File {
 
 
     /**
-     * @return array
+     * @return bool
      */
     public function isAbsolute(){
         return ! $this->rel;
@@ -103,8 +105,8 @@ class Loco_fs_File {
 
 
     /**
-     * Copy write context with oursel
-     * @return 
+     * Copy write context with our file reference
+     * @return Loco_fs_File
      */
     private function cloneWriteContext( Loco_fs_FileWriter $context = null ){
         if( $context ){
@@ -193,7 +195,7 @@ class Loco_fs_File {
 
 
     /**
-     * Check if file can't be overwitten when existant, nor created when non-existant
+     * Check if file can't be overwitten when existent, nor created when non-existent
      * This does not check permissions recursively as directory trees are not built implicitly
      * @return bool
      */
@@ -209,7 +211,7 @@ class Loco_fs_File {
 
 
     /**
-     * Check if full path can be built to non-existant file.
+     * Check if full path can be built to non-existent file.
      * @return bool
      */
     public function creatable(){
@@ -342,7 +344,6 @@ class Loco_fs_File {
     public function equal( $path ){
         return $this->path === (string) $path;
     }
-
 
 
     /**
@@ -479,7 +480,25 @@ class Loco_fs_File {
 
 
     /**
-     * Check if path is under a global system directory 
+     * Check if path is under wp-content directory 
+     * @return bool
+     */
+    public function underContentDirectory(){
+        return Loco_fs_Locations::getContent()->check( $this->path );
+    }
+
+
+    /**
+     * Check if path is under WordPress root directory (ABSPATH) 
+     * @return bool
+     */
+    public function underWordPressDirectory(){
+        return Loco_fs_Locations::getRoot()->check( $this->path );
+    }
+
+
+    /**
+     * Check if path is under the global system directory 
      * @return bool
      */
     public function underGlobalDirectory(){
@@ -502,7 +521,7 @@ class Loco_fs_File {
 
     /**
      * Copy this file for real
-     * @throws Loco_error_Exception
+     * @throws Loco_error_WriteException
      * @return Loco_fs_File new file
      */
     public function copy( $dest ){
@@ -516,7 +535,7 @@ class Loco_fs_File {
 
     /**
      * Delete this file for real
-     * @throws Loco_error_Exception
+     * @throws Loco_error_WriteException
      * @return Loco_fs_File
      */
     public function unlink(){
@@ -568,6 +587,37 @@ class Loco_fs_File {
         $this->getWriteContext()->putContents($data);
         $this->clearStat();
         return $this->size();
+    }
+
+
+
+    /**
+     * Establish what part of the WordPress file system this is.
+     * Value is that used by WP_Automatic_Updater::should_update.
+     * @return string "core", "plugin", "theme" or "translation"
+     */
+    public function getUpdateType(){
+        // global languages directory root, and canonical subdirectories
+        $dirpath = (string) ( $this->isDirectory() ? $this : $this->getParent() );
+        if( $sub = Loco_fs_Locations::getGlobal()->rel($dirpath) ){
+            list($root) = explode('/', $sub, 2 );
+            if( '.' === $root || 'themes' === $root || 'plugins' === $root ){
+                return 'translation';
+            }
+        }
+        // theme and plugin locations can be at any depth
+        else if( $this->underThemeDirectory() ){
+            return 'theme';
+        }
+        else if( $this->underPluginDirectory() ){
+            return 'plugin';
+        }
+        // core locations are under WordPress root, but not under wp-content
+        else if( $this->underWordPressDirectory() && ! $this->underContentDirectory() ){
+            return 'core';
+        }
+        // else not an update type
+        return '';
     }
     
 }

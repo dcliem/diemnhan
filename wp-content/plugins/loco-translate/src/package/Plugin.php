@@ -10,8 +10,8 @@ class Loco_package_Plugin extends Loco_package_Bundle {
      */
     public function getSystemTargets(){
         return array ( 
-            rtrim( loco_constant('LOCO_LANG_DIR'), '/' ).'/plugins',
-            rtrim( loco_constant('WP_LANG_DIR'),'/' ).'/plugins',
+            trailingslashit( loco_constant('LOCO_LANG_DIR') ).'plugins',
+            trailingslashit( loco_constant('WP_LANG_DIR') ).'plugins',
         );
     }
 
@@ -82,7 +82,9 @@ class Loco_package_Plugin extends Loco_package_Bundle {
             }
             $cached = apply_filters('loco_plugins_data', $cached );
             uasort( $cached, '_sort_uname_callback' );
-            wp_cache_set('plugins', $cached, 'loco');
+            // Intended as in-memory cache so adding short expiry for object caching plugins that may persist it.
+            // All actions that invoke `wp_clean_plugins_cache` should purge this. See Loco_hooks_AdminHooks
+            wp_cache_set('plugins', $cached, 'loco', 3600 );
         }
         return $cached;
     }

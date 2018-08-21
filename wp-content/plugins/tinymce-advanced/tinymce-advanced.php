@@ -3,7 +3,7 @@
 Plugin Name: TinyMCE Advanced
 Plugin URI: http://www.laptoptips.ca/projects/tinymce-advanced/
 Description: Enables advanced features and plugins in TinyMCE, the visual editor in WordPress.
-Version: 4.5.6
+Version: 4.8.0
 Author: Andrew Ozz
 Author URI: http://www.laptoptips.ca/
 License: GPL2
@@ -24,14 +24,16 @@ Domain Path: /langs
 	You should have received a copy of the GNU General Public License along
 	with TinyMCE Advanced. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 
-	Copyright (c) 2007-2016 Andrew Ozz. All rights reserved.
+	Copyright (c) 2007-2018 Andrew Ozz. All rights reserved.
 */
 
 if ( ! class_exists('Tinymce_Advanced') ) :
 
 class Tinymce_Advanced {
 
-	private $required_version = '4.7-beta';
+	private $required_version = '4.9.6';
+	private $plugin_version = '4.7.13';
+
 	private $user_settings;
 	private $admin_settings;
 	private $admin_options;
@@ -205,11 +207,13 @@ class Tinymce_Advanced {
 
 	// When using a plugin that changes the paths dinamically, set these earlier than 'plugins_loaded' 50.
 	public function set_paths() {
-		if ( ! defined( 'TADV_URL' ) )
+		if ( ! defined( 'TADV_URL' ) ) {
 			define( 'TADV_URL', plugin_dir_url( __FILE__ ) );
+		}
 
-		if ( ! defined( 'TADV_PATH' ) )
+		if ( ! defined( 'TADV_PATH' ) ) {
 			define( 'TADV_PATH', plugin_dir_path( __FILE__ ) );
+		}
 	}
 
 	public function load_textdomain() {
@@ -218,6 +222,7 @@ class Tinymce_Advanced {
 
 	public function enqueue_scripts( $page ) {
 		if ( 'settings_page_tinymce-advanced' == $page ) {
+			$this->set_paths();
 			wp_enqueue_script( 'tadv-js', TADV_URL . 'js/tadv.js', array( 'jquery-ui-sortable' ), '4.0', true );
 			wp_enqueue_style( 'tadv-mce-skin', includes_url( 'js/tinymce/skins/lightgray/skin.min.css' ), array(), '4.0' );
 			wp_enqueue_style( 'tadv-css', TADV_URL . 'css/tadv-styles.css', array( 'editor-buttons' ), '4.0' );
@@ -265,6 +270,11 @@ class Tinymce_Advanced {
 
 		$this->used_buttons = array_merge( $this->toolbar_1, $this->toolbar_2, $this->toolbar_3, $this->toolbar_4 );
 		$this->get_all_buttons();
+
+		// Force refresh after activation.
+		if ( ! empty( $GLOBALS['tinymce_version'] ) && strpos( $GLOBALS['tinymce_version'], '-tadv-' ) === false ) {
+			$GLOBALS['tinymce_version'] .= '-tadv-' . $this->plugin_version;
+		}
 	}
 
 	public function show_version_warning() {
@@ -289,7 +299,7 @@ class Tinymce_Advanced {
 			echo '<br>';
 
 			printf( __( 'Please upgrade your WordPress installation or download an <a href="%s">older version of the plugin</a>.', 'tinymce-advanced' ),
-				'https://wordpress.org/plugins/tinymce-advanced/download/'
+				'https://wordpress.org/plugins/tinymce-advanced/advanced/#download-previous-link'
 			);
 
 			?>
@@ -634,6 +644,10 @@ class Tinymce_Advanced {
 	}
 
 	public function mce_external_plugins( $mce_plugins ) {
+		if ( ! is_array( $this->options ) ) {
+			$this->load_settings();
+		}
+
 		if ( $this->is_disabled() ) {
 			return $mce_plugins;
 		}
@@ -646,6 +660,7 @@ class Tinymce_Advanced {
 
 		$this->plugins = array_intersect( $this->plugins, $this->get_all_plugins() );
 
+		$this->set_paths();
 		$plugpath = TADV_URL . 'mce/';
 		$mce_plugins = (array) $mce_plugins;
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
@@ -841,6 +856,7 @@ class Tinymce_Advanced {
 			define( 'TADV_ADMIN_PAGE', true );
 		}
 
+		$this->set_paths();
 		include_once( TADV_PATH . 'tadv_admin.php' );
 	}
 

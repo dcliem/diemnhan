@@ -9,6 +9,9 @@ $this->start('header');
     <div class="notice inline notice-info">
         <h3><?php esc_html_e('Template file','loco-translate')?></h3>
         <dl>
+            <dt><?php self::e( __('File size','loco-translate') )?>:</dt>
+            <dd><?php $file->e('size')?></dd>
+
             <dt><?php esc_html_e('File modified','loco-translate')?>:</dt>
             <dd><?php $file->date('mtime')?></dd>
 
@@ -16,7 +19,7 @@ $this->start('header');
             <dd><date><?php $params->date('potime')?></date></dd>
             
             <dt><?php esc_html_e('Source text','loco-translate')?>:</dt>
-            <dd><?php echo esc_html( $meta->getTotalSummary() )?></dd>
+            <dd><?php echo esc_html( $meta->getTotalSummary() )?> <span>(<?php echo sprintf( _n('1 word','%s words', $words, 'loco-translate'), number_format_i18n($words) )?>)</span></dd>
         </dl>
    </div>
     

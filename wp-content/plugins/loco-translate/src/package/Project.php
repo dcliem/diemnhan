@@ -36,7 +36,7 @@ class Loco_package_Project {
     private $dpaths;
 
     /**
-     * Additional system domain path[s] added separately from bindle config
+     * Additional system domain path[s] added separately from bundle config
      * @var Loco_fs_FileList
      */
     private $gpaths;
@@ -189,6 +189,14 @@ class Loco_package_Project {
         return $this->domain;
     }
 
+    
+    /**
+     * @var Loco_package_Bundle
+     */
+    public function getBundle(){
+        return $this->bundle;
+    }
+
 
     /**
      * Whether project is the default for its domain.
@@ -216,6 +224,7 @@ class Loco_package_Project {
 
     /**
      * Add a global search path where translation files may live
+     * @param string | Loco_fs_Directory
      * @return Loco_package_Project
      */
     public function addSystemTargetDirectory( $location ){
@@ -257,12 +266,12 @@ class Loco_package_Project {
      * @return Loco_fs_FileFinder
      */
     private function getTargetFinder(){    
-        if( ! $this->target ){        
+        if( ! $this->target ){
             $target = new Loco_fs_FileFinder;
             $target->setRecursive(false)->group('pot','po','mo');
             foreach( $this->dpaths as $path ){
                 // TODO search need not be recursive if it was the configured DomainPath
-                // currenly no way to know at this point, so recursing by default.
+                // currently no way to know at this point, so recursing by default.
                 $target->addRoot( (string) $path, true );
             }
             foreach( $this->gpaths as $path ){
@@ -646,7 +655,8 @@ class Loco_package_Project {
 
 
     /**
-     * Intialize choice of PO file paths for a given locale
+     * Initialize choice of PO file paths for a given locale
+     * @param Loco_Locale locale to initialize translation files for
      * @return Loco_fs_FileList
      */
     public function initLocaleFiles( Loco_Locale $locale ){
